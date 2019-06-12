@@ -1,0 +1,17 @@
+@import 'heading';
+@import 'paragraph';
+@import 'blockquote';
+@import 'link';
+@import 'list';
+@import 'image';
+@import 'table';
+
+.styled > * + * {
+  margin-top: rem(20);
+}
+
+@for $i from 1 through 6 { // extra spacing for headings
+  .styled > * + h#{$i} {
+    margin-top: rem(40);
+  }
+}

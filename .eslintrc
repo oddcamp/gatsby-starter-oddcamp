@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "rules": {
+    "strict": 0,
+    "react/display-name": 0
+  },
+  "globals": {
+    "module": true,
+    "exports": true,
+    "console": true,
+    "window": true,
+    "document": true,
+    "alert": true,
+    "__dirname": true
+  }
+}

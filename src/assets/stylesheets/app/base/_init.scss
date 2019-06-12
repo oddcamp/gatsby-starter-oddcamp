@@ -1,0 +1,13 @@
+html {
+  font-size: 100%;
+  font-family: $ff-primary;
+  font-weight: $fw-primary-normal;
+  color: $color-black;
+  background-color: $color-beige;
+}
+
+button {
+  background: transparent;
+  // because `background-color: transparent` from `~sass-utils/src/all` is
+  // converted to `background-color: initial` for some reason
+}
