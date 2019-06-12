@@ -1,8 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/61eb7917-e90d-485d-b654-410fa731a370/deploy-status)](https://app.netlify.com/sites/peaceful-northcutt-789996/deploys)
+# GatsbyJS boilerplate
 
-# Cint.com GatsbyJS
-
-https://peaceful-northcutt-789996.netlify.com/
+This is a template-repo. Clone it with [Use this template](https://github.com/kollegorna/gatsby-boilerplate/generate) button to start a new project.
 
 ## Local setup
 
@@ -10,7 +8,3 @@ https://peaceful-northcutt-789996.netlify.com/
 2. Switch to the required Node version `$ nvm use`
 2. Install dependencies `$ yarn install`
 3. Start development server: `$ gatsby develop`
-
-## Tools
-
-- Error monitoring with [Rollbar](https://rollbar.com/KollegornaAB/cint.com-gatsbyjs/)
