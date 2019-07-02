@@ -1,8 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Title`,
-    description: `Description`,
-    // author: `@gatsbyjs`,
+    meta_description: `Description`,
+    social_image: ``,
+    fb_app_id: ``,
+    lang: `en`,
+    twitter_creator: `@kollegorna`,
+    twitter_site: `@kollegorna`,
   },
   plugins: [
     'gatsby-transformer-sharp',
