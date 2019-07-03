@@ -28,8 +28,6 @@ function SEO({
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        //const metaDescription = description || data.site.siteMetadata.description
-
         // General
         const titleTemplate =
           title_override_pattern === true
@@ -155,7 +153,7 @@ SEO.defaultProps = {
   robots_nofollow: false,
   og_title: null,
   og_description: null,
-  og_type: `website`,
+  og_type: null,
   og_site_name: null,
   fb_app_id: null,
   twitter_title: null,
@@ -197,6 +195,7 @@ const detailsQuery = graphql`
         meta_description
         social_image
         lang
+        og_type
         fb_app_id
         twitter_creator
         twitter_site

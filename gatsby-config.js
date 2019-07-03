@@ -3,6 +3,7 @@ module.exports = {
     title: `Title`,
     meta_description: `Description`,
     social_image: ``,
+    og_type: `website`,
     fb_app_id: ``,
     lang: `en`,
     twitter_creator: `@kollegorna`,
