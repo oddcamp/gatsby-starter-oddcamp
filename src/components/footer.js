@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { rem } from 'polished'
+import React from "react"
+import styled from "styled-components"
+import { rem } from "polished"
 
 const Container = styled.footer`
   margin-top: ${rem(80)};
@@ -13,10 +13,6 @@ const Container = styled.footer`
   }
 `
 
-const Footer = () => (
-  <Container>
-    &copy; {new Date().getFullYear()}
-  </Container>
-)
+const Footer = () => <Container>&copy; {new Date().getFullYear()}</Container>
 
 export default Footer
