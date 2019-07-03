@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { ThemeProvider } from 'styled-components'
-import { rem } from 'polished'
+import React from "react"
+import PropTypes from "prop-types"
+import styled, { ThemeProvider } from "styled-components"
+import { rem } from "polished"
 
-import Header from './header'
-import Footer from './footer'
+import Header from "./header"
+import Footer from "./footer"
 
-import theme from '../theme'
+import theme from "../theme"
 
-import '../assets/stylesheets/fonts/woff.scss' // TODO: implement coditional woff.scss and woff2.scss insertion
-import '../assets/stylesheets/app/app.scss'
+import "../assets/stylesheets/fonts/woff.scss" // TODO: implement coditional woff.scss and woff2.scss insertion
+import "../assets/stylesheets/app/app.scss"
 
 const Main = styled.main`
   padding: 0 ${rem(40)};
@@ -24,9 +24,7 @@ const Layout = ({ children }) => (
     <>
       <Header />
 
-      <Main>
-        {children}
-      </Main>
+      <Main>{children}</Main>
 
       <Footer />
     </>

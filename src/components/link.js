@@ -1,16 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link as GatsbyLink } from 'gatsby'
+import React from "react"
+import PropTypes from "prop-types"
+import { Link as GatsbyLink } from "gatsby"
 
-const Link = ({
-  children,
-  to,
-  activeClassName,
-  ...other
-}) => {
+const Link = ({ children, to, activeClassName, ...other }) => {
   const isInternal = /^\/(?!\/)/.test(to)
 
-  if(isInternal) {
+  if (isInternal) {
     return (
       <GatsbyLink to={to} activeClassName={activeClassName} {...other}>
         {children}
@@ -18,8 +13,8 @@ const Link = ({
     )
   }
 
-  if(other.target && !other.rel) {
-    other.rel = 'noopener noreferrer'
+  if (other.target && !other.rel) {
+    other.rel = "noopener noreferrer"
   }
 
   return (

@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import { rem } from 'polished'
+import React from "react"
+import PropTypes from "prop-types"
+import { StaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import { rem } from "polished"
 
-import Link from './link'
+import Link from "./link"
 
-import SvgLogo from '../assets/images/logo.svg'
+import SvgLogo from "../assets/images/logo.svg"
 
 const Container = styled.header`
   margin-bottom: ${rem(80)};
@@ -25,8 +25,12 @@ const Logo = styled.div`
   a {
     display: block;
 
-    &:hover { opacity: 0.8; }
-    &:active { opacity: 0.6; }
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.6;
+    }
   }
 
   svg {

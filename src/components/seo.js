@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import { StaticQuery, graphql } from "gatsby"
 
 function SEO({
   lang,
@@ -32,24 +32,27 @@ function SEO({
 
         // General
         const titleTemplate =
-          title_override_pattern === true ? `%s` : `%s | ${data.site.siteMetadata.title}`
-        const metaDescription = meta_description || data.site.siteMetadata.meta_description
+          title_override_pattern === true
+            ? `%s`
+            : `%s | ${data.site.siteMetadata.title}`
+        const metaDescription =
+          meta_description || data.site.siteMetadata.meta_description
         const language = lang || data.site.siteMetadata.lang
         const socialImage = social_image || data.site.siteMetadata.social_image
-        const robotsNoindex = robots_noindex || data.site.siteMetadata.robots_noindex
-        const robotsNofollow = robots_nofollow || data.site.siteMetadata.robots_nofollow
+        const robotsNoindex =
+          robots_noindex || data.site.siteMetadata.robots_noindex
+        const robotsNofollow =
+          robots_nofollow || data.site.siteMetadata.robots_nofollow
 
         // Facebook
-        const ogTitle =
-        og_title || title || data.site.siteMetadata.title
+        const ogTitle = og_title || title || data.site.siteMetadata.title
         const ogDescription =
           og_description ||
           meta_description ||
           data.site.siteMetadata.meta_description
         const ogImage = og_image || socialImage
         const fbAppId = fb_app_id || data.site.siteMetadata.fb_app_id
-        const ogSiteName =
-        og_site_name || title || data.site.siteMetadata.title
+        const ogSiteName = og_site_name || title || data.site.siteMetadata.title
         const ogType = og_type || data.site.siteMetadata.og_type
 
         // Twitter
@@ -60,7 +63,8 @@ function SEO({
           meta_description ||
           data.site.siteMetadata.description
         const twitterImage = twitter_image || socialImage
-        const twitterCreator = twitter_creator || data.site.siteMetadata.twitter_creator
+        const twitterCreator =
+          twitter_creator || data.site.siteMetadata.twitter_creator
         const twitterSite = twitter_site || data.site.siteMetadata.twitter_site
 
         return (
