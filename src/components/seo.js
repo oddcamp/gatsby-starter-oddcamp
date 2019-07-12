@@ -5,10 +5,9 @@ import { StaticQuery, graphql } from "gatsby"
 
 function SEO({
   lang,
-  meta,
   title,
   title_override_pattern,
-  meta_description,
+  description,
   social_image,
   robots_noindex,
   robots_nofollow,
@@ -23,6 +22,7 @@ function SEO({
   twitter_image,
   twitter_creator,
   twitter_site,
+  meta,
 }) {
   return (
     <StaticQuery
@@ -34,7 +34,7 @@ function SEO({
             ? `%s`
             : `%s | ${data.site.siteMetadata.title}`
         const metaDescription =
-          meta_description || data.site.siteMetadata.meta_description
+          description || data.site.siteMetadata.description
         const language = lang || data.site.siteMetadata.lang
         const socialImage = social_image || data.site.siteMetadata.social_image
         const robotsNoindex =
@@ -46,8 +46,8 @@ function SEO({
         const ogTitle = og_title || title || data.site.siteMetadata.title
         const ogDescription =
           og_description ||
-          meta_description ||
-          data.site.siteMetadata.meta_description
+          description ||
+          data.site.siteMetadata.description
         const ogImage = og_image || socialImage
         const fbAppId = fb_app_id || data.site.siteMetadata.fb_app_id
         const ogSiteName = og_site_name || title || data.site.siteMetadata.title
@@ -58,7 +58,7 @@ function SEO({
           twitter_title || title || data.site.siteMetadata.title
         const twitterDescription =
           twitter_description ||
-          meta_description ||
+          description ||
           data.site.siteMetadata.description
         const twitterImage = twitter_image || socialImage
         const twitterCreator =
@@ -145,10 +145,9 @@ function SEO({
 
 SEO.defaultProps = {
   lang: null,
-  meta: {},
   title: null,
   title_override_pattern: false,
-  meta_description: null,
+  description: null,
   robots_noindex: false,
   robots_nofollow: false,
   og_title: null,
@@ -161,14 +160,14 @@ SEO.defaultProps = {
   twitter_image: null,
   twitter_creator: null,
   twitter_site: null,
+  meta: [],
 }
 
 SEO.propTypes = {
   lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
   title_override_pattern: PropTypes.bool,
-  meta_description: PropTypes.string,
+  description: PropTypes.string,
   social_image: PropTypes.string,
   robots_noindex: PropTypes.bool,
   robots_nofollow: PropTypes.bool,
@@ -183,6 +182,7 @@ SEO.propTypes = {
   twitter_image: PropTypes.string,
   twitter_creator: PropTypes.string,
   twitter_site: PropTypes.string,
+  meta: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default SEO
@@ -192,7 +192,7 @@ const detailsQuery = graphql`
     site {
       siteMetadata {
         title
-        meta_description
+        description
         social_image
         lang
         og_type

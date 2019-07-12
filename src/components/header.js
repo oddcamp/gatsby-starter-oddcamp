@@ -61,7 +61,7 @@ export default props => (
         site {
           siteMetadata {
             title
-            meta_description
+            description
           }
         }
       }
