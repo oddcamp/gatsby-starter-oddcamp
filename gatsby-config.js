@@ -2,12 +2,13 @@ module.exports = {
   siteMetadata: {
     title: `Title`,
     description: `Description`,
-    social_image: ``,
+    social_image: `/images/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg`,
     og_type: `website`,
     fb_app_id: ``,
     lang: `en`,
     twitter_creator: `@kollegorna`,
     twitter_site: `@kollegorna`,
+    siteUrl: `https://www.kollegorna.se`,
   },
   plugins: [
     'gatsby-transformer-sharp',

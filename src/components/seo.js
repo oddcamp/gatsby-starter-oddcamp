@@ -36,7 +36,7 @@ function SEO({
         const metaDescription =
           description || data.site.siteMetadata.description
         const language = lang || data.site.siteMetadata.lang
-        const socialImage = social_image || data.site.siteMetadata.social_image
+        const socialImage = social_image || `${data.site.siteMetadata.siteUrl}${data.site.siteMetadata.social_image}`
         const robotsNoindex =
           robots_noindex || data.site.siteMetadata.robots_noindex
         const robotsNofollow =
@@ -199,6 +199,7 @@ const detailsQuery = graphql`
         fb_app_id
         twitter_creator
         twitter_site
+        siteUrl
       }
     }
   }
