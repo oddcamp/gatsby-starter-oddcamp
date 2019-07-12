@@ -32,7 +32,7 @@ function SEO({
         const titleTemplate =
           title_override_pattern === true
             ? `%s`
-            : `%s | ${data.site.siteMetadata.title}`
+            : data.site.siteMetadata.titleTemplate
         const metaDescription =
           description || data.site.siteMetadata.description
         const language = lang || data.site.siteMetadata.lang
@@ -192,6 +192,7 @@ const detailsQuery = graphql`
     site {
       siteMetadata {
         title
+        titleTemplate
         description
         social_image
         lang

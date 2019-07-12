@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Title`,
+    titleTemplate: `%s | Title`,
     description: `Description`,
     social_image: `/images/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg`,
     og_type: `website`,
