@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Title`,
-    meta_description: `Description`,
+    description: `Description`,
     social_image: ``,
     og_type: `website`,
     fb_app_id: ``,
