@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled, { ThemeProvider } from "styled-components"
 import { rem } from "polished"
+import initSmartOutline from "js-utils/src/smart-outline"
 
 import "../config/yup"
 
@@ -22,21 +23,35 @@ const Main = styled.main`
     padding: 0 ${rem(20)};
   }
 `
+class Layout extends React.Component {
+  componentDidMount() {
+    if (typeof document !== `undefined`) {
+      initSmartOutline([
+        `input:focus`,
+        `button:focus`,
+        `textarea:focus`,
+        `select:focus`,
+      ])
+    }
+  }
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <React.Fragment>
-      <Meta />
-      {/* <MetaWp /> */}
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <React.Fragment>
+          <Meta />
+          {/* <MetaWp /> */}
 
-      <Header />
+          <Header />
 
-      <Main>{children}</Main>
+          <Main>{this.props.children}</Main>
 
-      <Footer />
-    </React.Fragment>
-  </ThemeProvider>
-)
+          <Footer />
+        </React.Fragment>
+      </ThemeProvider>
+    )
+  }
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
