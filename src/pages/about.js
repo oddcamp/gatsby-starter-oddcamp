@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Link from "../components/link"
-import SEO from "../components/seo"
+import Meta from "../components/meta"
 import ContactForm from "../components/contact-form"
 import Modal from "../components/modal"
 
@@ -20,7 +20,7 @@ const AboutPage = () => {
 
   return (
     <Container>
-      <SEO title="About" description="This is the about us page." />
+      <Meta title="About" description="This is the about us page." />
 
       <article className="styled">
         <h1>About</h1>

@@ -1,11 +1,11 @@
 const lang = `en`
 const name = `GatsbyJS Boilerplate`
-const shortName = `Gatsby BP`
-const title = `Made by Kollegorna`
+const shortName = `GatsbyJS BP`
+const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
-const description = `The application does cool things and makes your life better`
-const colorMain = `#000`
-const colorBg = `#fff`
+const description = `GatsbyJS boilerplate that implements Styled Components + SASS and is Wordpress-ready`
+const colorMain = `#7f522c`
+const colorBg = `#fffcf3`
 const socialImage = `/meta-images/social.jpg`
 const icon = `/meta-images/icon-transparent.png` // favicon, ms tile
 const iconBgColor = colorBg
@@ -15,6 +15,8 @@ const maskIcon = `/meta-images/mask-icon.svg` // https://developer.apple.com/lib
 const maskIconColor = colorMain
 const fbAppId = ``
 const twitterHandle = `@kollegorna`
+const robotsNoFollow = false
+const robotsNoIndex = false
 
 module.exports = {
   siteMetadata: {
@@ -31,8 +33,8 @@ module.exports = {
     favIcon,
     maskIcon,
     maskIconColor,
-    robotsNoFollow: false,
-    robotsNoIndex: false,
+    robotsNoFollow,
+    robotsNoIndex,
   },
   plugins: [
     {
@@ -45,17 +47,10 @@ module.exports = {
         theme_color: colorMain,
         background_color: colorBg,
         icon: `static${iconWithBg}`,
-        include_favicon: false, // carried out via `components/SEO`
+        include_favicon: false, // carried out via `components/meta` instead
         start_url: `/`,
         display: `minimal-ui`,
         cache_busting_mode: `name`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
       },
     },
     {
@@ -71,6 +66,31 @@ module.exports = {
         svgo: true, // configured in .svgo.yml file
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    // {
+    //   resolve: `gatsby-source-wordpress`,
+    //   options: {
+    //     baseUrl: `NAME.kinsta.cloud/`,
+    //     protocol: `https`,
+    //     hostingWPCOM: false,
+    //     useACF: true,
+    //     acfOptionPageIds: [`options`],
+    //     includedRoutes: [
+    //       `**/categories`,
+    //       `**/posts`,
+    //       `**/pages`,
+    //       `**/media`,
+    //       `**/tags`,
+    //       `**/taxonomies`,
+    //     ],
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,

@@ -2,17 +2,20 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import truncate from "lodash/truncate"
+import truncateHtml from "truncate-html"
 
-const SEO = ({
+const Meta = ({
   lang,
+  name,
   title,
+  titlePattern,
   titleOverridePattern,
   description,
   socialImage,
   robotsNoIndex,
   robotsNoFollow,
 
+  fbAppId,
   ogType,
   ogTitle,
   ogDescription,
@@ -20,52 +23,15 @@ const SEO = ({
 
   twitterTitle,
   twitterDescription,
-  twitterImage,
+  twitterSite,
   twitterCreator,
+  twitterImage,
 
   meta,
   link,
 }) => {
-  const data = useStaticQuery(graphql`
+  const defaults = useStaticQuery(graphql`
     query {
-      # wordpressAcfOptions {
-      #   options {
-      #     global_meta_lang
-      #     global_meta_name
-      #     global_meta_title
-      #     global_meta_title_pattern
-      #     global_meta_description
-      #     global_meta_robots_nofollow
-      #     global_meta_robots_noindex
-      #     global_meta_social_image {
-      #       localFile {
-      #         url
-      #       }
-      #     }
-      #
-      #     global_meta_facebook_handle
-      #     global_meta_fb_app_id
-      #     global_meta_og_description
-      #     global_meta_og_title
-      #     global_meta_og_type
-      #     global_meta_og_image {
-      #       localFile {
-      #         url
-      #       }
-      #     }
-      #
-      #     global_meta_twitter_title
-      #     global_meta_twitter_description
-      #     global_meta_twitter_site
-      #     global_meta_twitter_creator
-      #     global_meta_twitter_image {
-      #       localFile {
-      #         url
-      #       }
-      #     }
-      #   }
-      # }
-
       site {
         siteMetadata {
           lang
@@ -84,108 +50,83 @@ const SEO = ({
         }
       }
     }
-  `)
-
-  const gatsby = data.site.siteMetadata
-  const wp = data.wordpressAcfOptions ? data.wordpressAcfOptions.options : {}
+  `).site.siteMetadata
 
   // general
 
-  const metaLang = lang || wp.lang || gatsby.lang || undefined
+  const metaLang = lang || defaults.lang || undefined
 
-  const metaName = wp.global_meta_name || gatsby.name || undefined
+  const metaName = name || defaults.name || undefined
 
-  const metaTitle = title || wp.global_meta_title || gatsby.title || undefined
+  const metaTitle = title || defaults.title || undefined
 
-  let metaDescription =
-    description || wp.global_meta_description || gatsby.description || undefined
+  let metaDescription = description || defaults.description || undefined
 
   if (metaDescription) {
-    metaDescription = truncate(metaDescription.replace(/<[^>]*>/g, ``), {
+    metaDescription = truncateHtml(metaDescription, {
       length: 240,
+      stripTags: true,
     })
-      .replace(/\n/g, ``)
-      .replace(/\s+/g, ` `)
   }
 
-  const metaRobotsNoIndex =
-    robotsNoIndex ||
-    wp.global_meta_robots_noindex ||
-    gatsby.robotsNoIndex ||
-    undefined
+  const metaRobotsNoIndex = robotsNoIndex || defaults.robotsNoIndex || undefined
 
   const metaRobotsNoFollow =
-    robotsNoFollow ||
-    wp.global_meta_robots_nofollow ||
-    gatsby.robotsNofollow ||
-    undefined
+    robotsNoFollow || defaults.robotsNofollow || undefined
 
-  const metaImage =
-    socialImage ||
-    (wp.global_meta_social_image &&
-      wp.global_meta_social_image.localFile.url) ||
-    gatsby.socialImage ||
-    undefined
+  const metaImage = socialImage || defaults.socialImage || undefined
 
   // fb/og
 
-  const metaFbAppId = wp.global_meta_fb_app_id || gatsby.fbAppId || undefined
+  const metaFbAppId = fbAppId || defaults.fbAppId || undefined
 
-  const metaOgTitle =
-    ogTitle || wp.global_meta_og_title || metaTitle || undefined
+  const metaOgTitle = ogTitle || metaTitle || undefined
 
-  const metaOgDescription =
-    ogDescription ||
-    wp.global_meta_og_description ||
-    metaDescription ||
-    undefined
+  let metaOgDescription = ogDescription || metaDescription || undefined
 
-  const metaOgType = ogType || wp.global_meta_og_type || undefined
+  if (metaOgDescription) {
+    metaOgDescription = truncateHtml(metaOgDescription, {
+      length: 240,
+      stripTags: true,
+    })
+  }
 
-  const metaOgImage =
-    ogImage ||
-    (wp.global_meta_og_image && wp.global_meta_og_image.localFile.url) ||
-    metaImage ||
-    undefined
+  const metaOgType = ogType || undefined
+
+  const metaOgImage = ogImage || metaImage || undefined
 
   // twitter
 
-  const metaTwitterTitle =
-    twitterTitle || wp.global_meta_twitter_title || metaTitle || undefined
+  const metaTwitterTitle = twitterTitle || metaTitle || undefined
 
-  const metaTwitterDescription =
-    twitterDescription ||
-    wp.global_meta_twitter_description ||
-    metaDescription ||
-    undefined
+  let metaTwitterDescription =
+    twitterDescription || metaDescription || undefined
 
-  const metaTwitterImage =
-    twitterImage ||
-    (wp.global_meta_twitter_image &&
-      wp.global_meta_twitter_image.localFile.url) ||
-    metaImage ||
-    undefined
+  if (metaTwitterDescription) {
+    metaTwitterDescription = truncateHtml(metaTwitterDescription, {
+      length: 240,
+      stripTags: true,
+    })
+  }
 
-  const metaTwitterSite =
-    wp.global_meta_twitter_site || gatsby.twitterHandle || undefined
+  const metaTwitterImage = twitterImage || metaImage || undefined
+
+  const metaTwitterSite = twitterSite || defaults.twitterHandle || undefined
 
   const metaTwitterCreator =
-    twitterCreator ||
-    wp.global_meta_twitter_creator ||
-    gatsby.twitterHandle ||
-    undefined
+    twitterCreator || defaults.twitterHandle || undefined
 
   // icons
 
-  const metaIcon = gatsby.icon || undefined
+  const metaIcon = defaults.icon || undefined
 
-  const metaIconBgColor = gatsby.iconBgColor || undefined
+  const metaIconBgColor = defaults.iconBgColor || undefined
 
-  const metaFavIcon = gatsby.favIcon || undefined
+  const metaFavIcon = defaults.favIcon || undefined
 
-  const metaMaskIcon = gatsby.maskIcon || undefined
+  const metaMaskIcon = defaults.maskIcon || undefined
 
-  const metaMaskIconColor = gatsby.maskIconColor || undefined
+  const metaMaskIconColor = defaults.maskIconColor || undefined
 
   // full title
 
@@ -193,9 +134,10 @@ const SEO = ({
   if (titleOverridePattern) {
     metaFullTitle = metaTitle
   } else {
-    metaFullTitle = (
-      wp.global_meta_title_pattern || gatsby.titlePattern
-    ).replace(`[PAGE_TITLE]`, metaTitle)
+    metaFullTitle = (titlePattern || defaults.titlePattern).replace(
+      `[PAGE_TITLE]`,
+      metaTitle
+    )
   }
   metaFullTitle = metaFullTitle.replace(`[SITE_NAME]`, metaName)
 
@@ -331,15 +273,18 @@ const SEO = ({
   )
 }
 
-SEO.propTypes = {
+Meta.propTypes = {
   lang: PropTypes.string,
+  name: PropTypes.string,
   title: PropTypes.string,
+  titlePattern: PropTypes.string,
   titleOverridePattern: PropTypes.bool,
   description: PropTypes.string,
   socialImage: PropTypes.string,
   robotsNoIndex: PropTypes.bool,
   robotsNoFollow: PropTypes.bool,
 
+  fbAppId: PropTypes.string,
   ogType: PropTypes.string,
   ogTitle: PropTypes.string,
   ogDescription: PropTypes.string,
@@ -347,11 +292,12 @@ SEO.propTypes = {
 
   twitterTitle: PropTypes.string,
   twitterDescription: PropTypes.string,
-  twitterImage: PropTypes.string,
+  twitterSite: PropTypes.string,
   twitterCreator: PropTypes.string,
+  twitterImage: PropTypes.string,
 
   meta: PropTypes.arrayOf(PropTypes.object),
   link: PropTypes.arrayOf(PropTypes.object),
 }
 
-export default SEO
+export default Meta

@@ -46,6 +46,7 @@
     "gatsby-plugin-stylelint": "^3.2.0",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-source-filesystem": "^2.1.42",
+    "gatsby-source-wordpress": "^3.1.53",
     "gatsby-transformer-sharp": "^2.3.9",
     "js-utils": "git+https://3c004c797a82a14ae902c13e17fb58d63eadac73:x-oauth-basic@github.com/kollegorna/js-utils.git#dfe282a",
     "lodash": "^4.17.15",
@@ -71,6 +72,7 @@
     "stylelint-processor-styled-components": "^1.9.0",
     "stylelint-scss": "^3.13.0",
     "stylelint-webpack-plugin": "^1.1.2",
+    "truncate-html": "^1.0.3",
     "uuid-random": "^1.3.0",
     "yup": "^0.28.0"
   }

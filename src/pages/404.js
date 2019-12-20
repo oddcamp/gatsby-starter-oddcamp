@@ -1,10 +1,10 @@
 import React from "react"
 
-import SEO from "../components/seo"
+import Meta from "../components/meta"
 
 const NotFoundPage = () => (
   <React.Fragment>
-    <SEO title="Page not found" />
+    <Meta title="Page not found" />
 
     <div className="styled">
       <h1>Not found</h1>

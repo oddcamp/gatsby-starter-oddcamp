@@ -28,7 +28,7 @@ const IndexPage = ({ data }) => (
       <h1>Hi!</h1>
 
       <p>
-        Read <Link to="/about">about us</Link>.
+        Why don’t you checkout the <Link to="/about">about us</Link> page…
       </p>
 
       <hr />
@@ -66,7 +66,10 @@ export default props => (
   <StaticQuery
     query={graphql`
       query {
-        imgDummy: file(relativePath: { eq: "dummy.jpg" }) {
+        imgDummy: file(
+          sourceInstanceName: { eq: "images" }
+          relativePath: { eq: "dummy.jpg" }
+        ) {
           childImageSharp {
             fluid(maxWidth: 1280) {
               ...GatsbyImageSharpFluid

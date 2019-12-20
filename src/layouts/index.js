@@ -5,7 +5,8 @@ import { rem } from "polished"
 
 import "../config/yup"
 
-import SEO from "../components/seo"
+import Meta from "../components/meta"
+// import MetaWp from "../components/meta-wp"
 import Header from "../components/header"
 import Footer from "../components/footer"
 
@@ -24,15 +25,16 @@ const Main = styled.main`
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <>
-      <SEO />
+    <React.Fragment>
+      <Meta />
+      {/* <MetaWp /> */}
 
       <Header />
 
       <Main>{children}</Main>
 
       <Footer />
-    </>
+    </React.Fragment>
   </ThemeProvider>
 )
 
