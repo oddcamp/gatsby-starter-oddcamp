@@ -1,0 +1,54 @@
+$fonts: (
+  // Roboto
+  (
+    name: 'Roboto',
+    weight: 400,
+    style: normal,
+    file: 'Roboto/Roboto-Regular',
+  ),
+  (
+    name: 'Roboto',
+    weight: 400,
+    style: italic,
+    file: 'Roboto/Roboto-Italic',
+  ),
+  (
+    name: 'Roboto',
+    weight: 600,
+    style: normal,
+    file: 'Roboto/Roboto-Bold',
+  ),
+  (
+    name: 'Roboto',
+    weight: 600,
+    style: italic,
+    file: 'Roboto/Roboto-BoldItalic',
+  ),
+  // Sole Serif Big Display
+  (
+    name: 'PlayfairDisplay',
+    weight: 900,
+    style: normal,
+    file: 'PlayfairDisplay/PlayfairDisplay-Black',
+  ),
+  (
+    name: 'PlayfairDisplay',
+    weight: 900,
+    style: italic,
+    file: 'PlayfairDisplay/PlayfairDisplay-BlackItalic',
+  ),
+);
+
+@each $item in $fonts {
+  @font-face {
+    font-family: map-get($item, 'name');
+    font-style: map-get($item, 'style');
+    font-weight: map-get($item, 'weight');
+    src: url('../../fonts/#{$format}/#{unquote(map-get($item, 'file'))}.#{$format}') format('#{$format}');
+  }
+
+  // makes sure @font-faces aren't wiped out
+  .ff#{unique-id()} {
+    font-family: map-get($item, 'name');
+  }
+}

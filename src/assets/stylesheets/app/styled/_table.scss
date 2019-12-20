@@ -1,0 +1,26 @@
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  word-break: break-word;
+
+  thead { font-weight: $fw-primary-bold; }
+
+  tfoot { color: $color-grey; }
+
+  tr {
+    & + tr { border-top: solid 1px $color-beige--darker; }
+    &:nth-child(even) { background-color: $color-beige--darker; }
+  }
+
+  th {
+    text-align: left;
+    padding: 0.5em;
+    border-bottom: solid 1px $color-beige--darker;
+  }
+
+  td { padding: 0.5em; }
+}
+
+.styled table:not(.do-unstyle) {
+  @extend .styled-table;
+}

@@ -1,0 +1,26 @@
+// font family
+
+$ff-primary: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$ff-secondary: 'PlayfairDisplay', 'Georgia', 'Times', 'Times New Roman', serif;
+
+// font weight
+
+$fw-primary-normal: 400;
+$fw-primary-bold: 700;
+$fw-secondary-normal: 900;
+
+// font size
+
+$em-base: 16px; // used by "kollegorna/sass-utils"
+
+// mixins
+
+@mixin ff-primary($weight: $fw-primary-normal) {
+  font-family: $ff-primary;
+  font-weight: $weight;
+}
+
+@mixin ff-secondary($weight: $fw-secondary-normal) {
+  font-family: $ff-secondary;
+  font-weight: $weight;
+}
