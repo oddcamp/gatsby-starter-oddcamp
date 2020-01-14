@@ -80,7 +80,6 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 //   const pageSlugsToTemplates = {
 //     home: `home`,
 //     about: `about`,
-//     post: `post`,
 //   }
 //
 //   data.wpPages.edges.forEach(edge => {
