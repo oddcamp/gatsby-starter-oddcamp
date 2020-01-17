@@ -10,6 +10,7 @@ import Meta from "../components/meta"
 // import MetaWp from "../components/meta-wp"
 import Header from "../components/header"
 import Footer from "../components/footer"
+import CookiesConsent from "../components/cookies-consent"
 
 import theme from "../theme"
 
@@ -47,6 +48,8 @@ class Layout extends React.Component {
           <Main>{this.props.children}</Main>
 
           <Footer />
+
+          <CookiesConsent />
         </React.Fragment>
       </ThemeProvider>
     )
