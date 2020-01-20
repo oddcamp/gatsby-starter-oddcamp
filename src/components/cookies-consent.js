@@ -57,7 +57,7 @@ const CookiesConsent = ({
 
   const acceptCookies = value => {
     setCookie(`gatsby-gdpr-google-analytics`, value, { path: `/` })
-    if (window !== `undefined`) window.location.reload(true)
+    if (window !== `undefined` && value) window.location.reload(true)
   }
 
   return (
