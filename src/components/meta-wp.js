@@ -5,7 +5,7 @@
 // import Meta from "./meta"
 //
 // const normalizePageMeta = wp => {
-//   const { acf } = wp
+//   const acf = wp.acf || {}
 //
 //   const lang = acf.lang || undefined
 //   const title = acf.title || wp.title || wp.name || undefined
