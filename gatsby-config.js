@@ -18,6 +18,15 @@ const twitterHandle = `@kollegorna`
 const robotsNoFollow = false
 const robotsNoIndex = false
 
+// const wpSlugNormalizer = entities => {
+//   return entities.map(e => {
+//     if (e.slug) {
+//       e.slug = decodeURIComponent(e.slug).replace(/[^0-9a-z_-]/gi, "")
+//     }
+//     return e
+//   })
+// }
+
 module.exports = {
   siteMetadata: {
     lang,
@@ -73,24 +82,28 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-wordpress`,
-    //   options: {
-    //     baseUrl: `NAME.kinsta.cloud/`,
-    //     protocol: `https`,
-    //     hostingWPCOM: false,
-    //     useACF: true,
-    //     acfOptionPageIds: [`options`],
-    //     includedRoutes: [
-    //       `**/categories`,
-    //       `**/posts`,
-    //       `**/pages`,
-    //       `**/media`,
-    //       `**/tags`,
-    //       `**/taxonomies`,
-    //     ],
-    //   },
-    // },
+//     {
+//       resolve: `gatsby-source-wordpress`,
+//       options: {
+//         baseUrl: `NAME.kinsta.cloud/`,
+//         protocol: `https`,
+//         hostingWPCOM: false,
+//         useACF: true,
+//         acfOptionPageIds: [`options`],
+//         includedRoutes: [
+//           `**/categories`,
+//           `**/posts`,
+//           `**/pages`,
+//           `**/media`,
+//           `**/tags`,
+//           `**/taxonomies`,
+//         ],
+//         normalizer: ({ entities }) => {
+//           entities = wpSlugNormalizer(entities)
+//           return entities
+//         },
+//       },
+//     },
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
