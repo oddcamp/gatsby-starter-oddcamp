@@ -1,24 +1,35 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link as GatsbyLink } from "gatsby"
+import { startsWith } from "lodash"
 
-const Link = ({ children, to, activeClassName, ...other }) => {
+const Link = ({ children, to, ...rest }) => {
   const isInternal = /^\/(?!\/)/.test(to)
 
   if (isInternal) {
+    if (
+      rest.partiallyActive &&
+      typeof window !== `undefined` &&
+      window.location.pathname !== `/`
+    ) {
+      rest.partiallyActive = false
+    }
+
     return (
-      <GatsbyLink to={to} activeClassName={activeClassName} {...other}>
+      <GatsbyLink to={to} {...rest}>
         {children}
       </GatsbyLink>
     )
   }
 
-  if (other.target && !other.rel) {
-    other.rel = `noopener noreferrer`
+  if (rest.target && !rest.rel) {
+    rest.rel = `noopener noreferrer`
+  } else if (startsWith(to, `tel:`) && !rest.rel) {
+    rest.rel = `nofollow`
   }
 
   return (
-    <a href={to} {...other}>
+    <a href={to} {...rest}>
       {children}
     </a>
   )
@@ -27,7 +38,6 @@ const Link = ({ children, to, activeClassName, ...other }) => {
 Link.propTypes = {
   children: PropTypes.node,
   to: PropTypes.string.isRequired,
-  activeClassName: PropTypes.string,
 }
 
 export default Link
