@@ -58,7 +58,10 @@ const CookiesConsent = ({
   }
 
   const acceptCookies = value => {
-    setCookie(`gatsby-gdpr-google-analytics`, value, { path: `/` })
+    setCookie(`gatsby-gdpr-google-analytics`, value, {
+      path: `/`,
+      maxAge: 3600 * 24 * 30 * 12, // year
+    })
     if (value) window.location.reload(true)
   }
 
