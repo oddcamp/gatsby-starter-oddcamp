@@ -5609,6 +5609,13 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
+filter-invalid-dom-props@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/filter-invalid-dom-props/-/filter-invalid-dom-props-2.0.0.tgz#527f1494cb3c4f282a73c43804153eb80c42dc2c"
+  integrity sha1-Un8UlMs8Tygqc8Q4BBU+uAxC3Cw=
+  dependencies:
+    html-attributes "1.1.0"
+
 finalhandler@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.2.tgz#b7e7d000ffd11938d0fdb053506f6ebabe9f587d"
@@ -6928,6 +6935,11 @@ hsla-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hsla-regex/-/hsla-regex-1.0.0.tgz#c1ce7a3168c8c6614033a4b5f7877f3b225f9c38"
   integrity sha1-wc56MWjIxmFAM6S194d/OyJfnDg=
+
+html-attributes@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/html-attributes/-/html-attributes-1.1.0.tgz#82027a4fac7a6070ea6c18cc3886aea18d6dea09"
+  integrity sha1-ggJ6T6x6YHDqbBjMOIauoY1t6gk=
 
 html-comment-regex@^1.1.0:
   version "1.1.2"
