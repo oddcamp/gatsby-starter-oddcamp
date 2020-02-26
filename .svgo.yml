@@ -1,5 +1,0 @@
-multipass: true
-plugins:
-  - removeDimensions: true
-  - removeViewBox: false
-  - cleanupIDs: true
