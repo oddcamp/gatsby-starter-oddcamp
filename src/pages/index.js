@@ -59,7 +59,8 @@ const IndexPage = ({ data }) => (
       <h2>Button</h2>
 
       <p>
-        This <code>{`<Button />`}</code> is <code>button[type="button"]</code>:
+        This <code>{`<Button />`}</code> is compiled to{` `}
+        <code>button[type="button"]</code>:
       </p>
 
       <p>
@@ -69,7 +70,7 @@ const IndexPage = ({ data }) => (
       </p>
 
       <p>
-        And <code>{`<Button />`}</code> is <code>a[href]</code>:
+        And <code>{`<Button />`}</code> is compiled to <code>a[href]</code>:
       </p>
 
       <p>

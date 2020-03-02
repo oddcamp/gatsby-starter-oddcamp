@@ -6,8 +6,17 @@ html {
   background-color: $color-beige;
 }
 
+strong {
+  font-weight: $fw-primary-bold;
+}
+
 button {
   background: transparent;
   // because `background-color: transparent` from `~sass-utils/src/all` is
   // converted to `background-color: initial` for some reason
+}
+
+code {
+  background-color: $color-white;
+  padding: 0 0.2em;
 }
