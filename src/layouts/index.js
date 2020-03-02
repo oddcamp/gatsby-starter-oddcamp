@@ -24,6 +24,7 @@ const Main = styled.main`
     padding: 0 ${rem(20)};
   }
 `
+
 class Layout extends React.Component {
   componentDidMount() {
     if (typeof document !== `undefined`) {
