@@ -3,12 +3,22 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 import { rem } from "polished"
 
+import Link from "./link"
+
 const Container = styled.button`
   padding: 0.8em 1.4em;
   display: inline-block;
   font-weight: ${props => props.theme.fwPrimaryBold};
   color: ${props => props.theme.colorBeige};
   background-color: ${props => props.theme.colorGreenDark};
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
 
   ${props =>
     props.large &&
@@ -17,11 +27,9 @@ const Container = styled.button`
     `}
 `
 
-const Button = props => {
-  const { children, type, ...rest } = props
-
+const Button = ({ children, to, ...rest }) => {
   return (
-    <Container {...rest} type={type || `button`}>
+    <Container as={to ? Link : undefined} to={to} {...rest}>
       {children}
     </Container>
   )
@@ -29,7 +37,7 @@ const Button = props => {
 
 Button.propTypes = {
   children: PropTypes.node,
-  type: PropTypes.string,
+  to: PropTypes.string,
 }
 
 export default Button

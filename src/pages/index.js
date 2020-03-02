@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { rem } from "polished"
 
 import Link from "../components/link"
+import Button from "../components/button"
 
 import logoSvgUrl, {
   ReactComponent as LogoSvg,
@@ -53,6 +54,28 @@ const IndexPage = ({ data }) => (
 
       <p>
         <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
+      </p>
+
+      <h2>Button</h2>
+
+      <p>
+        This <code>{`<Button />`}</code> is <code>button[type="button"]</code>:
+      </p>
+
+      <p>
+        <Button type="button" className="do-unstyle">
+          Button button
+        </Button>
+      </p>
+
+      <p>
+        And <code>{`<Button />`}</code> is <code>a[href]</code>:
+      </p>
+
+      <p>
+        <Button to="/" className="do-unstyle">
+          Button link
+        </Button>
       </p>
     </Article>
   </React.Fragment>
