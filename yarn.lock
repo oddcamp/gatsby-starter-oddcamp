@@ -6083,12 +6083,12 @@ gatsby-plugin-eslint@^2.0.8:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.8.tgz#1ff7f546a427d274dc2de3932ba29822aae330c3"
   integrity sha512-vAMy37povmQJNg6ZxY78fkWR3pKwG8MNMhO3u+4vXj2MYT5avhFvHPJTAb126ZCuygf30gAWlpwbV50zP894Jw==
 
-gatsby-plugin-gdpr-cookies@^1.0.6:
+"gatsby-plugin-gdpr-cookies@git+https://3c004c797a82a14ae902c13e17fb58d63eadac73:x-oauth-basic@github.com/kollegorna/gatsby-plugin-gdpr-cookies.git#e1b9b84d":
   version "1.0.6"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-gdpr-cookies/-/gatsby-plugin-gdpr-cookies-1.0.6.tgz#d4f65d73a9dd9a7917a8b855a13fdea4db59d2bf"
-  integrity sha512-Tj3QpEaZTdGQ9afcoXIu50W3uYfV98BrRH8HiWxQZCpF34r8vGF203aR5wPlx/xWfZ1jOe0oXT0NB+MeO8LUDw==
+  resolved "git+https://3c004c797a82a14ae902c13e17fb58d63eadac73:x-oauth-basic@github.com/kollegorna/gatsby-plugin-gdpr-cookies.git#e1b9b84dba902b11fa26f001c174df68c15f314e"
   dependencies:
     "@babel/runtime" "^7.8.4"
+    common-tags "^1.8.0"
     react-ga "^2.7.0"
     universal-cookie "^4.0.3"
 

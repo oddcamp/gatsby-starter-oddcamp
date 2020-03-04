@@ -1,3 +1,5 @@
+// works in pair with `gatsby-plugin-gdpr-cookies` plugin
+
 import React from "react"
 import PropTypes from "prop-types"
 import { useCookies } from "react-cookie"
@@ -64,19 +66,38 @@ const CookiesConsent = ({
   children,
   ...props
 }) => {
-  if (typeof window === `undefined`) return null
-
   const [cookies, setCookie] = useCookies()
 
-  if (cookies[`gatsby-gdpr-google-analytics`]) {
+  if (typeof window === `undefined`) return null
+
+  // sync this with `gatsby-plugin-gdpr-cookies` in gatsby-config.js
+  const consentCookieNames = [
+    `gatsby-gdpr-google-tagmanager`,
+    // `gatsby-gdpr-google-analytics`,
+    // `gatsby-gdpr-facebook-pixel`,
+  ]
+
+  if (!consentCookieNames.length) {
+    return null
+  }
+
+  let anyMissingCookies = false
+  consentCookieNames.forEach(cookieName => {
+    if (!cookies[cookieName]) anyMissingCookies = true
+  })
+
+  if (!anyMissingCookies) {
     return null
   }
 
   const acceptCookies = value => {
-    setCookie(`gatsby-gdpr-google-analytics`, value, {
-      path: `/`,
-      maxAge: 3600 * 24 * 30 * 12, // year
+    consentCookieNames.forEach(cookieName => {
+      setCookie(cookieName, value, {
+        path: `/`,
+        maxAge: 3600 * 24 * 30 * 12, // year
+      })
     })
+
     if (value) window.location.reload(true)
   }
 
