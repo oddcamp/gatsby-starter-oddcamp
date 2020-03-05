@@ -70,7 +70,7 @@ const CookiesConsent = ({
 
   if (typeof window === `undefined`) return null
 
-  // sync this with `gatsby-plugin-gdpr-cookies` in gatsby-config.js
+  // must be in sync this with `gatsby-plugin-gdpr-cookies` config in gatsby-config.js to work properly
   const consentCookieNames = [
     `gatsby-gdpr-google-tagmanager`,
     // `gatsby-gdpr-google-analytics`,
