@@ -182,7 +182,7 @@ const Meta = ({
           content: metaOgType,
         },
         {
-          name: `og:image`,
+          property: `og:image`,
           content: metaOgImage,
         },
         // twitter
