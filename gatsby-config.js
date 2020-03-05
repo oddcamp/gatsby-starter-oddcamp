@@ -114,6 +114,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
+        // make sure to (un)comment cookie names in src/components/cookies-consent.js accordingly
         googleTagManager: {
           trackingId: `GOOGLE_TAGMANAGER_ID`,
         },
