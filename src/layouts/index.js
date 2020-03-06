@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled, { ThemeProvider } from "styled-components"
 import { rem } from "polished"
-import initSmartOutline from "js-utils/src/smart-outline"
+import initSmartOutline from "@kollegorna/js-utils/src/smart-outline"
 
 import "../config/yup"
 

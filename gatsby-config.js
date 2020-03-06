@@ -1,9 +1,9 @@
 const lang = `en`
-const name = `GatsbyJS Boilerplate`
+const name = `GatsbyJS Starter`
 const shortName = `GatsbyJS BP`
 const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
-const description = `GatsbyJS boilerplate that implements Styled Components + SASS and is Wordpress-ready`
+const description = `GatsbyJS starter that implements Styled Components + SASS and is Wordpress-ready`
 const colorMain = `#7f522c`
 const colorBg = `#fffcf3`
 const socialImage = `/meta-images/social.jpg`
@@ -14,7 +14,7 @@ const favIcon = icon
 const maskIcon = `/meta-images/mask-icon.svg` // https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
 const maskIconColor = colorMain
 const fbAppId = ``
-const twitterHandle = `@kollegorna`
+const twitterHandle = `@twitterHandle`
 const robotsNoFollow = false
 const robotsNoIndex = false
 
@@ -126,7 +126,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-layout`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-eslint`,
     // `gatsby-plugin-stylelint`,
   ],
