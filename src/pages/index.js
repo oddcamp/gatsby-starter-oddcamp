@@ -36,14 +36,12 @@ const IndexPage = ({ data }) => (
 
       <h2>Gatsby image</h2>
 
-      <p>
-        <Img
-          fluid={data.imgDummy.childImageSharp.fluid}
-          objectFit="cover"
-          objectPosition="50% 50%"
-          alt="Dummy image"
-        />
-      </p>
+      <Img
+        fluid={data.imgDummy.childImageSharp.fluid}
+        objectFit="cover"
+        objectPosition="50% 50%"
+        alt="Dummy image"
+      />
 
       <h2>SVG</h2>
 
@@ -57,9 +55,7 @@ const IndexPage = ({ data }) => (
         And this is inserted via <code>{`<img />`}</code> tag:
       </p>
 
-      <p>
-        <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
-      </p>
+      <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
 
       <h2>Button</h2>
 
