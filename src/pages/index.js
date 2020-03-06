@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -37,7 +37,12 @@ const IndexPage = ({ data }) => (
       <h2>Gatsby image</h2>
 
       <p>
-        <Img fluid={data.imgDummy.childImageSharp.fluid} />
+        <Img
+          fluid={data.imgDummy.childImageSharp.fluid}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          alt="Dummy image"
+        />
       </p>
 
       <h2>SVG</h2>

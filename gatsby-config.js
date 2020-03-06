@@ -17,6 +17,7 @@ const fbAppId = ``
 const twitterHandle = `@twitterHandle`
 const robotsNoFollow = false
 const robotsNoIndex = false
+const siteUrl = `https://www.site.url/`
 
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
@@ -44,6 +45,7 @@ module.exports = {
     maskIconColor,
     robotsNoFollow,
     robotsNoIndex,
+    siteUrl,
   },
   plugins: [
     {
@@ -119,6 +121,28 @@ module.exports = {
           trackingId: `GOOGLE_TAGMANAGER_ID`,
         },
         environments: [`production`, `development`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        env: {
+          development: {
+            policy: [{ userAgent: `*`, disallow: [`/`] }],
+          },
+          production: {
+            policy: [{ userAgent: `*`, allow: `/` }],
+          },
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        exclude: [],
       },
     },
     `gatsby-transformer-sharp`,
