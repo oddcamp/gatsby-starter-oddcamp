@@ -22,7 +22,7 @@ const Container = styled.div`
     display: block;
     font-size: ${rem(18)};
     line-height: 1.333;
-    border: 1px solid ${props => props.theme.colorBrown};
+    border: 1px solid ${props => props.theme.colorGrey};
     border-bottom-width: 2px;
     background-color: ${props => props.theme.colorWhite};
 
@@ -31,7 +31,7 @@ const Container = styled.div`
     }
 
     &::placeholder {
-      color: ${props => rgba(props.theme.colorBrown, 0.4)};
+      color: ${props => rgba(props.theme.colorGrey, 0.4)};
     }
   }
 
@@ -56,7 +56,7 @@ const Container = styled.div`
     `)}");
 
     &.--placeholder {
-      color: ${props => rgba(props.theme.colorBrown, 0.4)};
+      color: ${props => rgba(props.theme.colorGrey, 0.4)};
     }
   }
 
@@ -101,7 +101,7 @@ const Container = styled.div`
         text-transform: uppercase;
         font-size: 0.875em;
         font-weight: ${props => props.theme.fwPrimaryBold};
-        color: ${props => props.theme.colorBrown};
+        color: ${props => props.theme.colorGrey};
       }
     `}
 
@@ -123,11 +123,11 @@ const Container = styled.div`
         margin-right: 0.5em;
         display: inline-block;
         background-color: ${props => props.theme.colorWhite};
-        border: 1px solid ${props => props.theme.colorBrown};
+        border: 1px solid ${props => props.theme.colorGrey};
         border-bottom-width: 2px;
 
         &:checked {
-          background-color: ${props => props.theme.colorBrown};
+          background-color: ${props => props.theme.colorGreen};
         }
       }
 

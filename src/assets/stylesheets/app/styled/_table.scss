@@ -8,14 +8,15 @@
   tfoot { color: $color-grey; }
 
   tr {
-    & + tr { border-top: solid 1px $color-beige--darker; }
-    &:nth-child(even) { background-color: $color-beige--darker; }
+    & + tr { border-top: solid 1px $color-grey; }
+    &:nth-child(even) { background-color: $color-white; }
   }
 
   th {
     text-align: left;
     padding: 0.5em;
-    border-bottom: solid 1px $color-beige--darker;
+    border-bottom: solid 1px $color-black;
+    color: $color-white;
   }
 
   td { padding: 0.5em; }

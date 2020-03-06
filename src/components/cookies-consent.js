@@ -28,7 +28,7 @@ const Box = styled.div`
   padding: 1.4em;
   pointer-events: auto;
   color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorPurple};
+  background-color: ${props => props.theme.colorRed};
 `
 
 const Text = styled.p`

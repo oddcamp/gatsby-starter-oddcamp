@@ -5,7 +5,7 @@ import { rem } from "polished"
 const Container = styled.footer`
   margin-top: ${rem(80)};
   padding: ${rem(80)} ${rem(40)} ${rem(160)};
-  border-top: 4px solid ${props => props.theme.colorBeigeDarker};
+  border-top: 4px solid ${props => props.theme.colorGreen};
 
   @media ${props => props.theme.mediumDown} {
     margin-top: ${rem(40)};
