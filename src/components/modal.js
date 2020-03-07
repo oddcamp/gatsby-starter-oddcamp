@@ -55,19 +55,21 @@ const Close = styled.div`
   border-top: 1px solid ${props => rgba(props.theme.colorBlack, 0.2)};
 `
 
-const Modal = props => (
-  <ReactModal style={customStyles} isOpen={true}>
-    <Container>
-      {props.children}
+const Modal = ({ children, closeClick }) => {
+  return (
+    <ReactModal style={customStyles} isOpen={true}>
+      <Container>
+        {children}
 
-      <Close>
-        <button type="button" className="styled-a" onClick={props.closeClick}>
-          Close
-        </button>
-      </Close>
-    </Container>
-  </ReactModal>
-)
+        <Close>
+          <button type="button" className="styled-a" onClick={closeClick}>
+            Close
+          </button>
+        </Close>
+      </Container>
+    </ReactModal>
+  )
+}
 
 Modal.propTypes = {
   children: PropTypes.node,

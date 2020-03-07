@@ -13,6 +13,8 @@ const Container = styled.footer`
   }
 `
 
-const Footer = () => <Container>&copy; {new Date().getFullYear()}</Container>
+const Footer = () => {
+  return <Container>&copy; {new Date().getFullYear()}</Container>
+}
 
 export default Footer

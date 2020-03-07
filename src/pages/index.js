@@ -23,65 +23,69 @@ const Article = styled.article.attrs({ className: `styled` })`
   }
 `
 
-const IndexPage = ({ data }) => (
-  <React.Fragment>
-    <Article>
-      <h1>Hi!</h1>
+const IndexPage = ({ data }) => {
+  const { imgDummy } = data
 
-      <p>
-        Why don’t you checkout the <Link to="/about">about us</Link> page…
-      </p>
+  return (
+    <React.Fragment>
+      <Article>
+        <h1>Hi!</h1>
 
-      <hr />
+        <p>
+          Why don’t you checkout the <Link to="/about">about us</Link> page…
+        </p>
 
-      <h2>Gatsby image</h2>
+        <hr />
 
-      <Img
-        fluid={data.imgDummy.childImageSharp.fluid}
-        objectFit="cover"
-        objectPosition="50% 50%"
-        alt="Dummy image"
-      />
+        <h2>Gatsby image</h2>
 
-      <h2>SVG</h2>
+        <Img
+          fluid={imgDummy.childImageSharp.fluid}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          alt="Dummy image"
+        />
 
-      <p>This SVG is inlined:</p>
+        <h2>SVG</h2>
 
-      <p>
-        <LogoSvg aria-label="Logo inlined" className="-svg-logo" />
-      </p>
+        <p>This SVG is inlined:</p>
 
-      <p>
-        And this is inserted via <code>{`<img />`}</code> tag:
-      </p>
+        <p>
+          <LogoSvg aria-label="Logo inlined" className="-svg-logo" />
+        </p>
 
-      <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
+        <p>
+          And this is inserted via <code>{`<img />`}</code> tag:
+        </p>
 
-      <h2>Button</h2>
+        <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
 
-      <p>
-        This <code>{`<Button />`}</code> is compiled to{` `}
-        <code>button[type="button"]</code>:
-      </p>
+        <h2>Button</h2>
 
-      <p>
-        <Button type="button" className="do-unstyle">
-          Button button
-        </Button>
-      </p>
+        <p>
+          This <code>{`<Button />`}</code> is compiled to{` `}
+          <code>button[type="button"]</code>:
+        </p>
 
-      <p>
-        And <code>{`<Button />`}</code> is compiled to <code>a[href]</code>:
-      </p>
+        <p>
+          <Button type="button" className="do-unstyle">
+            Button button
+          </Button>
+        </p>
 
-      <p>
-        <Button to="/" className="do-unstyle">
-          Button link
-        </Button>
-      </p>
-    </Article>
-  </React.Fragment>
-)
+        <p>
+          And <code>{`<Button />`}</code> is compiled to <code>a[href]</code>:
+        </p>
+
+        <p>
+          <Button to="/" className="do-unstyle">
+            Button link
+          </Button>
+        </p>
+      </Article>
+    </React.Fragment>
+  )
+}
 
 IndexPage.propTypes = {
   data: PropTypes.object,
