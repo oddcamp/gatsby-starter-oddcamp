@@ -2,6 +2,12 @@
 
 This is a template-repo. Clone it with [Use this template](https://github.com/kollegorna/gatsby-boilerplate/generate) button to start a new project.
 
+## Online demo
+
+https://kollegorna-gatsbyjs-starter.netlify.com
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/88f45bf8-a663-4483-bf7d-a1f47ab251c8/deploy-status)](https://app.netlify.com/sites/kollegorna-gatsbyjs-starter/deploys)
+
 ## Developing locally
 
 1. Install Gatsby CLI globally `$ npm install -g gatsby-cli`
