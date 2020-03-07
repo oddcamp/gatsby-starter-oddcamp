@@ -71,7 +71,7 @@ Header.propTypes = {
 export default props => (
   <StaticQuery
     query={graphql`
-      query HeaderQuery {
+      query {
         site {
           siteMetadata {
             name

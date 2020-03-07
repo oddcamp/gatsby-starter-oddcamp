@@ -1,4 +1,6 @@
 import React from "react"
+import PropTypes from "prop-types"
+import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -13,8 +15,43 @@ const Container = styled.footer`
   }
 `
 
-const Footer = () => {
-  return <Container>&copy; {new Date().getFullYear()}</Container>
+const Inner = styled.div`
+  ${props => props.theme.gridContainer()}
+`
+
+const Footer = ({ data }) => {
+  const { title } = data.site.siteMetadata
+
+  return (
+    <Container>
+      <Inner>
+        &copy;
+        {` `}
+        {new Date().getFullYear()}
+        {` `}
+        &middot;
+        {` `}
+        {title}
+      </Inner>
+    </Container>
+  )
 }
 
-export default Footer
+Footer.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `}
+    render={data => <Footer data={data} {...props} />}
+  />
+)
