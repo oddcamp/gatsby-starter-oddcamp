@@ -5,7 +5,6 @@ import styled from "styled-components"
 import { rem } from "polished"
 
 import Link from "./link"
-
 import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
 
 const Container = styled.header`
@@ -21,9 +20,14 @@ const Container = styled.header`
   }
 `
 
+const Inner = styled.div`
+  ${props => props.theme.gridContainer()}
+`
+
 const Logo = styled.div`
   a {
-    display: block;
+    display: flex;
+    align-items: center;
 
     &:hover {
       opacity: 0.8;
@@ -37,19 +41,28 @@ const Logo = styled.div`
   svg {
     width: ${rem(60)};
     height: ${rem(60)};
+    margin-right: ${rem(10)};
     display: block;
   }
 `
 
-const Header = ({ data }) => (
-  <Container>
-    <Logo>
-      <Link to="/">
-        <LogoSvg aria-label={data.site.siteMetadata.title} />
-      </Link>
-    </Logo>
-  </Container>
-)
+const Header = ({ data }) => {
+  const { name } = data.site.siteMetadata
+
+  return (
+    <Container>
+      <Inner>
+        <Logo>
+          <Link to="/">
+            <LogoSvg aria-hidden="true" />
+
+            <span>{name}</span>
+          </Link>
+        </Logo>
+      </Inner>
+    </Container>
+  )
+}
 
 Header.propTypes = {
   data: PropTypes.object.isRequired,
@@ -61,7 +74,7 @@ export default props => (
       query HeaderQuery {
         site {
           siteMetadata {
-            title
+            name
           }
         }
       }
