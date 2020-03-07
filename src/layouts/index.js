@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled, { ThemeProvider } from "styled-components"
-import { rem } from "polished"
+import { ThemeProvider } from "styled-components"
 import initSmartOutline from "@kollegorna/js-utils/src/smart-outline"
 
 import "../config/yup"
@@ -17,48 +16,36 @@ import theme from "../theme"
 import "../assets/stylesheets/fonts/woff.scss"
 import "../assets/stylesheets/app/app.scss"
 
-const Main = styled.main`
-  padding: 0 ${rem(40)};
+if (typeof document !== `undefined`) {
+  initSmartOutline([
+    `input:focus`,
+    `button:focus`,
+    `textarea:focus`,
+    `select:focus`,
+  ])
+}
 
-  @media ${props => props.theme.mediumDown} {
-    padding: 0 ${rem(20)};
-  }
-`
+const Layout = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <Meta />
+        {/* <MetaWp /> */}
 
-class Layout extends React.Component {
-  componentDidMount() {
-    if (typeof document !== `undefined`) {
-      initSmartOutline([
-        `input:focus`,
-        `button:focus`,
-        `textarea:focus`,
-        `select:focus`,
-      ])
-    }
-  }
+        <Header />
 
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <Meta />
-          {/* <MetaWp /> */}
+        <main>{children}</main>
 
-          <Header />
+        <Footer />
 
-          <Main>{this.props.children}</Main>
-
-          <Footer />
-
-          <CookiesConsent />
-        </React.Fragment>
-      </ThemeProvider>
-    )
-  }
+        <CookiesConsent />
+      </React.Fragment>
+    </ThemeProvider>
+  )
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 export default Layout

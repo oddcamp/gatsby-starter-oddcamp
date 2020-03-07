@@ -5,10 +5,10 @@
 
   thead { font-weight: $fw-primary-bold; }
 
-  tfoot { color: $color-grey; }
+  tfoot { color: $color-black; }
 
   tr {
-    & + tr { border-top: solid 1px $color-grey; }
+    & + tr { border-top: solid 1px $color-black; }
     &:nth-child(even) { background-color: $color-white; }
   }
 

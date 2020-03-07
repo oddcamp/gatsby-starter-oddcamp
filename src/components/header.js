@@ -12,7 +12,7 @@ const Container = styled.header`
   margin-bottom: ${rem(80)};
   padding: ${rem(30)} ${rem(40)};
   color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorGrey};
+  background-color: ${props => props.theme.colorBlack};
 
   @media ${props => props.theme.mediumDown} {
     margin-bottom: ${rem(40)};

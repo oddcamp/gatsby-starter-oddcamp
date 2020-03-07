@@ -45,7 +45,7 @@ const Container = styled.div`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorBlue};
+  background-color: ${props => props.theme.colorBlack};
   animation: ${animContainer} 0.25s linear;
 `
 
