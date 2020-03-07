@@ -1,11 +1,11 @@
 const lang = `en`
 const name = `GatsbyJS Starter`
-const shortName = `GatsbyJS BP`
+const shortName = `GatsbyJS`
 const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
 const description = `GatsbyJS starter that implements Styled Components + SASS and is Wordpress-ready`
-const colorMain = `#7f522c`
-const colorBg = `#fffcf3`
+const colorMain = `#000`
+const colorBg = `#fff`
 const socialImage = `/meta-images/social.jpg`
 const icon = `/meta-images/icon-transparent.png` // favicon, ms tile
 const iconBgColor = colorBg
@@ -14,10 +14,10 @@ const favIcon = icon
 const maskIcon = `/meta-images/mask-icon.svg` // https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
 const maskIconColor = colorMain
 const fbAppId = ``
-const twitterHandle = `@twitterHandle`
+const twitterHandle = `` // @twitterHandle
 const robotsNoFollow = false
 const robotsNoIndex = false
-const siteUrl = `https://www.site.url/`
+const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com/`
 
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
@@ -120,7 +120,7 @@ module.exports = {
         googleTagManager: {
           trackingId: `GOOGLE_TAGMANAGER_ID`,
         },
-        environments: [`production`, `development`],
+        environments: [`production`],
       },
     },
     {
