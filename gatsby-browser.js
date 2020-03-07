@@ -8,6 +8,8 @@
 
 exports.onRouteUpdate = ({ location, prevLocation }) => {
   if (location && prevLocation) {
-    window.dispatchEvent(new window.Event(`onRouteChange`))
+    const event = document.createEvent(`Event`)
+    event.initEvent(`onRouteChange`, true, true)
+    window.dispatchEvent(event)
   }
 }
