@@ -7,7 +7,7 @@ import { rem, rgba } from "polished"
 import colors from "../theme/sections/colors"
 import zIndexes from "../theme/sections/zindex"
 
-ReactModal.setAppElement(`#___gatsby`)
+ReactModal.setAppElement(`body`)
 
 const animContainer = keyframes`
   0%   { opacity: 0; }
