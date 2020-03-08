@@ -1,9 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { rem } from "polished"
 
+import { StoreConsumer } from "../store"
 import Link from "./link"
 import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
 
@@ -12,12 +13,20 @@ const Container = styled.header`
   padding: ${rem(30)} 0;
   color: ${props => props.theme.colorWhite};
   background-color: ${props => props.theme.colorBlack};
+  border-bottom: 4px solid;
 
   @media ${props => props.theme.mediumDown} {
     margin-bottom: ${rem(40)};
     padding-left: ${rem(20)};
     padding-right: ${rem(20)};
   }
+
+  ${props =>
+    props.inverted &&
+    css`
+      color: ${props => props.theme.colorBlack};
+      background-color: ${props => props.theme.colorWhite};
+    `}
 `
 
 const Inner = styled.div`
@@ -50,17 +59,21 @@ const Header = ({ data }) => {
   const { name } = data.site.siteMetadata
 
   return (
-    <Container>
-      <Inner>
-        <Logo>
-          <Link to="/">
-            <LogoSvg aria-hidden="true" />
+    <StoreConsumer>
+      {({ headerInverted }) => (
+        <Container inverted={headerInverted}>
+          <Inner>
+            <Logo>
+              <Link to="/">
+                <LogoSvg aria-hidden="true" />
 
-            <span>{name}</span>
-          </Link>
-        </Logo>
-      </Inner>
-    </Container>
+                <span>{name}</span>
+              </Link>
+            </Logo>
+          </Inner>
+        </Container>
+      )}
+    </StoreConsumer>
   )
 }
 

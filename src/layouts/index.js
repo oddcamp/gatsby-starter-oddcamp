@@ -4,17 +4,16 @@ import { ThemeProvider } from "styled-components"
 import initSmartOutline from "@kollegorna/js-utils/src/smart-outline"
 
 import "../config/yup"
+import "../assets/stylesheets/fonts/woff.scss"
+import "../assets/stylesheets/app/app.scss"
 
 import Meta from "../components/meta"
 // import MetaWp from "../components/meta-wp"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import CookiesConsent from "../components/cookies-consent"
-
+import { StoreProvider } from "../store"
 import theme from "../theme"
-
-import "../assets/stylesheets/fonts/woff.scss"
-import "../assets/stylesheets/app/app.scss"
 
 if (typeof document !== `undefined`) {
   initSmartOutline([
@@ -28,18 +27,20 @@ if (typeof document !== `undefined`) {
 const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <React.Fragment>
-        <Meta />
-        {/* <MetaWp /> */}
+      <StoreProvider>
+        <React.Fragment>
+          <Meta />
+          {/* <MetaWp /> */}
 
-        <Header />
+          <Header />
 
-        <main>{children}</main>
+          <main>{children}</main>
 
-        <Footer />
+          <Footer />
 
-        <CookiesConsent />
-      </React.Fragment>
+          <CookiesConsent />
+        </React.Fragment>
+      </StoreProvider>
     </ThemeProvider>
   )
 }

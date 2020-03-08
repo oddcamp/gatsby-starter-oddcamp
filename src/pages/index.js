@@ -5,6 +5,7 @@ import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { rem } from "polished"
 
+import { StoreConsumer } from "../store"
 import Link from "../components/link"
 import Button from "../components/button"
 
@@ -35,6 +36,24 @@ const IndexPage = ({ data }) => {
       <p>
         Why don’t you checkout the <Link to="/about">about us</Link> page…
       </p>
+
+      <StoreConsumer>
+        {({ headerInverted, setHeaderInverted }) => (
+          <p>
+            You can also
+            {` `}
+            <button
+              type="button"
+              className="styled-a"
+              onClick={() => setHeaderInverted(!headerInverted)}
+            >
+              invert the header
+            </button>
+            {` `}
+            color theme.
+          </p>
+        )}
+      </StoreConsumer>
 
       <hr />
 
