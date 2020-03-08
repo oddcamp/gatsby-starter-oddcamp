@@ -6,12 +6,12 @@ import { rem } from "polished"
 
 const Container = styled.footer`
   margin-top: ${rem(80)};
-  padding: ${rem(80)} ${rem(40)} ${rem(160)};
+  padding: ${rem(80)} 0 ${rem(160)};
   border-top: 4px solid ${props => props.theme.colorBlack};
 
   @media ${props => props.theme.mediumDown} {
     margin-top: ${rem(40)};
-    padding: ${rem(40)} ${rem(20)} ${rem(80)};
+    padding: ${rem(40)} 0 ${rem(80)};
   }
 `
 

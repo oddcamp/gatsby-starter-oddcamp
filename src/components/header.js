@@ -9,7 +9,7 @@ import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
 
 const Container = styled.header`
   margin-bottom: ${rem(80)};
-  padding: ${rem(30)} ${rem(40)};
+  padding: ${rem(30)} 0;
   color: ${props => props.theme.colorWhite};
   background-color: ${props => props.theme.colorBlack};
 
