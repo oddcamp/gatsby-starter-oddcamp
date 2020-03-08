@@ -1,11 +1,11 @@
 const lang = `en`
-const name = `GatsbyJS Boilerplate`
-const shortName = `GatsbyJS BP`
+const name = `GatsbyJS Starter`
+const shortName = `GatsbyJS`
 const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
-const description = `GatsbyJS boilerplate that implements Styled Components + SASS and is Wordpress-ready`
-const colorMain = `#7f522c`
-const colorBg = `#fffcf3`
+const description = `GatsbyJS starter that implements Styled Components + SASS and is Wordpress-ready`
+const colorMain = `#000`
+const colorBg = `#fff`
 const socialImage = `/meta-images/social.jpg`
 const icon = `/meta-images/icon-transparent.png` // favicon, ms tile
 const iconBgColor = colorBg
@@ -14,9 +14,10 @@ const favIcon = icon
 const maskIcon = `/meta-images/mask-icon.svg` // https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
 const maskIconColor = colorMain
 const fbAppId = ``
-const twitterHandle = `@kollegorna`
+const twitterHandle = `` // @twitterHandle
 const robotsNoFollow = false
 const robotsNoIndex = false
+const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com/`
 
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
@@ -44,6 +45,7 @@ module.exports = {
     maskIconColor,
     robotsNoFollow,
     robotsNoIndex,
+    siteUrl,
   },
   plugins: [
     {
@@ -118,7 +120,29 @@ module.exports = {
         googleTagManager: {
           trackingId: `GOOGLE_TAGMANAGER_ID`,
         },
-        environments: [`production`, `development`],
+        environments: [`production`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        env: {
+          development: {
+            policy: [{ userAgent: `*`, disallow: [`/`] }],
+          },
+          production: {
+            policy: [{ userAgent: `*`, allow: `/` }],
+          },
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        exclude: [],
       },
     },
     `gatsby-transformer-sharp`,
@@ -126,7 +150,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-layout`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-eslint`,
     // `gatsby-plugin-stylelint`,
   ],

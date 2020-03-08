@@ -1,10 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { rem } from "polished"
 
+import { StoreConsumer } from "../store"
 import Link from "../components/link"
 import Button from "../components/button"
 
@@ -12,7 +13,9 @@ import logoSvgUrl, {
   ReactComponent as LogoSvg,
 } from "../assets/images/logo.svg"
 
-const Article = styled.article.attrs({ className: `styled` })`
+const Container = styled.article.attrs({ className: `styled` })`
+  ${props => props.theme.gridContainer()}
+
   .gatsby-image-wrapper {
     max-width: ${rem(800)};
   }
@@ -23,22 +26,45 @@ const Article = styled.article.attrs({ className: `styled` })`
   }
 `
 
-const IndexPage = ({ data }) => (
-  <React.Fragment>
-    <Article>
+const IndexPage = ({ data }) => {
+  const { imgDummy } = data
+
+  return (
+    <Container>
       <h1>Hi!</h1>
 
       <p>
         Why don’t you checkout the <Link to="/about">about us</Link> page…
       </p>
 
+      <StoreConsumer>
+        {({ headerInverted, setHeaderInverted }) => (
+          <p>
+            You can also
+            {` `}
+            <button
+              type="button"
+              className="styled-a"
+              onClick={() => setHeaderInverted(!headerInverted)}
+            >
+              invert the header
+            </button>
+            {` `}
+            color theme.
+          </p>
+        )}
+      </StoreConsumer>
+
       <hr />
 
       <h2>Gatsby image</h2>
 
-      <p>
-        <Img fluid={data.imgDummy.childImageSharp.fluid} />
-      </p>
+      <Img
+        fluid={imgDummy.childImageSharp.fluid}
+        objectFit="cover"
+        objectPosition="50% 50%"
+        alt="Dummy image"
+      />
 
       <h2>SVG</h2>
 
@@ -52,9 +78,7 @@ const IndexPage = ({ data }) => (
         And this is inserted via <code>{`<img />`}</code> tag:
       </p>
 
-      <p>
-        <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
-      </p>
+      <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
 
       <h2>Button</h2>
 
@@ -78,9 +102,9 @@ const IndexPage = ({ data }) => (
           Button link
         </Button>
       </p>
-    </Article>
-  </React.Fragment>
-)
+    </Container>
+  )
+}
 
 IndexPage.propTypes = {
   data: PropTypes.object,

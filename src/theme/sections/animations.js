@@ -1,6 +1,6 @@
 import { keyframes } from "styled-components"
 import { rem } from "polished"
-import easings from 'sass-extract-loader?{"plugins": ["sass-extract-js"]}!sass-utils/src/_animations.scss'
+import easings from 'sass-extract-loader?{"plugins": ["sass-extract-js"]}!@kollegorna/sass-utils/src/_animations.scss'
 
 easings.easingDefault = easings.easingOutCubic
 

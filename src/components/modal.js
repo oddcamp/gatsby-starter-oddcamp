@@ -7,7 +7,7 @@ import { rem, rgba } from "polished"
 import colors from "../theme/sections/colors"
 import zIndexes from "../theme/sections/zindex"
 
-ReactModal.setAppElement(`#___gatsby`)
+ReactModal.setAppElement(`body`)
 
 const animContainer = keyframes`
   0%   { opacity: 0; }
@@ -45,7 +45,7 @@ const Container = styled.div`
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorBrown};
+  background-color: ${props => props.theme.colorBlack};
   animation: ${animContainer} 0.25s linear;
 `
 
@@ -55,19 +55,21 @@ const Close = styled.div`
   border-top: 1px solid ${props => rgba(props.theme.colorBlack, 0.2)};
 `
 
-const Modal = props => (
-  <ReactModal style={customStyles} isOpen={true}>
-    <Container>
-      {props.children}
+const Modal = ({ children, closeClick }) => {
+  return (
+    <ReactModal style={customStyles} isOpen={true}>
+      <Container>
+        {children}
 
-      <Close>
-        <button type="button" className="styled-a" onClick={props.closeClick}>
-          Close
-        </button>
-      </Close>
-    </Container>
-  </ReactModal>
-)
+        <Close>
+          <button type="button" className="styled-a" onClick={closeClick}>
+            Close
+          </button>
+        </Close>
+      </Container>
+    </ReactModal>
+  )
+}
 
 Modal.propTypes = {
   children: PropTypes.node,

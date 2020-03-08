@@ -9,8 +9,8 @@ const Container = styled.button`
   padding: 0.8em 1.4em;
   display: inline-block;
   font-weight: ${props => props.theme.fwPrimaryBold};
-  color: ${props => props.theme.colorBeige};
-  background-color: ${props => props.theme.colorGreenDark};
+  color: ${props => props.theme.colorWhite};
+  background-color: ${props => props.theme.colorBlack};
 
   &:hover {
     opacity: 0.9;

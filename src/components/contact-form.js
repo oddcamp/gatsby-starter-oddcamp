@@ -36,8 +36,7 @@ const Container = styled.div`
   width: 100%;
   max-width: ${rem(640)};
   padding: 2em;
-  background-color: ${props => props.theme.colorBeigeDark};
-  border: 2px solid ${props => props.theme.colorBeigeDarker};
+  border: 2px solid ${props => props.theme.colorBlack};
 `
 
 class ContactForm extends React.Component {

@@ -4,14 +4,14 @@
   padding-left: 1.3em;
   font-style: italic;
   word-break: break-word;
-  border-left: 2px solid $color-beige--darker;
+  border-left: 2px solid $color-black;
 
   > * + * { margin-top: rem(20); }
 
   // author
 
   > footer {
-    color: $color-grey;
+    color: $color-black;
 
     &::before { content: '—'; }
   }

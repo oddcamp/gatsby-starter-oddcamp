@@ -24,19 +24,6 @@ $fonts: (
     style: italic,
     file: 'Roboto/Roboto-BoldItalic',
   ),
-  // Sole Serif Big Display
-  (
-    name: 'PlayfairDisplay',
-    weight: 900,
-    style: normal,
-    file: 'PlayfairDisplay/PlayfairDisplay-Black',
-  ),
-  (
-    name: 'PlayfairDisplay',
-    weight: 900,
-    style: italic,
-    file: 'PlayfairDisplay/PlayfairDisplay-BlackItalic',
-  ),
 );
 
 @each $item in $fonts {
