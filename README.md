@@ -1,7 +1,5 @@
 # GatsbyJS boilerplate
 
-This is a template-repo. Clone it with [Use this template](https://github.com/kollegorna/gatsby-boilerplate/generate) button to start a new project.
-
 ## Online demo
 
 https://kollegorna-gatsbyjs-starter.netlify.com
@@ -11,9 +9,8 @@ https://kollegorna-gatsbyjs-starter.netlify.com
 ## Developing locally
 
 1. Install Gatsby CLI globally `$ npm install -g gatsby-cli`
-2. Switch to the required Node version `$ nvm use`
-3. Install dependencies `$ yarn install`
-4. Start development server: `$ yarn develop`: [localhost:8000](http://localhost:8000)
+2. Install dependencies `$ yarn install`
+3. Start development server: `$ yarn develop`: [localhost:8000](http://localhost:8000)
 
 Or `$ yarn develop-n` for sharing the server on your network (`192.168.X.X:8000`)
 
