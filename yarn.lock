@@ -1142,15 +1142,15 @@
   dependencies:
     core-js "^2.5.7"
 
-"@kollegorna/js-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kollegorna/js-utils/-/js-utils-1.0.0.tgz#cbc7fae877c7a8b667e25f4a609af811cb2c473d"
-  integrity sha512-unCFigrTwHZwf2j5S+Qu+SLkdICzjxeibq23/mTYTI83pg7VtKoy6/aM3xnZ0wmZpBZjfx2FoWOhk8igkX0t5A==
+"@kollegorna/js-utils@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@kollegorna/js-utils/-/js-utils-1.0.2.tgz#60036bfc2ffc091dcc9387f684a4ece28ead369c"
+  integrity sha512-8rjyb0SoKaNWSTuIdsTjsfyfonHLkvajfVhCiKcllB3BOLi+Gmm7J5E/q0RQVQwxTBS/8FiNUeyGo+fX9oeOCw==
 
-"@kollegorna/sass-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kollegorna/sass-utils/-/sass-utils-1.0.0.tgz#305bdfe6e7f5b8ffbe9dc3a17565c29552092748"
-  integrity sha512-5ynFbfHvvGxwkfhaSMTxwfYHkKECQ0pvX4yDKfkhxFxwkPPtYbZoiMzibfHIMf3H+aU4Ec2mdhrd4A2T2u5MAA==
+"@kollegorna/sass-utils@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@kollegorna/sass-utils/-/sass-utils-1.0.3.tgz#76e5da441166ca529fc26df53a461d2ec32c5621"
+  integrity sha512-S9tHfgKnfWvUvCz5osDOgv+n0YKQRh8ZxhyY7b+7STarYlyTxoFXbLV8bSMpPyNb/5Q3DhR2jUooPIikvq1B5A==
 
 "@mikaelkristiansson/domready@^1.0.10":
   version "1.0.10"
@@ -6737,6 +6737,11 @@ hasha@^5.1.0:
   dependencies:
     is-stream "^2.0.0"
     type-fest "^0.8.0"
+
+he@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
+  integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 hex-color-regex@^1.1.0:
   version "1.1.0"
