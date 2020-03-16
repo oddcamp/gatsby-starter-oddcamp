@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@danbruegge/gatsby-plugin-stylelint": "^4.0.0",
-    "@kollegorna/js-utils": "^1.0.0",
-    "@kollegorna/sass-utils": "^1.0.1",
+    "@kollegorna/js-utils": "^1.0.2",
+    "@kollegorna/sass-utils": "^1.0.3",
     "@svgr/webpack": "^5.2.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.10.7",
