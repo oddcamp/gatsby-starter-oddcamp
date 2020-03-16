@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import truncateHtml from "truncate-html"
+import he from "he"
 
 const Meta = ({
   lang,
@@ -149,7 +150,7 @@ const Meta = ({
   return (
     <Helmet
       htmlAttributes={{ lang: metaLang }}
-      title={metaFullTitle}
+      title={he.unescape(metaFullTitle)}
       meta={[
         // general
         {

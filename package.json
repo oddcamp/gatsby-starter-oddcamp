@@ -52,6 +52,7 @@
     "gatsby-source-filesystem": "^2.1.50",
     "gatsby-source-wordpress": "^3.1.65",
     "gatsby-transformer-sharp": "^2.3.17",
+    "he": "^1.2.0",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "polished": "^3.4.4",
