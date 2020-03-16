@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
+import { Location } from "@reach/router"
 
 const Container = styled.footer`
   margin-top: ${rem(80)};
@@ -17,6 +18,31 @@ const Container = styled.footer`
 
 const Inner = styled.div`
   ${props => props.theme.gridContainer()}
+  ${props => props.theme.gridGrid()}
+  ${props => props.theme.gridGridGutterX()}
+
+  @media ${props => props.theme.smallDown} {
+    ${props => props.theme.gridGridGutterY()}
+  }
+
+  > * {
+    ${props => props.theme.gridCell(6)};
+
+    @media ${props => props.theme.smallDown} {
+      ${props => props.theme.gridCell(12)};
+    }
+  }
+`
+
+const Copy = styled.div``
+
+const Route = styled.div`
+  text-align: right;
+  opacity: 0.6;
+
+  @media ${props => props.theme.smallDown} {
+    text-align: left;
+  }
 `
 
 const Footer = ({ data }) => {
@@ -25,13 +51,21 @@ const Footer = ({ data }) => {
   return (
     <Container>
       <Inner>
-        &copy;
-        {` `}
-        {new Date().getFullYear()}
-        {` `}
-        &middot;
-        {` `}
-        {title}
+        <Copy>
+          &copy;
+          {` `}
+          {new Date().getFullYear()}
+          {` `}
+          &middot;
+          {` `}
+          {title}
+        </Copy>
+
+        <Route>
+          Current route:
+          {` `}
+          <Location>{({ location }) => location.pathname}</Location>
+        </Route>
       </Inner>
     </Container>
   )
