@@ -1147,10 +1147,10 @@
   resolved "https://registry.yarnpkg.com/@kollegorna/js-utils/-/js-utils-1.0.0.tgz#cbc7fae877c7a8b667e25f4a609af811cb2c473d"
   integrity sha512-unCFigrTwHZwf2j5S+Qu+SLkdICzjxeibq23/mTYTI83pg7VtKoy6/aM3xnZ0wmZpBZjfx2FoWOhk8igkX0t5A==
 
-"@kollegorna/sass-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kollegorna/sass-utils/-/sass-utils-1.0.0.tgz#305bdfe6e7f5b8ffbe9dc3a17565c29552092748"
-  integrity sha512-5ynFbfHvvGxwkfhaSMTxwfYHkKECQ0pvX4yDKfkhxFxwkPPtYbZoiMzibfHIMf3H+aU4Ec2mdhrd4A2T2u5MAA==
+"@kollegorna/sass-utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kollegorna/sass-utils/-/sass-utils-1.0.1.tgz#40a06be0a991ac5860f57c0c13ec7bab0c64ccf0"
+  integrity sha512-3NvTZ/RVPzbRD8FSKaK9ZrxIIHaMOfr7RUJqnDkfEPHTLdciSpxxW4T9F90q90MRx2SXqaJYNYxcQaynwhb/pA==
 
 "@mikaelkristiansson/domready@^1.0.10":
   version "1.0.10"
