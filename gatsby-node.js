@@ -100,7 +100,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 //   data.wpPosts.edges.forEach(edge => {
 //     createPage({
 //       path: `/posts/${edge.node.slug}`,
-//       component: slash(path.resolve(templates.posts)),
+//       component: slash(path.resolve(templates.post)),
 //       context: {
 //         id: edge.node.id,
 //       },
