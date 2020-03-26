@@ -39,7 +39,7 @@
     "gatsby": "^2.19.32",
     "gatsby-image": "^2.2.43",
     "gatsby-plugin-eslint": "^2.0.8",
-    "gatsby-plugin-gdpr-cookies": "git+https://3c004c797a82a14ae902c13e17fb58d63eadac73:x-oauth-basic@github.com/kollegorna/gatsby-plugin-gdpr-cookies.git#e1b9b84d",
+    "gatsby-plugin-gdpr-cookies": "^1.0.7",
     "gatsby-plugin-layout": "^1.1.23",
     "gatsby-plugin-manifest": "^2.2.44",
     "gatsby-plugin-react-helmet": "^3.1.23",
