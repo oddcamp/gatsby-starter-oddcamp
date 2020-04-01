@@ -8,21 +8,21 @@
     "plugin:react/recommended",
     "prettier",
     "prettier/flowtype",
-    "prettier/react"
+    "prettier/react",
   ],
   "plugins": ["flowtype", "prettier", "react", "filenames"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
-    }
+      "jsx": true,
+    },
   },
   "env": {
     "browser": true,
     "es6": true,
     "node": true,
-    "jest": true
+    "jest": true,
   },
   "globals": {
     "before": true,
@@ -30,14 +30,14 @@
     "spyOn": true,
     "__PATH_PREFIX__": true,
     "__BASE_PATH__": true,
-    "__ASSET_PREFIX__": true
+    "__ASSET_PREFIX__": true,
   },
   "rules": {
     "no-unused-expressions": [
       "error",
       {
-        "allowTaggedTemplates": true
-      }
+        "allowTaggedTemplates": true,
+      },
     ],
     "consistent-return": ["error"],
     "filenames/match-regex": ["error", "^[a-z-\\d\\.]+$", true],
@@ -52,11 +52,11 @@
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
     "no-invalid-this": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
   },
   "settings": {
     "react": {
-      "version": "16.4.2"
-    }
-  }
+      "version": "16.4.2",
+    },
+  },
 }
