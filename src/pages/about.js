@@ -6,6 +6,7 @@ import Link from "../components/link"
 import Meta from "../components/meta"
 import ContactForm from "../components/contact-form"
 import Modal from "../components/modal"
+import { Location } from "@reach/router"
 
 const ContactFormStyled = styled(ContactForm)``
 
@@ -19,8 +20,6 @@ const Container = styled.div`
 
 const AboutPage = () => {
   const [isModalOpen, setModalOpen] = useState(false)
-
-  const currentLink = typeof window !== `undefined` ? window.location.href : ``
 
   return (
     <Container>
@@ -42,32 +41,36 @@ const AboutPage = () => {
           .
         </p>
 
-        <ul>
-          <li>
-            <Link
-              target="_blank"
-              to={`https://www.facebook.com/sharer/sharer.php?u=${currentLink}`}
-            >
-              Share on Facebook
-            </Link>
-          </li>
-          <li>
-            <Link
-              target="_blank"
-              to={`https://twitter.com/intent/tweet/?url=${currentLink}`}
-            >
-              Share on Twitter
-            </Link>
-          </li>
-          <li>
-            <Link
-              target="_blank"
-              to={`https://www.linkedin.com/shareArticle?mini=true&url=${currentLink}`}
-            >
-              Share on LinkedIn
-            </Link>
-          </li>
-        </ul>
+        <Location>
+          {({ location }) => (
+            <ul>
+              <li>
+                <Link
+                  target="_blank"
+                  to={`https://www.facebook.com/sharer/sharer.php?u=${location.href}`}
+                >
+                  Share on Facebook
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={`https://twitter.com/intent/tweet/?url=${location.href}`}
+                >
+                  Share on Twitter
+                </Link>
+              </li>
+              <li>
+                <Link
+                  target="_blank"
+                  to={`https://www.linkedin.com/shareArticle?mini=true&url=${location.href}`}
+                >
+                  Share on LinkedIn
+                </Link>
+              </li>
+            </ul>
+          )}
+        </Location>
       </article>
 
       <ContactFormStyled />
