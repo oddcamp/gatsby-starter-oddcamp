@@ -20,6 +20,8 @@ const Container = styled.div`
 const AboutPage = () => {
   const [isModalOpen, setModalOpen] = useState(false)
 
+  const currentLink = typeof window !== `undefined` ? window.location.href : ``
+
   return (
     <Container>
       <Meta title="About" description="This is the about us page." />
@@ -39,6 +41,33 @@ const AboutPage = () => {
           </button>
           .
         </p>
+
+        <ul>
+          <li>
+            <Link
+              target="_blank"
+              to={`https://www.facebook.com/sharer/sharer.php?u=${currentLink}`}
+            >
+              Share on Facebook
+            </Link>
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              to={`https://twitter.com/intent/tweet/?url=${currentLink}`}
+            >
+              Share on Twitter
+            </Link>
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              to={`https://www.linkedin.com/shareArticle?mini=true&url=${currentLink}`}
+            >
+              Share on LinkedIn
+            </Link>
+          </li>
+        </ul>
       </article>
 
       <ContactFormStyled />
