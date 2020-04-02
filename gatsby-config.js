@@ -17,7 +17,7 @@ const fbAppId = ``
 const twitterHandle = `` // @twitterHandle
 const robotsNoFollow = false
 const robotsNoIndex = false
-const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com/`
+const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have trailing slash
 
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
