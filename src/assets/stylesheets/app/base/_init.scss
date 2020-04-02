@@ -1,7 +1,7 @@
 html {
+  @include ff-primary;
+
   font-size: 100%; // must always be a percentage value
-  font-family: $ff-primary;
-  font-weight: $fw-primary-normal;
   color: $color-black;
   background-color: $color-white;
 }
