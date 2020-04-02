@@ -1,16 +1,9 @@
 {
   "root": true,
-  "processors": [
-    # "stylelint-processor-glamorous",
-    # "stylelint-processor-styled-components",
-  ],
-  "plugins": [
-    # "stylelint-scss"
-  ],
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-prettier",
-    # "stylelint-config-styled-components"
+    "stylelint-prettier/recommended",
   ],
   "rules": {
     "at-rule-no-unknown": null,

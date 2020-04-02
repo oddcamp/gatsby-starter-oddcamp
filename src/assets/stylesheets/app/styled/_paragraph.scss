@@ -3,7 +3,9 @@
   font-size: rem(18);
   word-break: break-word;
 
-  @include mq(small down) { font-size: rem(16); }
+  @include mq(small down) {
+    font-size: rem(16);
+  }
 }
 
 .styled p:not(.do-unstyle) {
@@ -16,11 +18,17 @@
   font-size: rem(24);
   line-height: 1.5;
 
-  @include mq(xxlarge down) { font-size: rem(22); }
+  @include mq(xxlarge down) {
+    font-size: rem(22);
+  }
 
-  @include mq(medium down) { font-size: rem(20); }
+  @include mq(medium down) {
+    font-size: rem(20);
+  }
 
-  @include mq(small down) { font-size: rem(18); }
+  @include mq(small down) {
+    font-size: rem(18);
+  }
 }
 
 .styled p.styled-p-leading:not(.do-unstyle) {

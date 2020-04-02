@@ -1,41 +1,41 @@
 $fonts: (
-  // Roboto
   (
-    name: 'Roboto',
+    name: "Roboto",
     weight: 400,
     style: normal,
-    file: 'Roboto/Roboto-Regular',
+    file: "Roboto/Roboto-Regular",
   ),
   (
-    name: 'Roboto',
+    name: "Roboto",
     weight: 400,
     style: italic,
-    file: 'Roboto/Roboto-Italic',
+    file: "Roboto/Roboto-Italic",
   ),
   (
-    name: 'Roboto',
+    name: "Roboto",
     weight: 600,
     style: normal,
-    file: 'Roboto/Roboto-Bold',
+    file: "Roboto/Roboto-Bold",
   ),
   (
-    name: 'Roboto',
+    name: "Roboto",
     weight: 600,
     style: italic,
-    file: 'Roboto/Roboto-BoldItalic',
-  ),
+    file: "Roboto/Roboto-BoldItalic",
+  )
 );
 
 @each $item in $fonts {
   @font-face {
-    font-family: map-get($item, 'name');
-    font-style: map-get($item, 'style');
-    font-weight: map-get($item, 'weight');
-    src: url('../../fonts/#{$format}/#{unquote(map-get($item, 'file'))}.#{$format}') format('#{$format}');
+    font-family: map-get($item, "name");
+    font-style: map-get($item, "style");
+    font-weight: map-get($item, "weight");
+    src: url("../../fonts/#{$format}/#{unquote(map-get($item, "file"))}.#{$format}")
+      format("#{$format}");
   }
 
   // makes sure @font-faces aren't wiped out
   .ff#{unique-id()} {
-    font-family: map-get($item, 'name');
+    font-family: map-get($item, "name");
   }
 }

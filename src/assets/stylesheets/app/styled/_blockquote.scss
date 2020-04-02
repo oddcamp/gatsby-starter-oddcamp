@@ -6,14 +6,18 @@
   word-break: break-word;
   border-left: 2px solid $color-black;
 
-  > * + * { margin-top: rem(20); }
+  > * + * {
+    margin-top: rem(20);
+  }
 
   // author
 
   > footer {
     color: $color-black;
 
-    &::before { content: '—'; }
+    &::before {
+      content: "—";
+    }
   }
 }
 

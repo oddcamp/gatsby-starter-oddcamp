@@ -22,7 +22,7 @@ const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com/`
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
 //     if (e.slug) {
-//       e.slug = decodeURIComponent(e.slug).replace(/[^0-9a-z_-]/gi, "")
+//       e.slug = decodeURIComponent(e.slug).replace(/[^0-9a-z_-]/gi, ``)
 //     }
 //     return e
 //   })
@@ -151,6 +151,5 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-eslint`,
-    // `gatsby-plugin-stylelint`,
   ],
 }

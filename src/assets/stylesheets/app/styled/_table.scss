@@ -3,13 +3,21 @@
   border-collapse: collapse;
   word-break: break-word;
 
-  thead { font-weight: $fw-primary-bold; }
+  thead {
+    font-weight: $fw-primary-bold;
+  }
 
-  tfoot { color: $color-black; }
+  tfoot {
+    color: $color-black;
+  }
 
   tr {
-    & + tr { border-top: solid 1px $color-black; }
-    &:nth-child(even) { background-color: $color-white; }
+    & + tr {
+      border-top: solid 1px $color-black;
+    }
+    &:nth-child(even) {
+      background-color: $color-white;
+    }
   }
 
   th {
@@ -19,7 +27,9 @@
     color: $color-white;
   }
 
-  td { padding: 0.5em; }
+  td {
+    padding: 0.5em;
+  }
 }
 
 .styled table:not(.do-unstyle) {
