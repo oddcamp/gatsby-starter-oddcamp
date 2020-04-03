@@ -1,8 +1,6 @@
 // ul
 
 .styled-ul {
-  @include ff-secondary;
-
   > li {
     position: relative;
     padding-left: 1.5em;
@@ -34,8 +32,6 @@
 // ol
 
 .styled-ol {
-  @include ff-secondary;
-
   counter-reset: styled-ol;
 
   > li {

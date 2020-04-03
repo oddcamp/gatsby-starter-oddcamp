@@ -15,8 +15,3 @@ button {
   // because `background-color: transparent` from `~sass-utils/src/all` is
   // converted to `background-color: initial` for some reason
 }
-
-code {
-  background-color: $color-white;
-  padding: 0 0.2em;
-}

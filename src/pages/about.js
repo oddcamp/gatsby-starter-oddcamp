@@ -41,7 +41,9 @@ const AboutPage = () => {
           .
         </p>
 
-        <p>Share <em>current</em> page on:</p>
+        <p>
+          Share <em>current</em> page on:
+        </p>
 
         <Location>
           {({ location }) => (

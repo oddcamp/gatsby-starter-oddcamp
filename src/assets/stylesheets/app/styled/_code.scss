@@ -1,0 +1,8 @@
+.styled-code {
+  background-color: $color-white;
+  padding: 0 0.2em;
+}
+
+.styled code:not(.do-unstyle) {
+  @extend .styled-code;
+}
