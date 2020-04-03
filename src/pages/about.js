@@ -41,12 +41,15 @@ const AboutPage = () => {
           .
         </p>
 
+        <p>Share <em>current</em> page on:</p>
+
         <Location>
           {({ location }) => (
             <ul>
               <li>
                 <Link
                   target="_blank"
+                  rel="nofollow noopener"
                   to={`https://www.facebook.com/sharer/sharer.php?u=${location.href}`}
                 >
                   Share on Facebook
@@ -55,6 +58,7 @@ const AboutPage = () => {
               <li>
                 <Link
                   target="_blank"
+                  rel="nofollow noopener"
                   to={`https://twitter.com/intent/tweet/?url=${location.href}`}
                 >
                   Share on Twitter
@@ -63,6 +67,7 @@ const AboutPage = () => {
               <li>
                 <Link
                   target="_blank"
+                  rel="nofollow noopener"
                   to={`https://www.linkedin.com/shareArticle?mini=true&url=${location.href}`}
                 >
                   Share on LinkedIn
