@@ -15,7 +15,7 @@
     "lint-js": "eslint --ext .js --ext .jsx ./src",
     "format-js": "eslint --ext .js --ext .jsx --fix ./src",
     "lint-scss": "stylelint ./src/**/*.scss",
-    "format-scss": "stylelint ./**/*.scss --fix",
+    "format-scss": "stylelint ./src/**/*.scss --fix",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
