@@ -18,7 +18,7 @@ const iconBgTransparent = `/meta-images/icon-bg-transparent.png` // 512x512; no 
 const iconBgColored = `/meta-images/icon-bg-colored.png` // 512x512; with minor padding, color background
 
 // favicon
-const favIcon = iconBgColored
+const favIcon = iconBgTransparent
 
 // manifest
 const manifestIcon = iconBgTransparent
