@@ -1,23 +1,39 @@
+const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have a trailing slash
 const lang = `en`
 const name = `GatsbyJS Starter`
-const shortName = `GatsbyJS`
+const shortName = name // set custom if `name` is longer than 12 characters
 const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
 const description = `GatsbyJS starter that implements Styled Components + SASS and is Wordpress-ready`
-const colorMain = `#000`
-const colorBg = `#fff`
-const socialImage = `/meta-images/social.jpg`
-const icon = `/meta-images/icon-transparent.png` // favicon, ms tile
-const iconBgColor = colorBg
-const iconWithBg = `/meta-images/icon-with-bg.png` // apple touch, webmanifest
-const favIcon = icon
-const maskIcon = `/meta-images/mask-icon.svg` // https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
-const maskIconColor = colorMain
-const fbAppId = ``
-const twitterHandle = `` // @twitterHandle
+const socialImage = `/meta-images/social.jpg` // 1600x840
 const robotsNoFollow = false
 const robotsNoIndex = false
-const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have trailing slash
+const fbAppId = ``
+const twitterHandle = `` // @twitterHandle
+
+// meta icons and colors
+const colorBrand = `#663399`
+const colorBackground = `#fff`
+const iconBgTransparent = `/meta-images/icon-bg-transparent.png` // 512x512; no padding around, transparent background
+const iconBgColored = `/meta-images/icon-bg-colored.png` // 512x512; with minor padding, color background
+
+// favicon
+const favIcon = iconBgColored
+
+// manifest
+const manifestIcon = iconBgTransparent
+const manifestThemeColor = colorBrand
+const manifestBgColor = colorBackground
+
+// apple
+const appleTouchIcon = iconBgColored
+const appleStatusBarStyle = `#222` // how to: https://medium.com/appscope/changing-the-ios-status-bar-of-your-progressive-web-app-9fc8fbe8e6ab
+const appleMaskIcon = `/meta-images/mask-icon.svg` // how to: https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
+const appleMaskIconColor = colorBrand
+
+// microsoft
+const msTileIcon = iconBgTransparent
+const msTileColor = colorBackground // background color of the tile
 
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
@@ -30,22 +46,24 @@ const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not ha
 
 module.exports = {
   siteMetadata: {
+    siteUrl,
     lang,
     name,
     title,
     titlePattern,
     description,
+    robotsNoFollow,
+    robotsNoIndex,
     socialImage,
     fbAppId,
     twitterHandle,
-    icon,
-    iconBgColor,
     favIcon,
-    maskIcon,
-    maskIconColor,
-    robotsNoFollow,
-    robotsNoIndex,
-    siteUrl,
+    appleTouchIcon,
+    appleStatusBarStyle,
+    appleMaskIcon,
+    appleMaskIconColor,
+    msTileIcon,
+    msTileColor,
   },
   plugins: [
     {
@@ -55,13 +73,14 @@ module.exports = {
         name: name,
         short_name: shortName,
         description: description,
-        theme_color: colorMain,
-        background_color: colorBg,
-        icon: `static${iconWithBg}`,
-        include_favicon: false, // carried out via `components/meta` instead
+        theme_color: manifestThemeColor,
+        background_color: manifestBgColor,
+        icon: `static${manifestIcon}`,
         start_url: `/`,
-        display: `minimal-ui`,
-        cache_busting_mode: `name`,
+        display: `standalone`,
+        cache_busting_mode: `none`,
+        include_favicon: false, // carried out via Meta component instead
+        legacy: false, // carried out via Meta component instead
       },
     },
     {

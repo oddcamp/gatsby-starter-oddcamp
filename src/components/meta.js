@@ -35,19 +35,24 @@ const Meta = ({
     query {
       site {
         siteMetadata {
+          siteUrl
           lang
           name
           title
           titlePattern
           description
+          robotsNoFollow
+          robotsNoIndex
           socialImage
-          twitterHandle
           fbAppId
-          icon
-          iconBgColor
+          twitterHandle
           favIcon
-          maskIcon
-          maskIconColor
+          appleTouchIcon
+          appleStatusBarStyle
+          appleMaskIcon
+          appleMaskIconColor
+          msTileIcon
+          msTileColor
         }
       }
     }
@@ -116,18 +121,6 @@ const Meta = ({
 
   const metaTwitterCreator =
     twitterCreator || defaults.twitterHandle || undefined
-
-  // icons
-
-  const metaIcon = defaults.icon || undefined
-
-  const metaIconBgColor = defaults.iconBgColor || undefined
-
-  const metaFavIcon = defaults.favIcon || undefined
-
-  const metaMaskIcon = defaults.maskIcon || undefined
-
-  const metaMaskIconColor = defaults.maskIconColor || undefined
 
   // full title
 
@@ -235,13 +228,13 @@ const Meta = ({
         },
         {
           name: `msapplication-TileImage`,
-          content: metaIcon,
+          content: defaults.msTileIcon,
         },
         {
           name: `msapplication-TileColor`,
-          content: metaIconBgColor,
+          content: defaults.msTileColor,
         },
-        // ios
+        // apple
         {
           name: `apple-mobile-web-app-title`,
           content: metaName,
@@ -252,7 +245,11 @@ const Meta = ({
         },
         {
           name: `apple-mobile-web-app-status-bar-style`,
-          content: metaIconBgColor,
+          content: defaults.appleStatusBarStyle,
+        },
+        {
+          name: `apple-touch-icon`,
+          content: defaults.appleTouchIcon,
         },
       ].concat(meta || [])}
       link={[
@@ -262,12 +259,12 @@ const Meta = ({
         },
         {
           rel: `icon`,
-          href: metaFavIcon,
+          href: defaults.favIcon,
         },
         {
           rel: `mask-icon`,
-          href: metaMaskIcon,
-          color: metaMaskIconColor,
+          href: defaults.appleMaskIcon,
+          color: defaults.appleMaskIconColor,
         },
       ].concat(link || [])}
     />
