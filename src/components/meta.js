@@ -231,7 +231,7 @@ const Meta = ({
         },
         {
           name: `msapplication-tooltip`,
-          content: metaName,
+          content: metaDescription,
         },
         {
           name: `msapplication-TileImage`,
