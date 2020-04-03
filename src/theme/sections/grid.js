@@ -12,12 +12,14 @@ const gridContainer = (maxWidth = containerMaxWidth) => css`
   margin-left: auto;
   margin-right: auto;
 
-  ${maxWidth &&
+  ${
+    maxWidth &&
     css`
       max-width: ${rem(maxWidth)};
-    `}
+    `
+  }
 
-  @media ${props => props.theme.mediumDown} {
+  @media ${(props) => props.theme.mediumDown} {
     padding-left: ${rem(gutter / 2)};
     padding-right: ${rem(gutter / 2)};
   }
@@ -30,66 +32,71 @@ const gridGrid = () => css`
 
 const gridGridGutterX = (gutterX, { nested } = {}) => css`
   /* default */
-  ${!gutterX &&
+  ${
+    !gutterX &&
     css`
       ${!nested &&
-        css`
-          padding-left: ${rem(gutter / 2)};
-          padding-right: ${rem(gutter / 2)};
+      css`
+        padding-left: ${rem(gutter / 2)};
+        padding-right: ${rem(gutter / 2)};
 
-          @media ${props => props.theme.mediumDown} {
-            padding-left: ${rem(gutter / 4)};
-            padding-right: ${rem(gutter / 4)};
-          }
-        `}
+        @media ${(props) => props.theme.mediumDown} {
+          padding-left: ${rem(gutter / 4)};
+          padding-right: ${rem(gutter / 4)};
+        }
+      `}
 
       ${nested &&
-        css`
-          margin-left: ${rem(-gutter / 2)};
-          margin-right: ${rem(-gutter / 2)};
+      css`
+        margin-left: ${rem(-gutter / 2)};
+        margin-right: ${rem(-gutter / 2)};
 
-          @media ${props => props.theme.mediumDown} {
-            margin-left: ${rem(-gutter / 4)};
-            margin-right: ${rem(-gutter / 4)};
-          }
-        `}
+        @media ${(props) => props.theme.mediumDown} {
+          margin-left: ${rem(-gutter / 4)};
+          margin-right: ${rem(-gutter / 4)};
+        }
+      `}
 
       > * {
         padding-left: ${rem(gutter / 2)};
         padding-right: ${rem(gutter / 2)};
 
-        @media ${props => props.theme.mediumDown} {
+        @media ${(props) => props.theme.mediumDown} {
           padding-left: ${rem(gutter / 4)};
           padding-right: ${rem(gutter / 4)};
         }
       }
-    `}
+    `
+  }
 
   /* custom */
-  ${typeof gutterX === `number` &&
+  ${
+    typeof gutterX === `number` &&
     css`
       ${!nested &&
-        css`
-          padding-left: ${rem(gutterX / 2)};
-          padding-right: ${rem(gutterX / 2)};
-        `}
+      css`
+        padding-left: ${rem(gutterX / 2)};
+        padding-right: ${rem(gutterX / 2)};
+      `}
 
       ${nested &&
-        css`
-          margin-left: ${rem(-gutterX / 2)};
-          margin-right: ${rem(-gutterX / 2)};
-        `}
+      css`
+        margin-left: ${rem(-gutterX / 2)};
+        margin-right: ${rem(-gutterX / 2)};
+      `}
 
       > * {
         padding-left: ${rem(gutterX / 2)};
         padding-right: ${rem(gutterX / 2)};
       }
-    `}
+    `
+  }
 `
 
-const gridGridGutterY = gutterY => css`
+const gridGridGutterY = (gutterY) => css`
   /* default */
-  ${!gutterY &&
+  ${
+    !gutterY &&
     css`
       margin-top: ${rem(-gutter / 2)};
       margin-bottom: ${rem(-gutter / 2)};
@@ -99,7 +106,7 @@ const gridGridGutterY = gutterY => css`
         padding-bottom: ${rem(gutter / 2)};
       }
 
-      @media ${props => props.theme.mediumDown} {
+      @media ${(props) => props.theme.mediumDown} {
         margin-top: ${rem(-gutter / 4)};
         margin-bottom: ${rem(-gutter / 4)};
 
@@ -108,10 +115,12 @@ const gridGridGutterY = gutterY => css`
           padding-bottom: ${rem(gutter / 4)};
         }
       }
-    `}
+    `
+  }
 
   /* custom */
-  ${typeof gutterY === `number` &&
+  ${
+    typeof gutterY === `number` &&
     css`
       margin-top: ${rem(-gutterY / 2)};
       margin-bottom: ${rem(-gutterY / 2)};
@@ -120,7 +129,8 @@ const gridGridGutterY = gutterY => css`
         padding-top: ${rem(gutterY / 2)};
         padding-bottom: ${rem(gutterY / 2)};
       }
-    `}
+    `
+  }
 `
 
 const gridCell = (size = 12, { gutterY, nested } = {}) => css`

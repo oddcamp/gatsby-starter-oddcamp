@@ -19,6 +19,7 @@ const robotsNoFollow = false
 const robotsNoIndex = false
 const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have trailing slash
 
+// TODO: Write explainaton about this
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
 //     if (e.slug) {

@@ -26,7 +26,7 @@ class StoreProvider extends React.Component {
     )
   }
 
-  setHeaderInverted = val => {
+  setHeaderInverted = (val) => {
     this.setState({ headerInverted: val })
   }
 }

@@ -22,16 +22,16 @@ const Container = styled.div`
     display: block;
     font-size: ${rem(18)};
     line-height: 1.333;
-    border: 1px solid ${props => props.theme.colorBlack};
+    border: 1px solid ${(props) => props.theme.colorBlack};
     border-bottom-width: 2px;
-    background-color: ${props => props.theme.colorWhite};
+    background-color: ${(props) => props.theme.colorWhite};
 
     &:active {
-      border-color: ${props => props.theme.colorBlack};
+      border-color: ${(props) => props.theme.colorBlack};
     }
 
     &::placeholder {
-      color: ${props => rgba(props.theme.colorBlack, 0.4)};
+      color: ${(props) => rgba(props.theme.colorBlack, 0.4)};
     }
   }
 
@@ -56,7 +56,7 @@ const Container = styled.div`
     `)}");
 
     &.--placeholder {
-      color: ${props => rgba(props.theme.colorBlack, 0.4)};
+      color: ${(props) => rgba(props.theme.colorBlack, 0.4)};
     }
   }
 
@@ -75,9 +75,9 @@ const Container = styled.div`
       padding: 0.3em 0.5em;
       display: inline-block;
       position: relative;
-      color: ${props => props.theme.colorWhite};
-      background-color: ${props => props.theme.colorBlack};
-      animation: ${animError} 0.5s ${props => props.theme.easingOutBack};
+      color: ${(props) => props.theme.colorWhite};
+      background-color: ${(props) => props.theme.colorBlack};
+      animation: ${animError} 0.5s ${(props) => props.theme.easingOutBack};
 
       &::before {
         content: '';
@@ -88,24 +88,24 @@ const Container = styled.div`
         bottom: 100%;
         border: 0.4em solid transparent;
         border-top: none;
-        border-bottom-color: ${props => props.theme.colorBlack};
+        border-bottom-color: ${(props) => props.theme.colorBlack};
       }
     }
   }
 
-  ${props =>
+  ${(props) =>
     ![`checkbox`, `radio`].includes(props.type) &&
     css`
       label {
         margin-bottom: 0.5em;
         text-transform: uppercase;
         font-size: 0.875em;
-        font-weight: ${props => props.theme.fwPrimaryBold};
-        color: ${props => props.theme.colorBlack};
+        font-weight: ${(props) => props.theme.fwPrimaryBold};
+        color: ${(props) => props.theme.colorBlack};
       }
     `}
 
-  ${props =>
+  ${(props) =>
     [`checkbox`, `radio`].includes(props.type) &&
     css`
       display: flex;
@@ -122,12 +122,12 @@ const Container = styled.div`
         height: 1em;
         margin-right: 0.5em;
         display: inline-block;
-        background-color: ${props => props.theme.colorWhite};
-        border: 1px solid ${props => props.theme.colorBlack};
+        background-color: ${(props) => props.theme.colorWhite};
+        border: 1px solid ${(props) => props.theme.colorBlack};
         border-bottom-width: 2px;
 
         &:checked {
-          background-color: ${props => props.theme.colorBlack};
+          background-color: ${(props) => props.theme.colorBlack};
         }
       }
 
@@ -136,7 +136,7 @@ const Container = styled.div`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.type === `radio` &&
     css`
       input {
@@ -178,7 +178,7 @@ class TheField extends React.Component {
         <label htmlFor={id}>{label}</label>
 
         <Field
-          innerRef={n => (this.el = n)}
+          innerRef={(n) => (this.el = n)}
           id={id}
           aria-invalid={hasErrors ? `true` : undefined}
           aria-describedby={hasErrors ? errorId : undefined}
@@ -187,7 +187,7 @@ class TheField extends React.Component {
 
         <ErrorMessage
           name={this.props.name}
-          render={msg => (
+          render={(msg) => (
             <div className="-error" id={errorId}>
               <div>{msg}</div>
             </div>
