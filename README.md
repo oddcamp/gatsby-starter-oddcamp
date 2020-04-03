@@ -1,14 +1,14 @@
-# GatsbyJS boilerplate
+# Kollegorna GatsbyJS Starter
 
 ## Online demo
 
-https://kollegorna-gatsbyjs-starter.netlify.com
+[https://kollegorna-gatsbyjs-starter.netlify.com](https://kollegorna-gatsbyjs-starter.netlify.com)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/88f45bf8-a663-4483-bf7d-a1f47ab251c8/deploy-status)](https://app.netlify.com/sites/kollegorna-gatsbyjs-starter/deploys)
 
 ## Developing locally
 
-1. Install Gatsby CLI globally `$ npm install -g gatsby-cli`
+1. Install Gatsby CLI globally `$ yarn global add gatsby-cli`
 2. Install dependencies `$ yarn install`
 3. Start development server: `$ yarn develop`: [localhost:8000](http://localhost:8000)
 
@@ -37,4 +37,4 @@ Make two 512x512 icons and replace:
 
 ## TODO
 
-* Review custom fonts implementation
+- [ ] Review custom fonts implementation

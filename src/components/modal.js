@@ -44,15 +44,15 @@ const Container = styled.div`
   padding-bottom: ${rem(240)};
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorBlack};
+  color: ${(props) => props.theme.colorWhite};
+  background-color: ${(props) => props.theme.colorBlack};
   animation: ${animContainer} 0.25s linear;
 `
 
 const Close = styled.div`
   margin-top: 2em;
   padding-top: 2em;
-  border-top: 1px solid ${props => rgba(props.theme.colorBlack, 0.2)};
+  border-top: 1px solid ${(props) => rgba(props.theme.colorBlack, 0.2)};
 `
 
 const Modal = ({ children, closeClick }) => {

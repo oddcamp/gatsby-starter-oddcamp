@@ -79,19 +79,19 @@ Yup.setLocale({
 
 // CUSTOM METHODS
 
-Yup.addMethod(Yup.boolean, `termsAndConditions`, function(message) {
+Yup.addMethod(Yup.boolean, `termsAndConditions`, function (message) {
   return this.test(
     `termsAndConditions`,
     message || boolean.termsAndConditions,
-    value => value === true
+    (value) => value === true
   )
 })
 
-Yup.addMethod(Yup.string, `phone`, function(message) {
+Yup.addMethod(Yup.string, `phone`, function (message) {
   return this.test(
     `phone`,
     message || string.phone,
-    value =>
+    (value) =>
       /^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g.test(value) &&
       6 < value.length &&
       18 > value.length

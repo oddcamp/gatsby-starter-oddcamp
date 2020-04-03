@@ -15,7 +15,9 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 
   // remove default file loader rules for fonts
   config.module.rules = [
-    ...config.module.rules.filter(rule => !String(rule.test).includes(`woff`)),
+    ...config.module.rules.filter(
+      (rule) => !String(rule.test).includes(`woff`)
+    ),
   ]
 
   // add base64-font-loader
@@ -37,7 +39,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 }
 
 // -----------------------------------------------------------------------------
-// createPages
+// createPages example for Wordpress
 
 // exports.createPages = async ({ graphql, actions }) => {
 //   const { createPage } = actions

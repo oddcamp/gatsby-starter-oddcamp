@@ -10,9 +10,7 @@ import Field from "./form/field"
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),
-  email: Yup.string()
-    .email()
-    .required(),
+  email: Yup.string().email().required(),
   champion: Yup.string().required(),
   terms: Yup.boolean().termsAndConditions(),
 })
@@ -36,7 +34,7 @@ const Container = styled.div`
   width: 100%;
   max-width: ${rem(640)};
   padding: 2em;
-  border: 2px solid ${props => props.theme.colorBlack};
+  border: 2px solid ${(props) => props.theme.colorBlack};
 `
 
 class ContactForm extends React.Component {
@@ -46,7 +44,7 @@ class ContactForm extends React.Component {
     submitted: false,
   }
 
-  submit = formData => {
+  submit = (formData) => {
     this.name = formData.name
     this.setState({ submitted: true })
   }

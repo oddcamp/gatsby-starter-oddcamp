@@ -9,7 +9,7 @@ import { rem } from "polished"
 const Container = styled.div`
   width: 100%;
   position: fixed;
-  z-index: ${props => props.theme.ziCookiesConsent};
+  z-index: ${(props) => props.theme.ziCookiesConsent};
   bottom: 0;
   right: 0;
   padding: ${rem(30)};
@@ -17,7 +17,7 @@ const Container = styled.div`
   justify-content: flex-end;
   pointer-events: none;
 
-  @media ${props => props.theme.xsmallDown} {
+  @media ${(props) => props.theme.xsmallDown} {
     padding: ${rem(10)};
   }
 `
@@ -27,8 +27,8 @@ const Box = styled.div`
   max-width: 20em;
   padding: 1.4em;
   pointer-events: auto;
-  color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorBlack};
+  color: ${(props) => props.theme.colorWhite};
+  background-color: ${(props) => props.theme.colorBlack};
 `
 
 const Text = styled.p`
@@ -54,7 +54,7 @@ const Cta = styled.div`
     &:first-child {
       margin-right: 0.5em;
       border-width: 2px;
-      font-weight: ${props => props.theme.fwPrimaryBold};
+      font-weight: ${(props) => props.theme.fwPrimaryBold};
     }
   }
 `
@@ -82,7 +82,7 @@ const CookiesConsent = ({
   }
 
   let anyMissingCookies = false
-  consentCookieNames.forEach(cookieName => {
+  consentCookieNames.forEach((cookieName) => {
     if (!cookies[cookieName]) anyMissingCookies = true
   })
 
@@ -90,8 +90,8 @@ const CookiesConsent = ({
     return null
   }
 
-  const acceptCookies = value => {
-    consentCookieNames.forEach(cookieName => {
+  const acceptCookies = (value) => {
+    consentCookieNames.forEach((cookieName) => {
       setCookie(cookieName, value, {
         path: `/`,
         maxAge: 3600 * 24 * 30 * 12, // year

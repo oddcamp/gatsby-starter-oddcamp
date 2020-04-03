@@ -11,7 +11,7 @@ import { Location } from "@reach/router"
 const ContactFormStyled = styled(ContactForm)``
 
 const Container = styled.div`
-  ${props => props.theme.gridContainer()}
+  ${(props) => props.theme.gridContainer()}
 
   ${ContactFormStyled} {
     margin-top: 4em;

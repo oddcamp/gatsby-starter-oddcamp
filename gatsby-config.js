@@ -35,6 +35,7 @@ const appleMaskIconColor = colorBrand
 const msTileIcon = iconBgTransparent
 const msTileColor = colorBackground // background color of the tile
 
+// makes sure there's no URL-incompliant characters in WP slugs
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
 //     if (e.slug) {

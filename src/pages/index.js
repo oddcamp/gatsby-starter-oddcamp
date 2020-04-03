@@ -14,7 +14,7 @@ import logoSvgUrl, {
 } from "../assets/images/logo.svg"
 
 const Container = styled.article.attrs({ className: `styled` })`
-  ${props => props.theme.gridContainer()}
+  ${(props) => props.theme.gridContainer()}
 
   .gatsby-image-wrapper {
     max-width: ${rem(800)};
@@ -110,7 +110,7 @@ IndexPage.propTypes = {
   data: PropTypes.object,
 }
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -126,6 +126,6 @@ export default props => (
         }
       }
     `}
-    render={data => <IndexPage data={data} {...props} />}
+    render={(data) => <IndexPage data={data} {...props} />}
   />
 )

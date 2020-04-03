@@ -11,26 +11,26 @@ import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
 const Container = styled.header`
   margin-bottom: ${rem(80)};
   padding: ${rem(30)} 0;
-  color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorBlack};
+  color: ${(props) => props.theme.colorWhite};
+  background-color: ${(props) => props.theme.colorBlack};
   border-bottom: 4px solid;
 
-  @media ${props => props.theme.mediumDown} {
+  @media ${(props) => props.theme.mediumDown} {
     margin-bottom: ${rem(40)};
     padding-left: ${rem(20)};
     padding-right: ${rem(20)};
   }
 
-  ${props =>
+  ${(props) =>
     props.inverted &&
     css`
-      color: ${props => props.theme.colorBlack};
-      background-color: ${props => props.theme.colorWhite};
+      color: ${(props) => props.theme.colorBlack};
+      background-color: ${(props) => props.theme.colorWhite};
     `}
 `
 
 const Inner = styled.div`
-  ${props => props.theme.gridContainer()}
+  ${(props) => props.theme.gridContainer()}
 `
 
 const Logo = styled.div`
@@ -81,7 +81,7 @@ Header.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -92,6 +92,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Header data={data} {...props} />}
+    render={(data) => <Header data={data} {...props} />}
   />
 )

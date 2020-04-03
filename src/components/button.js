@@ -8,9 +8,9 @@ import Link from "./link"
 const Container = styled.button`
   padding: 0.8em 1.4em;
   display: inline-block;
-  font-weight: ${props => props.theme.fwPrimaryBold};
-  color: ${props => props.theme.colorWhite};
-  background-color: ${props => props.theme.colorBlack};
+  font-weight: ${(props) => props.theme.fwPrimaryBold};
+  color: ${(props) => props.theme.colorWhite};
+  background-color: ${(props) => props.theme.colorBlack};
 
   &:hover {
     opacity: 0.9;
@@ -20,7 +20,7 @@ const Container = styled.button`
     opacity: 0.6;
   }
 
-  ${props =>
+  ${(props) =>
     props.large &&
     css`
       font-size: ${rem(18)};
