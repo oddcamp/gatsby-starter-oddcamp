@@ -19,7 +19,7 @@ const robotsNoFollow = false
 const robotsNoIndex = false
 const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have trailing slash
 
-// TODO: Write explainaton about this
+// makes sure there's no URL-incompliant characters in WP slugs
 // const wpSlugNormalizer = entities => {
 //   return entities.map(e => {
 //     if (e.slug) {
