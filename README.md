@@ -27,6 +27,19 @@ Or `$ yarn serve-n` for sharing the server on your network (`192.168.X.X:9000`)
 2. Implements [sass-boilerplate](https://github.com/kollegorna/sass-boilerplate) and [sass-utils](https://github.com/kollegorna/sass-utils)
 3. Implements [styled-components](https://www.styled-components.com) with variable porting from SASS
 
+## Our Wordpress setup
+
+There's commented out code for our default Wordpress workflow inside this starter. in [`gatsby-config.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-config.js)
+we have the block for config for `gatsby-source-wordpress`. We always use https and acf with an Option page
+for global settings(Mostly our custom Meta setup).
+We limit the includesRoutes to gain some speed and use a normalizer to prepare the slugs to be valid.
+
+For the custom meta setup we have 2 graphql fragments for ease of use. One for [Post](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-post.js) and another for [Page](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-page.js).
+Generally we use fragments as much as possible for making it easier to change ACF names etc.
+
+For [`gatsby-node.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-node.js) we have the `createPage` block where we generate all the pages. We usually map a javascript
+template file to an wordpress template for our customers to be able to create different style of pages.
+
 ### Meta icons explanation (`gatsby-config.js`)
 
 Make two 512x512 icons and replace:
