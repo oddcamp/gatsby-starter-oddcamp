@@ -29,24 +29,16 @@ Or `$ yarn serve-n` for sharing the server on your network (`192.168.X.X:9000`)
 
 ## Our Wordpress setup
 
-There's commented out code for our default Wordpress workflow inside this starter. in [`gatsby-config.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-config.js)
-we have the block for config for `gatsby-source-wordpress`. We always use https and acf with an Option page
-for global settings(Mostly our custom Meta setup).
+There's commented out code for our default Wordpress workflow inside this starter. In [`gatsby-config.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-config.js)
+we have the block for config for `gatsby-source-wordpress`. We always use HTTPS and ACF with an Option page
+for global settings (mostly our custom Meta setup).
 We limit the includesRoutes to gain some speed and use a normalizer to prepare the slugs to be valid.
 
-For the custom meta setup we have 2 graphql fragments for ease of use. One for [Post](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-post.js) and another for [Page](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-page.js).
+For the custom meta setup we have 2 GraphQL fragments for ease of use. One for [Post](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-post.js) and another for [Page](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-page.js).
 Generally we use fragments as much as possible for making it easier to change ACF names etc.
 
 For [`gatsby-node.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-node.js) we have the `createPage` block where we generate all the pages. We usually map a javascript
 template file to an wordpress template for our customers to be able to create different style of pages.
-
-### Meta icons explanation (`gatsby-config.js`)
-
-Make two 512x512 icons and replace:
-
-- `iconWithBg` — 512x512 with a background color set. For Apple Touch Icon.
-- `icon` — icon with a transparent background and works with `iconBgColor`. For MS Tile Image.
-- `iconBgColor` — a branded background color for the `icon` you can place underneath. For MS Tile and Apple Status Bar.
 
 ## TODO
 
