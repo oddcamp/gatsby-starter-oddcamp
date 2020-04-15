@@ -27,13 +27,18 @@ Or `$ yarn serve-n` for sharing the server on your network (`192.168.X.X:9000`)
 2. Implements [sass-boilerplate](https://github.com/kollegorna/sass-boilerplate) and [sass-utils](https://github.com/kollegorna/sass-utils)
 3. Implements [styled-components](https://www.styled-components.com) with variable porting from SASS
 
-### Meta icons explanation (`gatsby-config.js`)
+## Our Wordpress setup
 
-Make two 512x512 icons and replace:
+There's commented out code for our default Wordpress workflow inside this starter. In [`gatsby-config.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-config.js)
+we have the block for config for `gatsby-source-wordpress`. We always use HTTPS and ACF with an Option page
+for global settings (mostly our custom Meta setup).
+We limit the includesRoutes to gain some speed and use a normalizer to prepare the slugs to be valid.
 
-- `iconWithBg` — 512x512 with a background color set. For Apple Touch Icon.
-- `icon` — icon with a transparent background and works with `iconBgColor`. For MS Tile Image.
-- `iconBgColor` — a branded background color for the `icon` you can place underneath. For MS Tile and Apple Status Bar.
+For the custom meta setup we have 2 GraphQL fragments for ease of use. One for [Post](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-post.js) and another for [Page](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/src/fragments/meta-wp-page.js).
+Generally we use fragments as much as possible for making it easier to change ACF names etc.
+
+For [`gatsby-node.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/master/gatsby-node.js) we have the `createPage` block where we generate all the pages. We usually map a javascript
+template file to an wordpress template for our customers to be able to create different style of pages.
 
 ## TODO
 

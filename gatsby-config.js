@@ -114,7 +114,7 @@ module.exports = {
     // {
     //   resolve: `gatsby-source-wordpress`,
     //   options: {
-    //     baseUrl: `NAME.kinsta.cloud/`,
+    //     baseUrl: `WORDPRESS_URL`,
     //     protocol: `https`,
     //     hostingWPCOM: false,
     //     useACF: true,
