@@ -42,7 +42,7 @@ template file to an wordpress template for our customers to be able to create di
 
 ## TODO
 
-— [ ] Improve the use of `react-modal`
-— [ ] Add an example `pure-react-carousel`
-— [ ] Remove SCSS setup and transfer stuff to `styled-components` theme
+- [ ] Improve the use of `react-modal`
+- [ ] Add an example `pure-react-carousel`
+- [ ] Remove SCSS setup and transfer stuff to `styled-components` theme
 - [ ] Review custom fonts implementation
