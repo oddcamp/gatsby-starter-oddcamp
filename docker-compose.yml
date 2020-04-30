@@ -1,0 +1,28 @@
+---
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        GITHUB_ACCESS_TOKEN: "${GITHUB_ACCESS_TOKEN}"
+    image: gatsby-boilerplate
+    volumes:
+      - .:/app:delegated
+      - cache:/app/.cache
+      - public:/app/public
+      - node_modules:/app/node_modules
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env_default
+    command: /bin/sh -c "yarn install && yarn develop-n"
+    tty: true
+    stdin_open: true
+
+volumes:
+  node_modules:
+  cache:
+  public:
