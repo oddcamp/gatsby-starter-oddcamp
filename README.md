@@ -6,7 +6,19 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/88f45bf8-a663-4483-bf7d-a1f47ab251c8/deploy-status)](https://app.netlify.com/sites/kollegorna-gatsbyjs-starter/deploys)
 
-## Developing locally
+## Development Environment
+
+We provide two ways of developing locally but **we recommend using Docker as the default**.
+
+### Developing locally using Docker
+
+1. Provide your [Github Access Token](https://github.com/settings/tokens) if you use Private Github packages. Otherwise use blank.
+Put `GITHUB_ACCESS_TOKEN=<TOKEN>` in `.env`.
+2. Run `docker-compose build`
+3. Run `docker-compose up`
+4. Visit your development environment on [localhost:8000](http://localhost:8000).
+
+### Developing locally without Docker
 
 1. Install Gatsby CLI globally `$ yarn global add gatsby-cli`
 2. Install dependencies `$ yarn install`
@@ -14,7 +26,7 @@
 
 Or `$ yarn develop-n` for sharing the server on your network (`192.168.X.X:8000`)
 
-## Testing the build locally
+#### Testing the build locally
 
 1. Make a build `$ yarn build`
 2. Serve the build `$ yarn serve`: [localhost:9000](http://localhost:9000)
