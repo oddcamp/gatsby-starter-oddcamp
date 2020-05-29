@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { rem } from "polished"
 
 import { StoreConsumer } from "../store"
+import Meta from "../components/meta"
 import Link from "../components/link"
 import Button from "../components/button"
 
@@ -31,6 +32,11 @@ const IndexPage = ({ data }) => {
 
   return (
     <Container>
+      <Meta
+        title="GatsbyJS starter by Kollegorna"
+        titleOverridePattern={true}
+      />
+
       <h1>Hi!</h1>
 
       <p>

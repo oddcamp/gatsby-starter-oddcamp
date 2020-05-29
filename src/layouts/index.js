@@ -7,8 +7,6 @@ import "../config/yup"
 import "../assets/stylesheets/fonts/woff.scss"
 import "../assets/stylesheets/app/app.scss"
 
-import Meta from "../components/meta"
-// import MetaWp from "../components/meta-wp"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import CookiesConsent from "../components/cookies-consent"
@@ -29,9 +27,6 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <StoreProvider>
         <React.Fragment>
-          <Meta />
-          {/* <MetaWp /> */}
-
           <Header />
 
           <main>{children}</main>
