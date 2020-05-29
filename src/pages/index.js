@@ -9,12 +9,14 @@ import { StoreConsumer } from "../store"
 import Meta from "../components/meta"
 import Link from "../components/link"
 import Button from "../components/button"
+import Styled from "../components/styled"
+import { Anchor } from "../components/styled/anchor"
 
 import logoSvgUrl, {
   ReactComponent as LogoSvg,
 } from "../assets/images/logo.svg"
 
-const Container = styled.article.attrs({ className: `styled` })`
+const Container = styled.article`
   ${(props) => props.theme.gridContainer()}
 
   .gatsby-image-wrapper {
@@ -31,7 +33,7 @@ const IndexPage = ({ data }) => {
   const { imgDummy } = data
 
   return (
-    <Container>
+    <Container as={Styled}>
       <Meta
         title="GatsbyJS starter by Kollegorna"
         titleOverridePattern={true}
@@ -48,13 +50,13 @@ const IndexPage = ({ data }) => {
           <p>
             You can also
             {` `}
-            <button
+            <Anchor
+              as="button"
               type="button"
-              className="styled-a"
               onClick={() => setHeaderInverted(!headerInverted)}
             >
               invert the header
-            </button>
+            </Anchor>
             {` `}
             color theme.
           </p>
