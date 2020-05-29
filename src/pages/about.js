@@ -1,12 +1,14 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { Location } from "@reach/router"
 
 import Link from "../components/link"
 import Meta from "../components/meta"
 import ContactForm from "../components/contact-form"
 import Modal from "../components/modal"
-import { Location } from "@reach/router"
+import Styled from "../components/styled"
+import { Anchor } from "../components/styled/anchor"
 
 const ContactFormStyled = styled(ContactForm)``
 
@@ -25,19 +27,19 @@ const AboutPage = () => {
     <Container>
       <Meta title="About" description="This is the about us page." />
 
-      <article className="styled">
+      <Styled as="article">
         <h1>About</h1>
 
         <p>
           This is about us page. Go back to the <Link to="/">homepage</Link> or
           {` `}
-          <button
+          <Anchor
+            as="button"
             type="button"
-            className="styled-a"
             onClick={() => setModalOpen(!isModalOpen)}
           >
             open the modal
-          </button>
+          </Anchor>
           .
         </p>
 
@@ -57,6 +59,7 @@ const AboutPage = () => {
                   Share on Facebook
                 </Link>
               </li>
+
               <li>
                 <Link
                   target="_blank"
@@ -66,6 +69,7 @@ const AboutPage = () => {
                   Share on Twitter
                 </Link>
               </li>
+
               <li>
                 <Link
                   target="_blank"
@@ -78,7 +82,7 @@ const AboutPage = () => {
             </ul>
           )}
         </Location>
-      </article>
+      </Styled>
 
       <ContactFormStyled />
 
