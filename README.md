@@ -22,6 +22,21 @@ If a project is using a private package (such as a `components` package), you ca
    This makes sure that the keys are set before running yarn.
 4. Add our `k-deployer` token in the Netlify (or whatever system you use) in the `GITHUB_ACCESS_TOKEN` environment variable.
 
+## Development Container
+
+The boilerplate also include a config for the new [Visual Studio Code Remote - Containers system](https://code.visualstudio.com/docs/remote/containers) where your editor aswell as the code is inside of a container.
+
+To get this working you need to follow the steps below:
+
+1. Install the [Remote Development extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) and follow the setup guide for the extension.
+2. On any project that has it setup a popup will show up in the bottom right asking you to re-open it in the container, just click `Re-open in container` and it will start it up.
+3. We don't start the development servers automatically for this variant.
+   So to start a process you should click on the `Terminal` tab in the bottom of the editor and enter the commands you want below.
+   **Development server:** `yarn develop-n`
+   **Build:** `yarn build` and `yarn serve-n`
+
+Any changes to the dependencies should be run in the editor. To create a new terminal in the container just click the `+` button.
+
 ## Development Environment
 
 We provide two ways of developing locally but **we recommend using Docker as the default**.
