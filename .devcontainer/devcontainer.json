@@ -23,15 +23,15 @@
 
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
-    "editorconfig.editorconfig", # Editorconfig loader
-    "dbaeumer.vscode-eslint", # Eslinter
-    "tombonnike.vscode-status-bar-format-toggle", # Turn formatting on and off
-    "eamodio.gitlens", # Git diffs in editor
-    "christian-kohler.npm-intellisense", # NPM Intellisense (folder helper for imports)
-    "esbenp.prettier-vscode", # Prettier
-    "stylelint.vscode-stylelint", # Stylelinter
-    "visualstudioexptteam.vscodeintellicode", # AI Intellicode JS
-    "herrmannplatz.npm-dependency-links" # Make links in `package.json` clickable
+    "editorconfig.editorconfig", // Editorconfig loader
+    "dbaeumer.vscode-eslint", // Eslinter
+    "tombonnike.vscode-status-bar-format-toggle", // Turn formatting on and off
+    "eamodio.gitlens", // Git diffs in editor
+    "christian-kohler.npm-intellisense", // NPM Intellisense (folder helper for imports)
+    "esbenp.prettier-vscode", // Prettier
+    "stylelint.vscode-stylelint", // Stylelinter
+    "visualstudioexptteam.vscodeintellicode", // AI Intellicode JS
+    "herrmannplatz.npm-dependency-links" // Make links in `package.json` clickable
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
