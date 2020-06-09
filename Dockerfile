@@ -1,7 +1,7 @@
 FROM docker.pkg.github.com/kollegorna/asdf-docker/nodejs:latest
 
 # Setup environment variables that will be available to the instance
-ARG GITHUB_ACCESS_TOKEN
+ARG GITHUB_ACCESS_TOKEN=blank
 ARG DEBIAN_FRONTEND=noninteractive
 ENV APP_HOME /app
 
@@ -22,8 +22,8 @@ RUN asdf install
 RUN asdf current
 
 # Needs to be run inside of the folder that has .tool-versions
-#RUN npm config set @kollegorna:registry https://npm.pkg.github.com/
-#RUN echo "//npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}" >> ~/.npmrc
+RUN npm config set @kollegorna:registry https://npm.pkg.github.com/
+RUN echo "//npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}" >> ~/.npmrc
 
 # Needed due to docker volumes only give you root:root chown by default.
 RUN mkdir -p "$APP_HOME/node_modules" && chown asdf:asdf "$APP_HOME/node_modules"

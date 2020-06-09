@@ -16,10 +16,11 @@ services:
     working_dir: /app
     ports:
       - "8000:8000"
+      - "9000:9000"
     env_file:
-      - .env
+      # - .env
       - .env_default
-    command: /bin/sh -c "yarn install && yarn develop-n"
+    command: ./scripts/start.sh
     tty: true
     stdin_open: true
 
