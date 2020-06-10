@@ -1,10 +1,8 @@
-// works in pair with `gatsby-plugin-gdpr-cookies` plugin
-
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { useCookies } from "react-cookie"
 import styled from "styled-components"
 import { rem } from "polished"
+import TrackingUtil from "@kollegorna/tracking-util"
 
 const Container = styled.div`
   width: 100%;
@@ -66,39 +64,38 @@ const CookiesConsent = ({
   children,
   ...props
 }) => {
-  const [cookies, setCookie] = useCookies()
+  const [reacted, setReacted] = useState(false)
 
-  if (typeof window === `undefined`) return null
-
-  // must be in sync this with `gatsby-plugin-gdpr-cookies` config in gatsby-config.js to work properly
-  const consentCookieNames = [
-    `gatsby-gdpr-google-tagmanager`,
-    // `gatsby-gdpr-google-analytics`,
-    // `gatsby-gdpr-facebook-pixel`,
-  ]
-
-  if (!consentCookieNames.length) {
+  if (typeof window === `undefined` || reacted) {
     return null
   }
 
-  let anyMissingCookies = false
-  consentCookieNames.forEach((cookieName) => {
-    if (!cookies[cookieName]) anyMissingCookies = true
-  })
+  let tu = window.trackingUtil
+  if (!tu) {
+    tu = new TrackingUtil({
+      // enabled: process.env.NODE_ENV === `production`,
+      services: {
+        ga: {
+          id: `UA-XXXX-Y`,
+        },
+        // gtm: {
+        //   id: `GTM-XXXX`,
+        // },
+      },
+    })
+  }
 
-  if (!anyMissingCookies) {
+  if (tu.userReacted()) {
     return null
   }
 
-  const acceptCookies = (value) => {
-    consentCookieNames.forEach((cookieName) => {
-      setCookie(cookieName, value, {
-        path: `/`,
-        maxAge: 3600 * 24 * 30 * 12, // year
-      })
+  const acceptTracking = (value) => {
+    tu.setTrackingAccepted(value, {
+      defaultGAcommands: [[`send`, `pageview`]],
+      // defaultGTMdataLayer: [{ event: `pageview` }],
     })
 
-    if (value) window.location.reload(true)
+    setReacted(true)
   }
 
   return (
@@ -116,13 +113,13 @@ const CookiesConsent = ({
         <Cta>
           <button
             type="button"
-            onClick={() => acceptCookies(true)}
+            onClick={() => acceptTracking(true)}
             dangerouslySetInnerHTML={{ __html: ctaAccept || `Accept` }}
           />
 
           <button
             type="button"
-            onClick={() => acceptCookies(false)}
+            onClick={() => acceptTracking(false)}
             dangerouslySetInnerHTML={{ __html: ctaDeny || `Deny` }}
           />
         </Cta>
