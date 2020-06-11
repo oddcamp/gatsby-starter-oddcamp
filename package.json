@@ -6,6 +6,7 @@
   "author": "Kollegorna <hej@kollegorna.se>",
   "license": "MIT",
   "scripts": {
+    "preinstall": "node ./scripts/append-gha.js",
     "build": "gatsby build",
     "start": "gatsby develop",
     "develop": "gatsby develop",
