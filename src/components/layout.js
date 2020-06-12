@@ -2,11 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 import initSmartOutline from "@kollegorna/js-utils/src/smart-outline"
-
-import "../config/yup"
-import "../assets/stylesheets/fonts/woff.scss"
 import "@kollegorna/sass-utils/src/reset.scss"
 
+import "../config/yup"
 import Header from "./header"
 import Footer from "./footer"
 import CookiesConsent from "./cookies-consent"
@@ -23,6 +21,8 @@ if (typeof document !== `undefined`) {
 }
 
 const InitialStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
   html {
     ${({ theme }) => theme.fonts.set(`primary`, `normal`)}
 
