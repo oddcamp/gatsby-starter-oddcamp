@@ -1,5 +1,4 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 import { Formik, Form } from "formik"
@@ -38,88 +37,74 @@ const Container = styled.div`
   border: 2px solid;
 `
 
-class ContactForm extends React.Component {
-  name = ``
+const ContactForm = (props) => {
+  const [submitted, setSubmitted] = useState(false)
 
-  state = {
-    submitted: false,
+  const submit = (formData) => {
+    setSubmitted(formData)
   }
 
-  submit = (formData) => {
-    this.name = formData.name
-    this.setState({ submitted: true })
-  }
+  return (
+    <Container {...props}>
+      <Heading2>Contact us</Heading2>
 
-  render() {
-    const { className } = this.props
-    const { submitted } = this.state
+      {submitted && <Done>Well done, {submitted.name}!</Done>}
 
-    return (
-      <Container className={className}>
-        <Heading2>Contact us</Heading2>
+      {!submitted && (
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={submit}
+        >
+          {() => (
+            <Form>
+              <Row>
+                <Field name="name" label="Name" placeholder="Morgan" />
+              </Row>
 
-        {submitted && <Done>Well done, {this.name}!</Done>}
+              <Row>
+                <Field
+                  name="email"
+                  type="email"
+                  label="Email"
+                  placeholder="morgan@free.man"
+                />
+              </Row>
 
-        {!submitted && (
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={this.submit}
-          >
-            {() => (
-              <Form>
-                <Row>
-                  <Field name="name" label="Name" placeholder="Morgan" />
-                </Row>
+              <Row>
+                <Field
+                  name="champion"
+                  component="select"
+                  label="Champion of the world"
+                >
+                  <option value="">Choose one…</option>
+                  <option value="1">Farrokh Bulsara</option>
+                  <option value="2">Ibra</option>
+                  <option value="3">Ali</option>
+                  <option value="4">MJ</option>
+                  <option value="5">jQuery</option>
+                </Field>
+              </Row>
 
-                <Row>
-                  <Field
-                    name="email"
-                    type="email"
-                    label="Email"
-                    placeholder="morgan@free.man"
-                  />
-                </Row>
+              <Row>
+                <Field
+                  name="terms"
+                  type="checkbox"
+                  label="I accept the privacy policy and terms and conditions"
+                />
+              </Row>
 
-                <Row>
-                  <Field
-                    name="champion"
-                    component="select"
-                    label="Champion of the world"
-                  >
-                    <option value="">Choose one…</option>
-                    <option value="1">Farrokh Bulsara</option>
-                    <option value="2">Ibra</option>
-                    <option value="3">Ali</option>
-                    <option value="4">MJ</option>
-                    <option value="5">jQuery</option>
-                  </Field>
-                </Row>
-
-                <Row>
-                  <Field
-                    name="terms"
-                    type="checkbox"
-                    label="I accept the privacy policy and terms and conditions"
-                  />
-                </Row>
-
-                <Row>
-                  <Button type="submit" large>
-                    Do it
-                  </Button>
-                </Row>
-              </Form>
-            )}
-          </Formik>
-        )}
-      </Container>
-    )
-  }
-}
-
-ContactForm.propTypes = {
-  className: PropTypes.string,
+              <Row>
+                <Button type="submit" large>
+                  Do it
+                </Button>
+              </Row>
+            </Form>
+          )}
+        </Formik>
+      )}
+    </Container>
+  )
 }
 
 export default ContactForm
