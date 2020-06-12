@@ -5,7 +5,7 @@ const containerMaxWidth = 1240
 const columnsCount = 12
 const gutter = 20
 
-const gridContainer = (maxWidth = containerMaxWidth) => css`
+const container = (maxWidth = containerMaxWidth) => css`
   width: 100%;
   padding-left: ${rem(gutter)};
   padding-right: ${rem(gutter)};
@@ -25,12 +25,12 @@ const gridContainer = (maxWidth = containerMaxWidth) => css`
   }
 `
 
-const gridGrid = () => css`
+const grid = () => css`
   display: flex;
   flex-wrap: wrap;
 `
 
-const gridGridGutterX = (gutterX, { nested } = {}) => css`
+const gridGutterX = (gutterX, { nested } = {}) => css`
   /* default */
   ${
     !gutterX &&
@@ -93,7 +93,7 @@ const gridGridGutterX = (gutterX, { nested } = {}) => css`
   }
 `
 
-const gridGridGutterY = (gutterY) => css`
+const gridGutterY = (gutterY) => css`
   /* default */
   ${
     !gutterY &&
@@ -133,14 +133,14 @@ const gridGridGutterY = (gutterY) => css`
   }
 `
 
-const gridCell = (size = 12, { gutterY, nested } = {}) => css`
+const cell = (size = 12, { gutterY, nested } = {}) => css`
   width: ${(size * 100) / columnsCount}%;
 `
 
 export default {
-  gridContainer,
-  gridGrid,
-  gridGridGutterX,
-  gridGridGutterY,
-  gridCell,
+  container,
+  grid,
+  gridGutterX,
+  gridGutterY,
+  cell,
 }

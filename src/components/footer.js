@@ -8,28 +8,28 @@ import { Location } from "@reach/router"
 const Container = styled.footer`
   margin-top: ${rem(80)};
   padding: ${rem(80)} 0 ${rem(160)};
-  border-top: 4px solid ${(props) => props.theme.colorBlack};
+  border-top: 4px solid;
 
-  @media ${(props) => props.theme.mediumDown} {
+  @media ${({ theme }) => theme.mq.mediumDown} {
     margin-top: ${rem(40)};
     padding: ${rem(40)} 0 ${rem(80)};
   }
 `
 
 const Inner = styled.div`
-  ${(props) => props.theme.gridContainer()}
-  ${(props) => props.theme.gridGrid()}
-  ${(props) => props.theme.gridGridGutterX()}
+  ${({ theme }) => theme.grid.container()}
+  ${({ theme }) => theme.grid.grid()}
+  ${({ theme }) => theme.grid.gridGutterX()}
 
-  @media ${(props) => props.theme.smallDown} {
-    ${(props) => props.theme.gridGridGutterY()}
+  @media ${({ theme }) => theme.mq.smallDown} {
+    ${({ theme }) => theme.grid.gridGutterY()}
   }
 
   > * {
-    ${(props) => props.theme.gridCell(6)};
+    ${({ theme }) => theme.grid.cell(6)};
 
-    @media ${(props) => props.theme.smallDown} {
-      ${(props) => props.theme.gridCell(12)};
+    @media ${({ theme }) => theme.mq.smallDown} {
+      ${({ theme }) => theme.grid.cell(12)};
     }
   }
 `
@@ -40,7 +40,7 @@ const Route = styled.div`
   text-align: right;
   opacity: 0.6;
 
-  @media ${(props) => props.theme.smallDown} {
+  @media ${({ theme }) => theme.mq.smallDown} {
     text-align: left;
   }
 `

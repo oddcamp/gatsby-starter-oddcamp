@@ -1,17 +1,17 @@
-import type from "./sections/type"
-import colors from "./sections/colors"
-import animations from "./sections/animations"
-import zindex from "./sections/zindex"
-import grid from "./sections/grid"
-import mq from "./sections/mq"
+import mq from "./mq"
+import fonts from "./fonts"
+import colors from "./colors"
+import zindex from "./zindex"
+import easings from "./easings"
+import animations from "./animations"
+import grid from "./grid"
 
-const index = {
-  ...type,
-  ...colors,
-  ...animations,
-  ...zindex,
-  ...grid,
-  ...mq,
+export default {
+  mq,
+  fonts,
+  colors,
+  zindex,
+  easings,
+  animations,
+  grid,
 }
-
-export default index

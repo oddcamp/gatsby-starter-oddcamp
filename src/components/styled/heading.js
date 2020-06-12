@@ -2,39 +2,39 @@ import styled, { css } from "styled-components"
 import { rem } from "polished"
 
 const heading1Styles = css`
-  ${(props) => props.theme.ffSecondarySet()}
+  ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
   font-size: ${rem(56)};
   line-height: 1.1;
   word-break: break-word;
 
-  @media ${(props) => props.theme.mediumDown} {
+  @media ${({ theme }) => theme.mq.mediumDown} {
     font-size: ${rem(24)};
   }
 `
 
 const heading2Styles = css`
-  ${(props) => props.theme.ffSecondarySet()}
+  ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
   font-size: ${rem(34)};
   line-height: 1.1;
   letter-spacing: -0.02em;
   word-break: break-word;
 
-  @media ${(props) => props.theme.mediumDown} {
+  @media ${({ theme }) => theme.mq.mediumDown} {
     font-size: ${rem(20)};
   }
 `
 
 const heading3Styles = css`
-  ${(props) => props.theme.ffSecondarySet()}
+  ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
   font-size: ${rem(24)};
   line-height: 1.2;
   letter-spacing: -0.02em;
   word-break: break-word;
 
-  @media ${(props) => props.theme.mediumDown} {
+  @media ${({ theme }) => theme.mq.mediumDown} {
     font-size: ${rem(18)};
   }
 `

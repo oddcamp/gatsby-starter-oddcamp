@@ -6,7 +6,7 @@ const paragraphStyles = css`
   font-size: ${rem(18)};
   word-break: break-word;
 
-  @media ${(props) => props.theme.smallDown} {
+  @media ${({ theme }) => theme.mq.smallDown} {
     font-size: ${rem(16)};
   }
 `

@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { rem } from "polished"
 
 import { StoreConsumer } from "../store"
+import Layout from "../components/layout"
 import Meta from "../components/meta"
 import Link from "../components/link"
 import Button from "../components/button"
@@ -17,7 +18,7 @@ import logoSvgUrl, {
 } from "../assets/images/logo.svg"
 
 const Container = styled.article`
-  ${(props) => props.theme.gridContainer()}
+  ${({ theme }) => theme.grid.container()}
 
   .gatsby-image-wrapper {
     max-width: ${rem(800)};
@@ -33,84 +34,86 @@ const IndexPage = ({ data }) => {
   const { imgDummy } = data
 
   return (
-    <Container as={Styled}>
-      <Meta
-        title="GatsbyJS starter by Kollegorna"
-        titleOverridePattern={true}
-      />
+    <Layout>
+      <Container as={Styled}>
+        <Meta
+          title="GatsbyJS starter by Kollegorna"
+          titleOverridePattern={true}
+        />
 
-      <h1>Hi!</h1>
+        <h1>Hi!</h1>
 
-      <p>
-        Why don’t you checkout the <Link to="/about">about us</Link> page…
-      </p>
+        <p>
+          Why don’t you checkout the <Link to="/about">about us</Link> page…
+        </p>
 
-      <StoreConsumer>
-        {({ headerInverted, setHeaderInverted }) => (
-          <p>
-            You can also
-            {` `}
-            <Anchor
-              as="button"
-              type="button"
-              onClick={() => setHeaderInverted(!headerInverted)}
-            >
-              invert the header
-            </Anchor>
-            {` `}
-            color theme.
-          </p>
-        )}
-      </StoreConsumer>
+        <StoreConsumer>
+          {({ headerInverted, setHeaderInverted }) => (
+            <p>
+              You can also
+              {` `}
+              <Anchor
+                as="button"
+                type="button"
+                onClick={() => setHeaderInverted(!headerInverted)}
+              >
+                invert the header
+              </Anchor>
+              {` `}
+              color theme.
+            </p>
+          )}
+        </StoreConsumer>
 
-      <hr />
+        <hr />
 
-      <h2>Gatsby image</h2>
+        <h2>Gatsby image</h2>
 
-      <Img
-        fluid={imgDummy.childImageSharp.fluid}
-        objectFit="cover"
-        objectPosition="50% 50%"
-        alt="Dummy image"
-      />
+        <Img
+          fluid={imgDummy.childImageSharp.fluid}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          alt="Dummy image"
+        />
 
-      <h2>SVG</h2>
+        <h2>SVG</h2>
 
-      <p>This SVG is inlined:</p>
+        <p>This SVG is inlined:</p>
 
-      <p>
-        <LogoSvg aria-label="Logo inlined" className="-svg-logo" />
-      </p>
+        <p>
+          <LogoSvg aria-label="Logo inlined" className="-svg-logo" />
+        </p>
 
-      <p>
-        And this is inserted via <code>{`<img />`}</code> tag:
-      </p>
+        <p>
+          And this is inserted via <code>{`<img />`}</code> tag:
+        </p>
 
-      <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
+        <img src={logoSvgUrl} alt="Logo via Img tag" className="-svg-logo" />
 
-      <h2>Button</h2>
+        <h2>Button</h2>
 
-      <p>
-        This <code>{`<Button />`}</code> is compiled to{` `}
-        <code>button[type="button"]</code>:
-      </p>
+        <p>
+          This <code>{`<Button />`}</code> is compiled to{` `}
+          <code>button[type="button"]</code>:
+        </p>
 
-      <p>
-        <Button type="button" className="do-unstyle">
-          Button button
-        </Button>
-      </p>
+        <p>
+          <Button type="button" className="do-unstyle">
+            Button button
+          </Button>
+        </p>
 
-      <p>
-        And <code>{`<Button />`}</code> is compiled to <code>a[href]</code>:
-      </p>
+        <p>
+          And <code>{`<Button />`}</code> is compiled to <code>a[href]</code>:
+        </p>
 
-      <p>
-        <Button to="/" className="do-unstyle">
-          Button link
-        </Button>
-      </p>
-    </Container>
+        <p>
+          <Button to="/" className="do-unstyle">
+            Button link
+          </Button>
+        </p>
+      </Container>
+    </Layout>
   )
 }
 

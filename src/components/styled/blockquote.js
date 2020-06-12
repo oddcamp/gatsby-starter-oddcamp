@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { rem } from "polished"
 
 const blockquoteStyles = css`
-  ${(props) => props.theme.ffSecondarySet()}
+  ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
   padding-left: 1.3em;
   font-style: italic;

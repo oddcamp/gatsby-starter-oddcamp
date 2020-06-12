@@ -7,7 +7,7 @@ import TrackingUtil from "@kollegorna/tracking-util"
 const Container = styled.div`
   width: 100%;
   position: fixed;
-  z-index: ${(props) => props.theme.ziCookiesConsent};
+  z-index: ${({ theme }) => theme.zindex.cookiesConsent};
   bottom: 0;
   right: 0;
   padding: ${rem(30)};
@@ -15,7 +15,7 @@ const Container = styled.div`
   justify-content: flex-end;
   pointer-events: none;
 
-  @media ${(props) => props.theme.xsmallDown} {
+  @media ${({ theme }) => theme.mq.xsmallDown} {
     padding: ${rem(10)};
   }
 `
@@ -25,8 +25,8 @@ const Box = styled.div`
   max-width: 20em;
   padding: 1.4em;
   pointer-events: auto;
-  color: ${(props) => props.theme.colorWhite};
-  background-color: ${(props) => props.theme.colorBlack};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.black};
 `
 
 const Text = styled.p`
@@ -50,9 +50,10 @@ const Cta = styled.div`
     }
 
     &:first-child {
+      ${({ theme }) => theme.fonts.set(`primary`, `bold`)};
+
       margin-right: 0.5em;
       border-width: 2px;
-      font-weight: ${(props) => props.theme.fwPrimaryBold};
     }
   }
 `

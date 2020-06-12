@@ -1,11 +1,12 @@
 import React from "react"
 
+import Layout from "../components/layout"
 import Meta from "../components/meta"
 import Styled from "../components/styled"
 
 const NotFoundPage = () => {
   return (
-    <React.Fragment>
+    <Layout>
       <Meta title="Page not found" />
 
       <Styled>
@@ -13,7 +14,7 @@ const NotFoundPage = () => {
 
         <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
       </Styled>
-    </React.Fragment>
+    </Layout>
   )
 }
 
