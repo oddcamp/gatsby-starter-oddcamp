@@ -17,7 +17,7 @@ const Container = styled.div`
     display: block;
     font-size: ${rem(18)};
     line-height: 1.333;
-    border: 1px solid;
+    border: 1px solid ${({ theme }) => theme.colors.black};
     border-bottom-width: 2px;
     background-color: ${({ theme }) => theme.colors.white};
 

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 import { Location } from "@reach/router"
 
 import Layout from "../components/layout"
@@ -20,7 +22,7 @@ const Container = styled.div`
   }
 `
 
-const AboutPage = () => {
+const AboutPage = ({ data }) => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   return (
@@ -51,39 +53,43 @@ const AboutPage = () => {
           </p>
 
           <Location>
-            {({ location }) => (
-              <ul>
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="nofollow noopener"
-                    to={`https://www.facebook.com/sharer/sharer.php?u=${location.href}`}
-                  >
-                    Share on Facebook
-                  </Link>
-                </li>
+            {({ location }) => {
+              const pageUrl = data.site.meta.baseUrl + location.pathname
 
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="nofollow noopener"
-                    to={`https://twitter.com/intent/tweet/?url=${location.href}`}
-                  >
-                    Share on Twitter
-                  </Link>
-                </li>
+              return (
+                <ul>
+                  <li>
+                    <Link
+                      target="_blank"
+                      rel="nofollow noopener"
+                      to={`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`}
+                    >
+                      Share on Facebook
+                    </Link>
+                  </li>
 
-                <li>
-                  <Link
-                    target="_blank"
-                    rel="nofollow noopener"
-                    to={`https://www.linkedin.com/shareArticle?mini=true&url=${location.href}`}
-                  >
-                    Share on LinkedIn
-                  </Link>
-                </li>
-              </ul>
-            )}
+                  <li>
+                    <Link
+                      target="_blank"
+                      rel="nofollow noopener"
+                      to={`https://twitter.com/intent/tweet/?url=${pageUrl}`}
+                    >
+                      Share on Twitter
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      target="_blank"
+                      rel="nofollow noopener"
+                      to={`https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}`}
+                    >
+                      Share on LinkedIn
+                    </Link>
+                  </li>
+                </ul>
+              )
+            }}
           </Location>
         </Styled>
 
@@ -102,4 +108,18 @@ const AboutPage = () => {
   )
 }
 
+AboutPage.propTypes = {
+  data: PropTypes.object,
+}
+
 export default AboutPage
+
+export const pageQuery = graphql`
+  query {
+    site {
+      meta: siteMetadata {
+        baseUrl
+      }
+    }
+  }
+`

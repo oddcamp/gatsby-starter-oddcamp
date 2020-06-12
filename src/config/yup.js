@@ -1,7 +1,7 @@
 import * as Yup from "yup"
 import printValue from "yup/lib/util/printValue"
 
-// Copied from: https://github.com/jquense/yup/blob/master/src/locale.js
+// Source: https://github.com/jquense/yup/blob/master/src/locale.js
 
 const mixed = {
   default: `Invalid`,
@@ -79,6 +79,8 @@ Yup.setLocale({
 
 // CUSTOM METHODS
 
+// terms and conditions checkbox
+
 Yup.addMethod(Yup.boolean, `termsAndConditions`, function (message) {
   return this.test(
     `termsAndConditions`,
@@ -86,6 +88,9 @@ Yup.addMethod(Yup.boolean, `termsAndConditions`, function (message) {
     (value) => value === true
   )
 })
+
+// phone number
+// https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript/4338544#comment90042129_33561517
 
 Yup.addMethod(Yup.string, `phone`, function (message) {
   return this.test(
@@ -96,5 +101,4 @@ Yup.addMethod(Yup.string, `phone`, function (message) {
       6 < value.length &&
       18 > value.length
   )
-  // https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript/4338544#comment90042129_33561517
 })

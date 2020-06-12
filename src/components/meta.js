@@ -35,7 +35,6 @@ const Meta = ({
     query {
       site {
         siteMetadata {
-          siteUrl
           lang
           name
           title

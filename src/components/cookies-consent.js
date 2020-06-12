@@ -74,14 +74,11 @@ const CookiesConsent = ({
   let tu = window.trackingUtil
   if (!tu) {
     tu = new TrackingUtil({
-      // enabled: process.env.NODE_ENV === `production`,
+      enabled: process.env.NODE_ENV === `production`,
       services: {
-        ga: {
-          id: `UA-XXXX-Y`,
+        gtm: {
+          id: `GTM-XXXX`,
         },
-        // gtm: {
-        //   id: `GTM-XXXX`,
-        // },
       },
     })
   }
@@ -92,8 +89,7 @@ const CookiesConsent = ({
 
   const acceptTracking = (value) => {
     tu.setTrackingAccepted(value, {
-      defaultGAcommands: [[`send`, `pageview`]],
-      // defaultGTMdataLayer: [{ event: `pageview` }],
+      defaultGTMdataLayer: [{ event: `pageview` }],
     })
 
     setReacted(true)
