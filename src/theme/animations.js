@@ -1,8 +1,7 @@
 import { keyframes } from "styled-components"
 import { rem } from "polished"
-import easings from 'sass-extract-loader?{"plugins": ["sass-extract-js"]}!@kollegorna/sass-utils/src/_animations.scss'
 
-easings.easingDefault = easings.easingOutCubic
+// common animations (keyframes)
 
 const fadeIn = keyframes`
   0% {
@@ -35,7 +34,6 @@ const slideInX = (pos = 20) => keyframes`
 `
 
 export default {
-  ...easings,
   fadeIn,
   slideInY,
   slideInX,

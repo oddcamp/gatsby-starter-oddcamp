@@ -16,7 +16,7 @@ import { tableStyles } from "./table"
 import { imageStyles } from "./image"
 import { anchorStyles } from "./anchor"
 import { codeStyles } from "./code"
-import { horizontalLineStyles } from "./horizontal-line"
+import { hrStyles } from "./hr"
 
 const elementsToStyles = Object.entries({
   h1: heading1Styles,
@@ -34,7 +34,7 @@ const elementsToStyles = Object.entries({
   img: imageStyles,
   a: anchorStyles,
   code: codeStyles,
-  hr: horizontalLineStyles,
+  hr: hrStyles,
 })
 
 const Styled = styled.div`

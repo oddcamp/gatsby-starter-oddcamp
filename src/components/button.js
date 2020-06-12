@@ -6,11 +6,12 @@ import { rem } from "polished"
 import Link from "./link"
 
 const Container = styled.button`
+  ${({ theme }) => theme.fonts.set(`primary`, `bold`)};
+
   padding: 0.8em 1.4em;
   display: inline-block;
-  font-weight: ${(props) => props.theme.fwPrimaryBold};
-  color: ${(props) => props.theme.colorWhite};
-  background-color: ${(props) => props.theme.colorBlack};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.black};
 
   &:hover {
     opacity: 0.9;

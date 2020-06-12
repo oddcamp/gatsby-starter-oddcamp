@@ -1,9 +1,19 @@
 import { em } from "polished"
-import bps from 'sass-extract-loader?{"plugins": ["sass-extract-js"]}!../../assets/stylesheets/app/base/_mq.scss'
 
-const breakpoints = bps.mqBreakpoints
+const breakpoints = {
+  xxxsmall: 0,
+  xxsmall: 320,
+  xsmall: 480,
+  small: 640,
+  medium: 768,
+  large: 960,
+  xlarge: 1024,
+  xxlarge: 1200,
+  xxxlarge: 1400,
+  xxxxlarge: 1680,
+}
+
 const mq = {}
-
 Object.entries(breakpoints).forEach(([key, val]) => {
   mq[`${key}Down`] = `(max-width: ${em(val)})`
   mq[`${key}Up`] = `(min-width: ${em(val + 1)})`

@@ -11,11 +11,11 @@ import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
 const Container = styled.header`
   margin-bottom: ${rem(80)};
   padding: ${rem(30)} 0;
-  color: ${(props) => props.theme.colorWhite};
-  background-color: ${(props) => props.theme.colorBlack};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.black};
   border-bottom: 4px solid;
 
-  @media ${(props) => props.theme.mediumDown} {
+  @media ${({ theme }) => theme.mq.mediumDown} {
     margin-bottom: ${rem(40)};
     padding-left: ${rem(20)};
     padding-right: ${rem(20)};
@@ -24,13 +24,13 @@ const Container = styled.header`
   ${(props) =>
     props.inverted &&
     css`
-      color: ${(props) => props.theme.colorBlack};
-      background-color: ${(props) => props.theme.colorWhite};
+      color: ${({ theme }) => theme.colors.black};
+      background-color: ${({ theme }) => theme.colors.white};
     `}
 `
 
 const Inner = styled.div`
-  ${(props) => props.theme.gridContainer()}
+  ${({ theme }) => theme.grid.container()}
 `
 
 const Logo = styled.div`
