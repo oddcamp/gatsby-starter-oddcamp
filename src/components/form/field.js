@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import uuid from "uuid-random"
 import styled, { css } from "styled-components"
 import { rem, rgba } from "polished"
-import { Field, ErrorMessage, connect, getIn } from "formik"
+import { Field as FormikField, ErrorMessage, connect, getIn } from "formik"
 
 const Container = styled.div`
   display: flex;
@@ -139,60 +139,51 @@ const Container = styled.div`
     `}
 `
 
-class TheField extends React.Component {
-  componentDidMount() {
-    if (this.props.component === `select`) {
-      this.trackSelectState()
-      this.el.addEventListener(`change`, this.trackSelectState, {
-        passive: true,
-      })
-      this.el.addEventListener(`blur`, this.trackSelectState, { passive: true })
+const Field = (props) => {
+  const fieldRef = useRef()
+  const trackSelectState = () => {
+    fieldRef.current.classList.toggle(`--placeholder`, !fieldRef.current.value)
+  }
+
+  useEffect(() => {
+    if (props.component === `select`) {
+      trackSelectState()
+      fieldRef.current.addEventListener(`change`, trackSelectState)
+      fieldRef.current.addEventListener(`blur`, trackSelectState)
     }
-  }
+  })
 
-  trackSelectState = () => {
-    this.el.classList.toggle(`--placeholder`, !this.el.value)
-  }
+  const id = uuid()
+  const errorId = `${id}-error`
+  const { label, className, formik, ...rest } = props
+  const hasErrors =
+    getIn(formik.errors, props.name) && getIn(formik.touched, props.name)
 
-  render() {
-    const id = uuid()
-    const errorId = `${id}-error`
+  return (
+    <Container className={className} type={props.type || props.component}>
+      <label htmlFor={id}>{label}</label>
 
-    const { label, className, formik, ...rest } = this.props
+      <FormikField
+        innerRef={fieldRef}
+        id={id}
+        aria-invalid={hasErrors ? `true` : undefined}
+        aria-describedby={hasErrors ? errorId : undefined}
+        {...rest}
+      />
 
-    const hasErrors =
-      getIn(formik.errors, this.props.name) &&
-      getIn(formik.touched, this.props.name)
-
-    return (
-      <Container
-        className={className}
-        type={this.props.type || this.props.component}
-      >
-        <label htmlFor={id}>{label}</label>
-
-        <Field
-          innerRef={(n) => (this.el = n)}
-          id={id}
-          aria-invalid={hasErrors ? `true` : undefined}
-          aria-describedby={hasErrors ? errorId : undefined}
-          {...rest}
-        />
-
-        <ErrorMessage
-          name={this.props.name}
-          render={(msg) => (
-            <div className="-error" id={errorId}>
-              <div>{msg}</div>
-            </div>
-          )}
-        />
-      </Container>
-    )
-  }
+      <ErrorMessage
+        name={props.name}
+        render={(msg) => (
+          <div className="-error" id={errorId}>
+            <div>{msg}</div>
+          </div>
+        )}
+      />
+    </Container>
+  )
 }
 
-TheField.propTypes = {
+Field.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -201,4 +192,4 @@ TheField.propTypes = {
   formik: PropTypes.object,
 }
 
-export default connect(TheField)
+export default connect(Field)
