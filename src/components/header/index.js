@@ -6,7 +6,7 @@ import { rem } from "polished"
 
 import { StoreConsumer } from "../../store"
 import Link from "../link"
-import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
+import { ReactComponent as LogoSvg } from "../../assets/images/logo.svg"
 
 const Container = styled.header`
   margin-bottom: ${rem(80)};
