@@ -1,6 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
 import styled, { css } from "styled-components"
 import { rem } from "polished"
 
@@ -55,9 +53,7 @@ const Logo = styled.div`
   }
 `
 
-const Header = ({ data }) => {
-  const { name } = data.site.siteMetadata
-
+const Header = () => {
   return (
     <StoreConsumer>
       {({ headerInverted }) => (
@@ -73,7 +69,7 @@ const Header = ({ data }) => {
               >
                 <LogoSvg aria-hidden="true" />
 
-                <span>{name}</span>
+                <span>GatsbyJS Starter</span>
               </Link>
             </Logo>
           </Inner>
@@ -83,21 +79,4 @@ const Header = ({ data }) => {
   )
 }
 
-Header.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default (props) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        site {
-          siteMetadata {
-            name
-          }
-        }
-      }
-    `}
-    render={(data) => <Header data={data} {...props} />}
-  />
-)
+export default Header

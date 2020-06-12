@@ -1,6 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
 import { Location } from "@reach/router"
@@ -45,9 +43,7 @@ const Route = styled.div`
   }
 `
 
-const Footer = ({ data }) => {
-  const { title } = data.site.siteMetadata
-
+const Footer = () => {
   return (
     <Container>
       <Inner>
@@ -58,7 +54,7 @@ const Footer = ({ data }) => {
           {` `}
           &middot;
           {` `}
-          {title}
+          GatsbyJS Starter
         </Copy>
 
         <Route>
@@ -71,21 +67,4 @@ const Footer = ({ data }) => {
   )
 }
 
-Footer.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default (props) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={(data) => <Footer data={data} {...props} />}
-  />
-)
+export default Footer
