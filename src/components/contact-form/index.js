@@ -4,9 +4,9 @@ import { rem } from "polished"
 import { Formik, Form } from "formik"
 import * as Yup from "yup"
 
-import Button from "./button"
-import Field from "./form/field"
-import { Heading2 } from "./styled/heading"
+import Button from "../button"
+import Field from "../form/field"
+import { Heading2 } from "../styled/heading"
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),

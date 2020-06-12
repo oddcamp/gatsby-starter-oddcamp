@@ -5,12 +5,12 @@ import { Helmet } from "react-helmet"
 import initSmartOutline from "@kollegorna/js-utils/src/smart-outline"
 import "@kollegorna/sass-utils/src/reset.scss"
 
-import "../config/yup"
-import Header from "./header"
-import Footer from "./footer"
-import CookiesConsent from "./cookies-consent"
-import { StoreProvider } from "../store"
-import theme from "../theme"
+import "../../config/yup"
+import Header from "../header"
+import Footer from "../footer"
+import CookiesConsent from "../cookies-consent"
+import { StoreProvider } from "../../store"
+import theme from "../../theme"
 
 if (typeof document !== `undefined`) {
   initSmartOutline([

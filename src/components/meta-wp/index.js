@@ -2,7 +2,7 @@
 // import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 //
-// import Meta from "./meta"
+// import Meta from "../meta"
 //
 // const normalizePageMeta = wp => {
 //   const acf = wp.acf || {}

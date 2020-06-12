@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 import { rem } from "polished"
 
-import Link from "./link"
+import Link from "../link"
 
 const Container = styled.button`
   ${({ theme }) => theme.fonts.set(`primary`, `bold`)};
