@@ -7,6 +7,7 @@ import * as Yup from "yup"
 
 import Button from "./button"
 import Field from "./form/field"
+import { Heading2 } from "./styled/heading"
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -55,7 +56,7 @@ class ContactForm extends React.Component {
 
     return (
       <Container className={className}>
-        <h2 className="styled-h2">Contact us</h2>
+        <Heading2>Contact us</Heading2>
 
         {submitted && <Done>Well done, {this.name}!</Done>}
 
@@ -105,7 +106,7 @@ class ContactForm extends React.Component {
 
                 <Row>
                   <Button type="submit" large>
-                    <span>Do it</span>
+                    Do it
                   </Button>
                 </Row>
               </Form>

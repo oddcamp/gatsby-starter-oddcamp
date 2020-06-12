@@ -1,10 +1,11 @@
 const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have a trailing slash
+const baseUrl = process.env.NODE_ENV === `development` ? `` : siteUrl
 const lang = `en`
 const name = `GatsbyJS Starter`
-const shortName = name // set custom if `name` is longer than 12 characters
+const shortName = name // change this if `name` is longer than 12 characters
 const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
-const description = `GatsbyJS starter that implements Styled Components + SASS and is Wordpress-ready`
+const description = `Wordpress-ready GatsbyJS starter`
 const socialImage = `/meta-images/social.jpg` // 1600x840
 const robotsNoFollow = false
 const robotsNoIndex = false
@@ -48,6 +49,7 @@ const msTileColor = colorBackground // background color of the tile
 module.exports = {
   siteMetadata: {
     siteUrl,
+    baseUrl,
     lang,
     name,
     title,
@@ -85,12 +87,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        includePaths: [`node_modules`],
-      },
-    },
-    {
       resolve: `gatsby-plugin-svgr`,
       options: {
         prettier: true,
@@ -102,6 +98,12 @@ module.exports = {
             { cleanupIDs: true },
           ],
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        includePaths: [`node_modules`],
       },
     },
     {
@@ -133,16 +135,6 @@ module.exports = {
     //     },
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-        // make sure to (un)comment cookie names in src/components/cookies-consent.js accordingly
-        googleTagManager: {
-          trackingId: `GOOGLE_TAGMANAGER_ID`,
-        },
-        environments: [`production`],
-      },
-    },
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {

@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
+import { Helmet } from "react-helmet"
 import initSmartOutline from "@kollegorna/js-utils/src/smart-outline"
 import "@kollegorna/sass-utils/src/reset.scss"
 
@@ -21,8 +22,6 @@ if (typeof document !== `undefined`) {
 }
 
 const InitialStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
   html {
     ${({ theme }) => theme.fonts.set(`primary`, `normal`)}
 
@@ -41,6 +40,13 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <StoreProvider>
         <React.Fragment>
+          <Helmet>
+            <link
+              href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
+              rel="stylesheet"
+            />
+          </Helmet>
+
           <InitialStyles />
 
           <Header />
