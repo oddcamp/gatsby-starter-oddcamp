@@ -4,8 +4,8 @@ import { StaticQuery, graphql } from "gatsby"
 import styled, { css } from "styled-components"
 import { rem } from "polished"
 
-import { StoreConsumer } from "../store"
-import Link from "./link"
+import { StoreConsumer } from "../../store"
+import Link from "../link"
 import { ReactComponent as LogoSvg } from "../assets/images/logo.svg"
 
 const Container = styled.header`
