@@ -25,7 +25,7 @@
 //
 // export const pageQuery = graphql`
 //   query($id: String!) {
-//     ...MetaWpPage
+//     ...MetaWpPageFragment
 //
 //     wp: wordpressPage(id: { eq: $id }) {
 //       title

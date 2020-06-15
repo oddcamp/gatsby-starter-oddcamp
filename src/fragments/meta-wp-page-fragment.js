@@ -1,8 +1,8 @@
 // import { graphql } from "gatsby"
 
 // export const query = graphql`
-//   fragment MetaWpPost on Query {
-//     metaWp: wordpressPost(id: { eq: $id }) {
+//   fragment MetaWpPageFragment on Query {
+//     metaWp: wordpressPage(id: { eq: $id }) {
 //       title
 //       content
 //       acf {

@@ -34,5 +34,4 @@ For [`gatsby-node.js`](https://github.com/kollegorna/gatsbyjs-boilerplate/blob/m
 
 ## TODO
 
-- [ ] Improve the use of `react-modal`
-
+- [ ] Improve `react-modal`
