@@ -2,19 +2,18 @@
 // import PropTypes from "prop-types"
 // import { graphql } from "gatsby"
 //
+// import Layout from "../components/layout"
 // import MetaWp from "../components/meta-wp"
-//
-// import "../fragments/meta-wp-post"
 //
 // const PostTemplate = ({ data }) => {
 //   const { wp, metaWp } = data
 //
 //   return (
-//     <React.Fragment>
+//     <Layout>
 //       <MetaWp wp={metaWp} />
 //
 //       <p>Hello from {wp.title}</p>
-//     </React.Fragment>
+//     </Layout>
 //   )
 // }
 //

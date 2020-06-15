@@ -4,19 +4,17 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import "element-closest"
-
 export function onRouteUpdate({ location, prevLocation }) {
+  // checks if route has changed
   if (location && prevLocation) {
-    // triggers `onRouteChange` event for `window` on route change
+    // triggers `onRouteChange` event for `window`
     const event = document.createEvent(`Event`)
     event.initEvent(`onRouteChange`, true, true)
     window.dispatchEvent(event)
 
-    // tracks GatsbyJS page views
+    // tracks the pageview in GTM
     if (window.trackingUtil && window.trackingUtil.trackingAccepted()) {
-      window.trackingUtil.runGAcommand([`send`, `pageview`])
-      // window.trackingUtil.registerGTMdata({ event: `pageview` })
+      window.trackingUtil.registerGTMdata({ event: `pageview` })
     }
   }
 }

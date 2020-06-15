@@ -13,20 +13,6 @@
 exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
   const config = getConfig()
 
-  // remove default file loader rules for fonts
-  config.module.rules = [
-    ...config.module.rules.filter(
-      (rule) => !String(rule.test).includes(`woff`)
-    ),
-  ]
-
-  // add base64-font-loader
-  config.module.rules.push({
-    loader: `base64-font-loader`,
-    include: /assets\/fonts/,
-    test: /\.(woff|woff2)$/i,
-  })
-
   // nullify loaders for some packages
   // if (stage === `build-html`) {
   //   config.module.rules.push({
@@ -72,7 +58,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 //
 //   const templates = {
 //     default: `./src/templates/default.js`,
-//     home: `./src/templates/home.js`,
+//     index: `./src/templates/index.js`,
 //     about: `./src/templates/about.js`,
 //     post: `./src/templates/post.js`,
 //   }
@@ -80,7 +66,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 //   // pages
 //
 //   const pageSlugsToTemplates = {
-//     home: `home`,
+//     index: `index`,
 //     about: `about`,
 //   }
 //
@@ -89,7 +75,7 @@ exports.onCreateWebpackConfig = ({ getConfig, actions, stage, loaders }) => {
 //       templates[pageSlugsToTemplates[edge.node.slug] || `default`]
 //
 //     createPage({
-//       path: edge.node.slug === `home` ? `/` : edge.node.slug,
+//       path: edge.node.slug === `index` ? `/` : edge.node.slug,
 //       component: slash(path.resolve(template)),
 //       context: {
 //         id: edge.node.id,

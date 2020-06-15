@@ -1,14 +1,9 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import uuid from "uuid-random"
-import styled, { css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
 import { rem, rgba } from "polished"
-import { Field, ErrorMessage, connect, getIn } from "formik"
-
-const animError = keyframes`
-  0% { transform: translateY(-1em); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-`
+import { Field as FormikField, ErrorMessage, connect, getIn } from "formik"
 
 const Container = styled.div`
   display: flex;
@@ -22,16 +17,12 @@ const Container = styled.div`
     display: block;
     font-size: ${rem(18)};
     line-height: 1.333;
-    border: 1px solid ${(props) => props.theme.colorBlack};
+    border: 1px solid ${({ theme }) => theme.colors.black};
     border-bottom-width: 2px;
-    background-color: ${(props) => props.theme.colorWhite};
-
-    &:active {
-      border-color: ${(props) => props.theme.colorBlack};
-    }
+    background-color: ${({ theme }) => theme.colors.white};
 
     &::placeholder {
-      color: ${(props) => rgba(props.theme.colorBlack, 0.4)};
+      color: ${({ theme }) => rgba(theme.colors.black, 0.4)};
     }
   }
 
@@ -56,7 +47,7 @@ const Container = styled.div`
     `)}");
 
     &.--placeholder {
-      color: ${(props) => rgba(props.theme.colorBlack, 0.4)};
+      color: ${({ theme }) => rgba(theme.colors.black, 0.4)};
     }
   }
 
@@ -75,9 +66,12 @@ const Container = styled.div`
       padding: 0.3em 0.5em;
       display: inline-block;
       position: relative;
-      color: ${(props) => props.theme.colorWhite};
-      background-color: ${(props) => props.theme.colorBlack};
-      animation: ${animError} 0.5s ${(props) => props.theme.easingOutBack};
+      color: ${({ theme }) => theme.colors.white};
+      background-color: ${({ theme }) => theme.colors.black};
+      animation: 0.5s ${({ theme }) => theme.easings.default};
+      animation-name:
+        ${({ theme }) => theme.animations.fadeIn},
+        ${({ theme }) => theme.animations.slideInY(5)};
 
       &::before {
         content: '';
@@ -88,7 +82,7 @@ const Container = styled.div`
         bottom: 100%;
         border: 0.4em solid transparent;
         border-top: none;
-        border-bottom-color: ${(props) => props.theme.colorBlack};
+        border-bottom-color: ${({ theme }) => theme.colors.black};
       }
     }
   }
@@ -97,11 +91,11 @@ const Container = styled.div`
     ![`checkbox`, `radio`].includes(props.type) &&
     css`
       label {
+        ${({ theme }) => theme.fonts.set(`primary`, `bold`)};
+
         margin-bottom: 0.5em;
         text-transform: uppercase;
         font-size: 0.875em;
-        font-weight: ${(props) => props.theme.fwPrimaryBold};
-        color: ${(props) => props.theme.colorBlack};
       }
     `}
 
@@ -122,12 +116,12 @@ const Container = styled.div`
         height: 1em;
         margin-right: 0.5em;
         display: inline-block;
-        background-color: ${(props) => props.theme.colorWhite};
-        border: 1px solid ${(props) => props.theme.colorBlack};
+        background-color: ${({ theme }) => theme.colors.white};
+        border: 1px solid ${({ theme }) => theme.colors.black};
         border-bottom-width: 2px;
 
         &:checked {
-          background-color: ${(props) => props.theme.colorBlack};
+          background-color: ${({ theme }) => theme.colors.black};
         }
       }
 
@@ -145,60 +139,51 @@ const Container = styled.div`
     `}
 `
 
-class TheField extends React.Component {
-  componentDidMount() {
-    if (this.props.component === `select`) {
-      this.trackSelectState()
-      this.el.addEventListener(`change`, this.trackSelectState, {
-        passive: true,
-      })
-      this.el.addEventListener(`blur`, this.trackSelectState, { passive: true })
+const Field = (props) => {
+  const fieldRef = useRef()
+  const trackSelectState = () => {
+    fieldRef.current.classList.toggle(`--placeholder`, !fieldRef.current.value)
+  }
+
+  useEffect(() => {
+    if (props.component === `select`) {
+      trackSelectState()
+      fieldRef.current.addEventListener(`change`, trackSelectState)
+      fieldRef.current.addEventListener(`blur`, trackSelectState)
     }
-  }
+  })
 
-  trackSelectState = () => {
-    this.el.classList.toggle(`--placeholder`, !this.el.value)
-  }
+  const id = uuid()
+  const errorId = `${id}-error`
+  const { label, className, formik, ...rest } = props
+  const hasErrors =
+    getIn(formik.errors, props.name) && getIn(formik.touched, props.name)
 
-  render() {
-    const id = uuid()
-    const errorId = `${id}-error`
+  return (
+    <Container className={className} type={props.type || props.component}>
+      <label htmlFor={id}>{label}</label>
 
-    const { label, className, formik, ...rest } = this.props
+      <FormikField
+        innerRef={fieldRef}
+        id={id}
+        aria-invalid={hasErrors ? `true` : undefined}
+        aria-describedby={hasErrors ? errorId : undefined}
+        {...rest}
+      />
 
-    const hasErrors =
-      getIn(formik.errors, this.props.name) &&
-      getIn(formik.touched, this.props.name)
-
-    return (
-      <Container
-        className={className}
-        type={this.props.type || this.props.component}
-      >
-        <label htmlFor={id}>{label}</label>
-
-        <Field
-          innerRef={(n) => (this.el = n)}
-          id={id}
-          aria-invalid={hasErrors ? `true` : undefined}
-          aria-describedby={hasErrors ? errorId : undefined}
-          {...rest}
-        />
-
-        <ErrorMessage
-          name={this.props.name}
-          render={(msg) => (
-            <div className="-error" id={errorId}>
-              <div>{msg}</div>
-            </div>
-          )}
-        />
-      </Container>
-    )
-  }
+      <ErrorMessage
+        name={props.name}
+        render={(msg) => (
+          <div className="-error" id={errorId}>
+            <div>{msg}</div>
+          </div>
+        )}
+      />
+    </Container>
+  )
 }
 
-TheField.propTypes = {
+Field.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -207,4 +192,4 @@ TheField.propTypes = {
   formik: PropTypes.object,
 }
 
-export default connect(TheField)
+export default connect(Field)

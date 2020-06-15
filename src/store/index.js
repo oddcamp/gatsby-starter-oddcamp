@@ -1,38 +1,26 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 
 const StoreContext = React.createContext()
 const StoreConsumer = StoreContext.Consumer
 
-class StoreProvider extends React.Component {
-  state = {
-    headerInverted: false,
-  }
+const StoreProvider = ({ children }) => {
+  const [headerInverted, setHeaderInverted] = useState(false)
 
-  render() {
-    const { headerInverted } = this.state
-
-    const { setHeaderInverted } = this
-
-    return (
-      <StoreContext.Provider
-        value={{
-          headerInverted,
-          setHeaderInverted,
-        }}
-      >
-        {this.props.children}
-      </StoreContext.Provider>
-    )
-  }
-
-  setHeaderInverted = (val) => {
-    this.setState({ headerInverted: val })
-  }
+  return (
+    <StoreContext.Provider
+      value={{
+        headerInverted,
+        setHeaderInverted,
+      }}
+    >
+      {children}
+    </StoreContext.Provider>
+  )
 }
 
 StoreProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 export { StoreContext, StoreProvider, StoreConsumer }
