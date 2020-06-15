@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-exports.onRouteUpdate = ({ location, prevLocation }) => {
+export function onRouteUpdate({ location, prevLocation }) {
   // checks if route has changed
   if (location && prevLocation) {
     // triggers `onRouteChange` event for `window`
