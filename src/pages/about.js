@@ -22,13 +22,16 @@ const Container = styled.div`
   }
 `
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data: { metaSite } }) => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   return (
     <Layout>
       <Container>
-        <Meta title="About" description="This is the about us page." />
+        <Meta
+          metaSite={metaSite}
+          data={{ title: `About`, description: `This is the about us page.` }}
+        />
 
         <Styled as="article">
           <h1>About</h1>
@@ -54,7 +57,7 @@ const AboutPage = ({ data }) => {
 
           <Location>
             {({ location }) => {
-              const pageUrl = data.site.meta.baseUrl + location.pathname
+              const pageUrl = metaSite.fields.baseUrl + location.pathname
 
               return (
                 <ul>
@@ -116,10 +119,6 @@ export default AboutPage
 
 export const pageQuery = graphql`
   query {
-    site {
-      meta: siteMetadata {
-        baseUrl
-      }
-    }
+    ...MetaSiteFragment
   }
 `

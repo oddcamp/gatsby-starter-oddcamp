@@ -1,5 +1,5 @@
 const normalizeWpSiteMeta = (data) => {
-  const meta = { ...data.options } // deep-copy
+  const meta = { ...data.fields } // deep-copy
 
   meta.socialImage =
     meta.socialImage && meta.socialImage.localFile
@@ -15,6 +15,10 @@ const normalizeWpSiteMeta = (data) => {
     meta.twitterImage && meta.twitterImage.localFile
       ? meta.twitterImage.localFile.url
       : undefined
+
+  Object.keys(meta).forEach(
+    (key) => meta[key] === undefined && delete meta[key]
+  )
 
   return meta
 }

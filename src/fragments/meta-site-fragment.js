@@ -11,14 +11,19 @@ export const query = graphql`
         title
         titlePattern
         description
+        robotsNoFollow
+        robotsNoIndex
         socialImage
-        twitterHandle
         fbAppId
-        icon
-        iconBgColor
+        twitterHandle
         favIcon
-        maskIcon
-        maskIconColor
+        appleTouchIcon
+        appleStatusBarStyle
+        appleWebAppCapable
+        appleMaskIcon
+        appleMaskIconColor
+        msTileIcon
+        msTileColor
       }
     }
   }

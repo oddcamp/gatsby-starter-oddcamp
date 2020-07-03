@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { rem } from "polished"
@@ -17,7 +17,7 @@ import logoSvgUrl, {
   ReactComponent as LogoSvg,
 } from "../assets/images/logo.svg"
 
-const Container = styled.article`
+const Container = styled(Styled)`
   ${({ theme }) => theme.grid.container()}
 
   .gatsby-image-wrapper {
@@ -30,17 +30,18 @@ const Container = styled.article`
   }
 `
 
-const IndexPage = ({ data }) => {
-  const { imgDummy } = data
-
+const IndexPage = ({ data: { metaSite, imgDummy } }) => {
   return (
     <Layout>
-      <Container as={Styled}>
-        <Meta
-          title="GatsbyJS starter by Kollegorna"
-          titleOverridePattern={true}
-        />
+      <Meta
+        metaSite={metaSite}
+        data={{
+          title: `GatsbyJS starter by Kollegorna`,
+          titleOverridePattern: true,
+        }}
+      />
 
+      <Container as="article">
         <h1>Hi!</h1>
 
         <p>
@@ -121,22 +122,21 @@ IndexPage.propTypes = {
   data: PropTypes.object,
 }
 
-export default (props) => (
-  <StaticQuery
-    query={graphql`
-      query {
-        imgDummy: file(
-          sourceInstanceName: { eq: "images" }
-          relativePath: { eq: "dummy.jpg" }
-        ) {
-          childImageSharp {
-            fluid(maxWidth: 1280) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+export default IndexPage
+
+export const pageQuery = graphql`
+  query {
+    ...MetaSiteFragment
+
+    imgDummy: file(
+      sourceInstanceName: { eq: "images" }
+      relativePath: { eq: "dummy.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 1280) {
+          ...GatsbyImageSharpFluid
         }
       }
-    `}
-    render={(data) => <IndexPage data={data} {...props} />}
-  />
-)
+    }
+  }
+`
