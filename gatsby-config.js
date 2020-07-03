@@ -78,6 +78,28 @@ module.exports = {
         legacy: false, // carried out via Meta component instead
       },
     },
+    // {
+    //   resolve: `gatsby-source-wordpress`,
+    //   options: {
+    //     baseUrl: `WORDPRESS_URL`,
+    //     protocol: `https`,
+    //     hostingWPCOM: false,
+    //     useACF: true,
+    //     acfOptionPageIds: [`options`],
+    //     includedRoutes: [
+    //       `**/categories`,
+    //       `**/posts`,
+    //       `**/pages`,
+    //       `**/media`,
+    //       `**/tags`,
+    //       `**/taxonomies`,
+    //     ],
+    //     normalizer: ({ entities }) => {
+    //       entities = wpSlugNormalizer(entities)
+    //       return entities
+    //     },
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-svgr`,
       options: {
@@ -105,28 +127,6 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-wordpress`,
-    //   options: {
-    //     baseUrl: `WORDPRESS_URL`,
-    //     protocol: `https`,
-    //     hostingWPCOM: false,
-    //     useACF: true,
-    //     acfOptionPageIds: [`options`],
-    //     includedRoutes: [
-    //       `**/categories`,
-    //       `**/posts`,
-    //       `**/pages`,
-    //       `**/media`,
-    //       `**/tags`,
-    //       `**/taxonomies`,
-    //     ],
-    //     normalizer: ({ entities }) => {
-    //       entities = wpSlugNormalizer(entities)
-    //       return entities
-    //     },
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
