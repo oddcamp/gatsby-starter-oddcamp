@@ -1,182 +1,93 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import PropTypes from "prop-types"
 import truncateHtml from "truncate-html"
 import he from "he"
 
+import { normalizeWpSiteMeta, normalizeWpPageMeta } from "./utils"
+
 const Meta = ({
-  lang,
-  name,
-  title,
-  titlePattern,
-  titleOverridePattern,
-  description,
-  socialImage,
-  robotsNoIndex,
-  robotsNoFollow,
-
-  fbAppId,
-  ogType,
-  ogTitle,
-  ogDescription,
-  ogImage,
-
-  twitterTitle,
-  twitterDescription,
-  twitterSite,
-  twitterCreator,
-  twitterImage,
-
-  meta,
-  link,
+  metaSite = {},
+  metaWpSite = {},
+  metaWpPage = {},
+  data = {},
 }) => {
-  const defaults = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          lang
-          name
-          title
-          titlePattern
-          description
-          robotsNoFollow
-          robotsNoIndex
-          socialImage
-          fbAppId
-          twitterHandle
-          favIcon
-          appleTouchIcon
-          appleStatusBarStyle
-          appleMaskIcon
-          appleMaskIconColor
-          msTileIcon
-          msTileColor
-        }
-      }
-    }
-  `).site.siteMetadata
+  metaSite = { ...metaSite.fields }
+  metaWpSite = normalizeWpSiteMeta(metaWpSite)
+  metaWpPage = normalizeWpPageMeta(metaWpPage)
 
-  // general
+  const meta = {
+    ...metaSite,
+    ...metaWpSite,
+    ...metaWpPage,
+    ...data,
+  }
 
-  const metaLang = lang || defaults.lang || undefined
+  let fullTitle = meta.title
+  if (!meta.titleOverridePattern && meta.titlePattern) {
+    fullTitle = meta.titlePattern
+      .replace(`[PAGE_TITLE]`, meta.title)
+      .replace(`[SITE_NAME]`, meta.name)
+  }
 
-  const metaName = name || defaults.name || undefined
-
-  const metaTitle = title || defaults.title || undefined
-
-  let metaDescription = description || defaults.description || undefined
-
-  if (metaDescription) {
-    metaDescription = truncateHtml(metaDescription, {
+  if (meta.description) {
+    meta.description = truncateHtml(meta.description, {
       length: 240,
       stripTags: true,
     })
   }
 
-  const metaRobotsNoIndex = robotsNoIndex || defaults.robotsNoIndex || undefined
+  meta.ogTitle = meta.ogTitle || meta.title
+  meta.ogDescription = meta.ogDescription || meta.description
+  meta.ogImage = meta.ogImage || meta.socialImage
 
-  const metaRobotsNoFollow =
-    robotsNoFollow || defaults.robotsNofollow || undefined
+  meta.twitterTitle = meta.twitterTitle || meta.title
+  meta.twitterDescription = meta.twitterDescription || meta.description
+  meta.twitterImage = meta.twitterImage || meta.socialImage
+  meta.twitterSite = meta.twitterSite || meta.twitterHandle
+  meta.twitterCreator = meta.twitterCreator || meta.twitterSite
 
-  const metaImage = socialImage || defaults.socialImage || undefined
-
-  // fb/og
-
-  const metaFbAppId = fbAppId || defaults.fbAppId || undefined
-
-  const metaOgTitle = ogTitle || metaTitle || undefined
-
-  let metaOgDescription = ogDescription || metaDescription || undefined
-
-  if (metaOgDescription) {
-    metaOgDescription = truncateHtml(metaOgDescription, {
-      length: 240,
-      stripTags: true,
-    })
-  }
-
-  const metaOgType = ogType || undefined
-
-  const metaOgImage = ogImage || metaImage || undefined
-
-  // twitter
-
-  const metaTwitterTitle = twitterTitle || metaTitle || undefined
-
-  let metaTwitterDescription =
-    twitterDescription || metaDescription || undefined
-
-  if (metaTwitterDescription) {
-    metaTwitterDescription = truncateHtml(metaTwitterDescription, {
-      length: 240,
-      stripTags: true,
-    })
-  }
-
-  const metaTwitterImage = twitterImage || metaImage || undefined
-
-  const metaTwitterSite = twitterSite || defaults.twitterHandle || undefined
-
-  const metaTwitterCreator =
-    twitterCreator || defaults.twitterHandle || undefined
-
-  // full title
-
-  let metaFullTitle = ``
-  if (titleOverridePattern) {
-    metaFullTitle = metaTitle
-  } else {
-    metaFullTitle = (titlePattern || defaults.titlePattern).replace(
-      `[PAGE_TITLE]`,
-      metaTitle
-    )
-  }
-  metaFullTitle = metaFullTitle.replace(`[SITE_NAME]`, metaName)
-
-  // robots
-
-  const metaRobotsIndex = metaRobotsNoIndex ? `noindex` : `index`
-  const metaRobotsFollow = metaRobotsNoFollow ? `nofollow` : `follow`
+  meta.robotsNoIndex = meta.robotsNoIndex ? `noindex` : `index`
+  meta.robotsNoFollow = meta.robotsNoFollow ? `nofollow` : `follow`
 
   return (
     <Helmet
-      htmlAttributes={{ lang: metaLang }}
-      title={he.unescape(metaFullTitle)}
+      htmlAttributes={{ lang: meta.lang }}
+      title={he.unescape(fullTitle)}
       meta={[
         // general
         {
           name: `description`,
-          content: metaDescription,
+          content: meta.description,
         },
         {
           name: `robots`,
-          content: `${metaRobotsIndex}, ${metaRobotsFollow}`,
+          content: `${meta.robotsNoIndex}, ${meta.robotsNoFollow}`,
         },
         // fb/og
         {
           property: `fb_app_id`,
-          content: metaFbAppId,
+          content: meta.fbAppId,
         },
         {
           property: `og:site_name`,
-          content: metaName,
+          content: meta.name,
         },
         {
           property: `og:title`,
-          content: metaOgTitle,
+          content: meta.ogTitle,
         },
         {
           property: `og:description`,
-          content: metaOgDescription,
+          content: meta.ogDescription,
         },
         {
           property: `og:type`,
-          content: metaOgType,
+          content: meta.ogType,
         },
         {
           property: `og:image`,
-          content: metaOgImage,
+          content: meta.ogImage,
         },
         // twitter
         {
@@ -185,116 +96,96 @@ const Meta = ({
         },
         {
           name: `twitter:title`,
-          content: metaTwitterTitle,
+          content: meta.twitterTitle,
         },
         {
           name: `twitter:description`,
-          content: metaTwitterDescription,
+          content: meta.twitterDescription,
         },
         {
           name: `twitter:site`,
-          content: metaTwitterSite,
+          content: meta.twitterSite,
         },
         {
           name: `twitter:creator`,
-          content: metaTwitterCreator,
+          content: meta.twitterCreator,
         },
         {
           name: `twitter:image:src`,
-          content: metaTwitterImage,
+          content: meta.twitterImage,
         },
         // google+, schema.org, other
         {
           itemprop: `name`,
-          content: metaFullTitle,
+          content: fullTitle,
         },
         {
           itemprop: `description`,
-          content: metaDescription,
+          content: meta.description,
         },
         {
           itemprop: `image`,
-          content: metaImage,
+          content: meta.socialImage,
         },
         // ie
         {
           name: `application-name`,
-          content: metaName,
+          content: meta.name,
         },
         {
           name: `msapplication-tooltip`,
-          content: metaDescription,
+          content: meta.name,
         },
         {
           name: `msapplication-TileImage`,
-          content: defaults.msTileIcon,
+          content: meta.msTileIcon,
         },
         {
           name: `msapplication-TileColor`,
-          content: defaults.msTileColor,
+          content: meta.msTileColor,
         },
-        // apple
+        // ios
+        {
+          name: `apple-touch-icon`,
+          content: meta.appleTouchIcon,
+        },
         {
           name: `apple-mobile-web-app-title`,
-          content: metaName,
+          content: meta.name,
         },
         {
           name: `apple-mobile-web-app-capable`,
-          content: `yes`,
+          content: meta.appleWebAppCapable,
         },
         {
           name: `apple-mobile-web-app-status-bar-style`,
-          content: defaults.appleStatusBarStyle,
+          content: meta.appleStatusBarStyle,
         },
-        {
-          name: `apple-touch-icon`,
-          content: defaults.appleTouchIcon,
-        },
-      ].concat(meta || [])}
+      ]}
       link={[
         {
           rel: `image_src`,
-          href: metaImage,
+          href: meta.socialImage,
         },
         {
           rel: `icon`,
-          href: defaults.favIcon,
+          href: meta.favIcon,
         },
         {
           rel: `mask-icon`,
-          href: defaults.appleMaskIcon,
-          color: defaults.appleMaskIconColor,
+          href: meta.appleMaskIcon,
+          color: meta.appleMaskIconColor,
         },
-      ].concat(link || [])}
+      ]}
     />
   )
 }
 
 Meta.propTypes = {
-  lang: PropTypes.string,
-  name: PropTypes.string,
-  title: PropTypes.string,
-  titlePattern: PropTypes.string,
-  titleOverridePattern: PropTypes.bool,
-  description: PropTypes.string,
-  socialImage: PropTypes.string,
-  robotsNoIndex: PropTypes.bool,
-  robotsNoFollow: PropTypes.bool,
-
-  fbAppId: PropTypes.string,
-  ogType: PropTypes.string,
-  ogTitle: PropTypes.string,
-  ogDescription: PropTypes.string,
-  ogImage: PropTypes.string,
-
-  twitterTitle: PropTypes.string,
-  twitterDescription: PropTypes.string,
-  twitterSite: PropTypes.string,
-  twitterCreator: PropTypes.string,
-  twitterImage: PropTypes.string,
-
-  meta: PropTypes.arrayOf(PropTypes.object),
-  link: PropTypes.arrayOf(PropTypes.object),
+  metaSite: PropTypes.object,
+  metaWpSite: PropTypes.object,
+  metaWpPage: PropTypes.object,
+  data: PropTypes.object,
 }
 
 export default Meta

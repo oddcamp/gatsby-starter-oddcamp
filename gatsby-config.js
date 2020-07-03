@@ -10,7 +10,7 @@ const socialImage = `/meta-images/social.jpg` // 1600x840
 const robotsNoFollow = false
 const robotsNoIndex = false
 const fbAppId = ``
-const twitterHandle = `` // @twitterHandle
+const twitterHandle = `@kollegorna`
 
 // meta icons and colors
 const colorBrand = `#663399`
@@ -31,20 +31,11 @@ const appleTouchIcon = iconBgColored
 const appleStatusBarStyle = `#222` // how to: https://medium.com/appscope/changing-the-ios-status-bar-of-your-progressive-web-app-9fc8fbe8e6ab
 const appleMaskIcon = `/meta-images/mask-icon.svg` // how to: https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html
 const appleMaskIconColor = colorBrand
+const appleWebAppCapable = `yes`
 
 // microsoft
 const msTileIcon = iconBgTransparent
 const msTileColor = colorBackground // background color of the tile
-
-// makes sure there's no URL-incompliant characters in WP slugs
-// const wpSlugNormalizer = entities => {
-//   return entities.map(e => {
-//     if (e.slug) {
-//       e.slug = decodeURIComponent(e.slug).replace(/[^0-9a-z_-]/gi, ``)
-//     }
-//     return e
-//   })
-// }
 
 module.exports = {
   siteMetadata: {
@@ -63,6 +54,7 @@ module.exports = {
     favIcon,
     appleTouchIcon,
     appleStatusBarStyle,
+    appleWebAppCapable,
     appleMaskIcon,
     appleMaskIconColor,
     msTileIcon,

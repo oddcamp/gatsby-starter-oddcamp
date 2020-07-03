@@ -3,14 +3,14 @@
 // import { graphql } from "gatsby"
 
 // import Layout from "../components/layout"
-// import MetaWp from "../components/meta-wp"
+// import Meta from "../components/meta"
 
 // const IndexTemplate = ({ data }) => {
-//   const { wp, metaWp } = data
+//   const { wp, metaSite, metaWpSite, metaWp } = data
 
 //   return (
 //     <Layout>
-//       <MetaWp wp={metaWp} />
+//       <Meta metaSite={metaSite} metaWpSite={metaWpSite} metaWpPage={metaWp} />
 
 //       <p>Hello from {wp.title}</p>
 //     </Layout>
@@ -25,7 +25,9 @@
 
 // export const pageQuery = graphql`
 //   query($id: String!) {
-//     ...MetaWpPage
+//     ...MetaSiteFragment
+//     ...MetaWpSiteFragment
+//     ...MetaWpPageFragment
 
 //     wp: wordpressPage(id: { eq: $id }) {
 //       title

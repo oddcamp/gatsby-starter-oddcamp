@@ -1,7 +1,7 @@
 // import { graphql } from "gatsby"
 
 // export const query = graphql`
-//   fragment MetaWpPage on Query {
+//   fragment MetaWpPageFragment on Query {
 //     metaWp: wordpressPage(id: { eq: $id }) {
 //       title
 //       content
@@ -17,7 +17,6 @@
 //             url
 //           }
 //         }
-
 //         ogType: page_meta_og_type
 //         ogTitle: page_meta_og_title
 //         ogDescription: page_meta_og_description
@@ -26,7 +25,6 @@
 //             url
 //           }
 //         }
-
 //         twitterTitle: page_meta_twitter_title
 //         twitterDescription: page_meta_twitter_description
 //         twitterCreator: page_meta_twitter_creator
