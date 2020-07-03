@@ -1,7 +1,8 @@
 import * as Yup from "yup"
 import printValue from "yup/lib/util/printValue"
 
-// Source: https://github.com/jquense/yup/blob/master/src/locale.js
+// MESSAGES
+// source: https://github.com/jquense/yup/blob/master/src/locale.js
 
 const mixed = {
   default: `Invalid`,
@@ -32,6 +33,7 @@ const string = {
   matches: `Must match the following: "\${regex}"`,
   email: `Must be a valid email`,
   url: `Must be a valid URL`,
+  uuid: `Must be a valid UUID`,
   trim: `Must be a trimmed string`,
   lowercase: `Must be a lowercase string`,
   uppercase: `Must be a upper case string`,
