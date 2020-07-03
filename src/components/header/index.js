@@ -60,7 +60,13 @@ const Header = () => {
         <Container inverted={headerInverted}>
           <Inner>
             <Logo>
-              <Link to="/">
+              <Link
+                to="/"
+                data-track-click
+                data-track-click-ga-category="Header"
+                data-track-click-ga-action="Logo Click"
+                data-track-click-ga-label="Home"
+              >
                 <LogoSvg aria-hidden="true" />
 
                 <span>GatsbyJS Starter</span>

@@ -6,6 +6,7 @@
   "author": "Kollegorna <hej@kollegorna.se>",
   "license": "MIT",
   "scripts": {
+    "preinstall": "node ./scripts/append-gha.js",
     "build": "gatsby build",
     "start": "gatsby develop",
     "develop": "gatsby develop",
@@ -25,6 +26,7 @@
     "@svgr/webpack": "^5.4.0",
     "babel-plugin-styled-components": "^1.10.7",
     "common-tags": "^1.8.0",
+    "element-closest": "^3.0.2",
     "filter-invalid-dom-props": "^2.0.0",
     "formik": "^2.1.4",
     "gatsby": "^2.23.3",

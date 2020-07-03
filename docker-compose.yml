@@ -17,6 +17,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
+      - .env
       - .env_default
     command: /bin/sh -c "yarn install && yarn develop-n"
     tty: true
