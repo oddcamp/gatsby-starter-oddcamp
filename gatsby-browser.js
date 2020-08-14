@@ -14,7 +14,7 @@ export function onRouteUpdate({ location, prevLocation }) {
 
     // tracks the pageview in GTM
     if (window.trackingUtil && window.trackingUtil.trackingAccepted()) {
-      window.trackingUtil.registerGTMdata({ event: `pageview` })
+      window.trackingUtil.registerGTMdata({ event: `gatsby-page-view` })
     }
   }
 }
