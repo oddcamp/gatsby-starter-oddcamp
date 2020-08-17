@@ -1,4 +1,4 @@
-const siteUrl = `https://gatsby-starter-kollegorna.netlify.app/` // most not have a trailing slash
+const siteUrl = `https://gatsby-starter-kollegorna.netlify.app` // most not have a trailing slash
 const baseUrl = process.env.NODE_ENV === `development` ? `` : siteUrl
 const lang = `en`
 const name = `Gatsby Starter Kollegorna`
