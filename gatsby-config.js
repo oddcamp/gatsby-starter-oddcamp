@@ -1,11 +1,11 @@
-const siteUrl = `https://kollegorna-gatsbyjs-starter.netlify.com` // most not have a trailing slash
+const siteUrl = `https://gatsby-starter-kollegorna.netlify.app/` // most not have a trailing slash
 const baseUrl = process.env.NODE_ENV === `development` ? `` : siteUrl
 const lang = `en`
-const name = `GatsbyJS Starter`
+const name = `Gatsby Starter Kollegorna`
 const shortName = name // change this if `name` is longer than 12 characters
 const title = `With love by Kollegorna`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
-const description = `Wordpress-ready GatsbyJS starter`
+const description = `WordPress-ready GatsbyJS starter`
 const socialImage = `/meta-images/social.jpg` // 1600x840
 const robotsNoFollow = false
 const robotsNoIndex = false
