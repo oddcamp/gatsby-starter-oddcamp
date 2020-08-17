@@ -7,9 +7,9 @@
 export function onRouteUpdate({ location, prevLocation }) {
   // checks if route has changed
   if (location && prevLocation) {
-    // triggers `onRouteChange` event for `window`
+    // triggers `gatsbyRouteChange` event for `window`
     const event = document.createEvent(`Event`)
-    event.initEvent(`onRouteChange`, true, true)
+    event.initEvent(`gatsbyRouteChange`, true, true)
     window.dispatchEvent(event)
 
     // tracks the pageview in GTM
