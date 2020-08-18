@@ -99,11 +99,12 @@ const AboutPage = ({ data: { metaSite } }) => {
         <ContactFormStyled />
 
         {isModalOpen && (
-          <Modal closeClick={() => setModalOpen(false)}>
-            <div className="styled">
-              <h2 className="do-unstyle styled-h1">Hi!</h2>
+          <Modal onRequestClose={() => setModalOpen(false)}>
+            <Styled>
+              <h2>Hi!</h2>
               <p>There.</p>
-            </div>
+              <p>How is it going?</p>
+            </Styled>
           </Modal>
         )}
       </Container>

@@ -1,52 +1,136 @@
-import React from "react"
+import React, { useRef } from "react"
 import ReactModal from "react-modal"
+import { RemoveScroll } from "react-remove-scroll"
 import PropTypes from "prop-types"
-import styled, { keyframes } from "styled-components"
-import { rem, rgba } from "polished"
+import styled from "styled-components"
+import { rem } from "polished"
 
-ReactModal.setAppElement(`body`)
+import { ReactComponent as DeleteSvg } from "../../assets/images/icons/delete.svg"
 
-const animContainer = keyframes`
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+const ReactModalStyled = styled(ReactModal)`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: ${({ theme }) => theme.zindex.modal};
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  will-change: opacity;
 `
 
-const Container = styled.div`
-  height: 100vh;
-  padding: ${rem(80)};
-  padding-bottom: ${rem(240)};
+const RemoveScrollStyled = styled(RemoveScroll)`
+  width: 100%;
+  height: 100%;
+  position: relative;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.black};
-  animation: ${animContainer} 0.25s linear;
+  will-change: scroll-position;
+  text-align: center;
+
+  /* scrollable vertical centering */
+  &::before {
+    content: "";
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  /* --- */
 `
 
-const Close = styled.div`
-  margin-top: 2em;
-  padding-top: 2em;
-  border-top: 1px solid ${({ theme }) => rgba(theme.colors.black, 0.2)};
+const CloseButton = styled.button.attrs({ type: `button` })`
+  width: ${rem(40)};
+  height: ${rem(40)};
+  position: absolute;
+  z-index: 1;
+  top: ${rem(5)};
+  right: ${rem(5)};
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    padding: 0.6em;
+    display: block;
+  }
 `
 
-const Modal = ({ children, closeClick }) => {
+const Content = styled.div`
+  ${({ theme }) => theme.grid.container(640)}
+
+  /* scrollable vertical centering */
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  /* --- */
+
+  > div {
+    padding: ${rem(50)} ${rem(30)};
+    position: relative;
+    background-color: ${({ theme }) => theme.colors.white};
+  }
+`
+
+const Modal = ({
+  children,
+  onRequestClose,
+  title,
+  hideCloseButton = false,
+  closeOnOutsideClick = true,
+  customContents = false,
+}) => {
+  const outsideRef = useRef()
+
+  const outsideClick = (e) => {
+    if (e.target === outsideRef.current) {
+      e.preventDefault()
+      onRequestClose(e)
+    }
+  }
+
   return (
-    <ReactModal isOpen={true}>
-      <Container>
-        {children}
+    <ReactModalStyled
+      isOpen={true}
+      defaultStyles={{}}
+      onRequestClose={onRequestClose}
+      ariaHideApp={false}
+      contentLabel={title}
+    >
+      <RemoveScrollStyled ref={outsideRef} onClick={outsideClick}>
+        <Content>
+          <div>
+            {!hideCloseButton && (
+              <CloseButton
+                onClick={onRequestClose}
+                aria-label="Close"
+                title="Close"
+              >
+                <DeleteSvg />
+              </CloseButton>
+            )}
 
-        <Close>
-          <button type="button" className="styled-a" onClick={closeClick}>
-            Close
-          </button>
-        </Close>
-      </Container>
-    </ReactModal>
+            {children}
+          </div>
+        </Content>
+      </RemoveScrollStyled>
+    </ReactModalStyled>
   )
 }
 
 Modal.propTypes = {
-  children: PropTypes.node,
-  closeClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  hideCloseButton: PropTypes.bool,
+  closeOnOutsideClick: PropTypes.bool,
+  customContents: PropTypes.bool,
 }
 
 export default Modal
