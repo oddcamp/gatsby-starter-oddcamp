@@ -24,7 +24,7 @@ If a project is using a private package (such as a `components` package), you ca
 
 ## Development Container
 
-The boilerplate also include a config for the new [Visual Studio Code Remote - Containers system](https://code.visualstudio.com/docs/remote/containers) where your editor aswell as the code is inside of a container.
+The project also include a config for the new [Visual Studio Code Remote - Containers system](https://code.visualstudio.com/docs/remote/containers) where your editor aswell as the code is inside of a container.
 
 To get this working you need to follow the steps below:
 
