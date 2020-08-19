@@ -58,15 +58,15 @@ const Heading3 = styled.h3`
 `
 
 // const Heading4 = styled.h4`
-//   ${heading3Styles}
+//   ${heading4Styles}
 // `
 
 // const Heading5 = styled.h5`
-//   ${heading3Styles}
+//   ${heading5Styles}
 // `
 
 // const Heading6 = styled.h6`
-//   ${heading3Styles}
+//   ${heading6Styles}
 // `
 
 export {
