@@ -9,8 +9,10 @@ import "../../config/yup"
 import Header from "../header"
 import Footer from "../footer"
 import CookiesConsent from "../cookies-consent"
-import { StoreProvider } from "../../store"
 import theme from "../../theme"
+import { StoreProvider } from "../../store"
+
+const googleFonts = `https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap`
 
 if (typeof document !== `undefined`) {
   initSmartOutline([
@@ -42,8 +44,16 @@ const Layout = ({ children }) => {
         <React.Fragment>
           <Helmet>
             <link
-              href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
+              rel="preconnect"
+              href="https://fonts.gstatic.com"
+              crossOrigin
+            />
+            <link rel="preload" as="style" href={googleFonts} />
+            <link
               rel="stylesheet"
+              media="print"
+              onLoad="this.media='all'"
+              href={googleFonts}
             />
           </Helmet>
 
