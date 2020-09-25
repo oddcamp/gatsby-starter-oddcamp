@@ -101,6 +101,13 @@ module.exports = {
     //   },
     // },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-svgr`,
       options: {
         prettier: true,
@@ -118,13 +125,6 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         includePaths: [`node_modules`],
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
       },
     },
     {

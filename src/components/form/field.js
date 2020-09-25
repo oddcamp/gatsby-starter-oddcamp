@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  input:not([type=checkbox]):not([type=radio]),
+  input:not([type="checkbox"]):not([type="radio"]),
   select,
   textarea {
     width: 100%;
@@ -26,7 +26,7 @@ const Container = styled.div`
     }
   }
 
-  input:not([type=checkbox]):not([type=radio]),
+  input:not([type="checkbox"]):not([type="radio"]),
   select {
     height: 2.7em;
     overflow: hidden;
@@ -69,12 +69,11 @@ const Container = styled.div`
       color: ${({ theme }) => theme.colors.white};
       background-color: ${({ theme }) => theme.colors.black};
       animation: 0.5s ${({ theme }) => theme.easings.default};
-      animation-name:
-        ${({ theme }) => theme.animations.fadeIn},
+      animation-name: ${({ theme }) => theme.animations.fadeIn},
         ${({ theme }) => theme.animations.slideInY(5)};
 
       &::before {
-        content: '';
+        content: "";
         width: 0;
         height: 0;
         position: absolute;
