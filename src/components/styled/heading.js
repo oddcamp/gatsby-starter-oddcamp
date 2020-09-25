@@ -1,41 +1,40 @@
 import styled, { css } from "styled-components"
-import { rem } from "polished"
 
 const heading1Styles = css`
   ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
-  font-size: ${rem(56)};
+  font-size: 3.5em; /* 56 */
   line-height: 1.1;
   word-break: break-word;
 
   @media ${({ theme }) => theme.mq.mediumDown} {
-    font-size: ${rem(24)};
+    font-size: 2.25em; /* 36 */
   }
 `
 
 const heading2Styles = css`
   ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
-  font-size: ${rem(34)};
+  font-size: 2.25em; /* 36 */
   line-height: 1.1;
   letter-spacing: -0.02em;
   word-break: break-word;
 
   @media ${({ theme }) => theme.mq.mediumDown} {
-    font-size: ${rem(20)};
+    font-size: 1.625em; /* 26 */
   }
 `
 
 const heading3Styles = css`
   ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
 
-  font-size: ${rem(24)};
+  font-size: 1.625em; /* 26 */
   line-height: 1.2;
   letter-spacing: -0.02em;
   word-break: break-word;
 
   @media ${({ theme }) => theme.mq.mediumDown} {
-    font-size: ${rem(18)};
+    font-size: 1.25em; /* 20 */
   }
 `
 

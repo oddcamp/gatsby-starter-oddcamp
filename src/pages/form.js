@@ -1,37 +1,40 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Meta from "../components/meta"
-import Styled from "../components/styled"
+import ContactForm from "../components/contact-form"
+import { Heading1 } from "../components/styled/heading"
 
 const Container = styled.article`
   ${({ theme }) => theme.grid.container()}
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
 `
 
-const NotFoundPage = ({ data: { metaSite } }) => {
+const FormPage = ({ data: { metaSite } }) => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Page not found` }} />
+      <Meta metaSite={metaSite} data={{ title: `Form` }} />
 
       <Container>
-        <Styled>
-          <h1>Not found</h1>
+        <Heading1>Form</Heading1>
 
-          <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-        </Styled>
+        <ContactForm />
       </Container>
     </Layout>
   )
 }
 
-NotFoundPage.propTypes = {
+FormPage.propTypes = {
   data: PropTypes.object,
 }
 
-export default NotFoundPage
+export default FormPage
 
 export const pageQuery = graphql`
   query {

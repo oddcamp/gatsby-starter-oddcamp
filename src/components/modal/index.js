@@ -15,7 +15,6 @@ const ReactModalStyled = styled(ReactModal)`
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  will-change: opacity;
 `
 
 const RemoveScrollStyled = styled(RemoveScroll)`
@@ -46,7 +45,8 @@ const CloseButton = styled.button.attrs({ type: `button` })`
   top: ${rem(5)};
   right: ${rem(5)};
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.8;
   }
 
@@ -82,9 +82,7 @@ const Modal = ({
   children,
   onRequestClose,
   title,
-  hideCloseButton = false,
   closeOnOutsideClick = true,
-  customContents = false,
 }) => {
   const outsideRef = useRef()
 
@@ -103,18 +101,15 @@ const Modal = ({
       ariaHideApp={false}
       contentLabel={title}
     >
-      <RemoveScrollStyled ref={outsideRef} onClick={outsideClick}>
+      <RemoveScrollStyled
+        ref={outsideRef}
+        onClick={closeOnOutsideClick ? outsideClick : undefined}
+      >
         <Content>
           <div>
-            {!hideCloseButton && (
-              <CloseButton
-                onClick={onRequestClose}
-                aria-label="Close"
-                title="Close"
-              >
-                <DeleteSvg />
-              </CloseButton>
-            )}
+            <CloseButton onClick={onRequestClose} title="Close">
+              <DeleteSvg aria-label="Close" />
+            </CloseButton>
 
             {children}
           </div>
@@ -128,9 +123,7 @@ Modal.propTypes = {
   children: PropTypes.node.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   title: PropTypes.string,
-  hideCloseButton: PropTypes.bool,
   closeOnOutsideClick: PropTypes.bool,
-  customContents: PropTypes.bool,
 }
 
 export default Modal

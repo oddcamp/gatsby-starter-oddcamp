@@ -40,7 +40,7 @@ const elementsToStyles = Object.entries({
 const Styled = styled.div`
   ${elementsToStyles.map(
     ([element, styles]) => css`
-      ${element}:not(.do-unstyle) {
+      ${element}:not(.\\--unstyled) {
         ${styles}
       }
     `

@@ -46,7 +46,7 @@ const Container = styled.div`
       </svg>
     `)}");
 
-    &.--placeholder {
+    &.\\--placeholder {
       color: ${({ theme }) => rgba(theme.colors.black, 0.4)};
     }
   }

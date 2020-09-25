@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components"
-import { rem } from "polished"
 
 const blockquoteStyles = css`
   ${({ theme }) => theme.fonts.set(`secondary`, `normal`)}
@@ -10,12 +9,14 @@ const blockquoteStyles = css`
   border-left: 2px solid;
 
   > * + * {
-    margin-top: ${rem(20)};
+    margin-top: 1.25em;
   }
 
   /* author */
 
   > footer {
+    font-style: normal;
+
     &::before {
       content: "—";
     }

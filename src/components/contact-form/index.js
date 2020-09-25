@@ -6,7 +6,6 @@ import * as Yup from "yup"
 
 import Button from "../button"
 import Field from "../form/field"
-import { Heading2 } from "../styled/heading"
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -27,7 +26,9 @@ const Row = styled.div`
 `
 
 const Done = styled.p`
-  margin-top: 1em;
+  padding: 1.5em;
+  background-color: rebeccapurple;
+  color: ${({ theme }) => theme.colors.white};
 `
 
 const Container = styled.div`
@@ -40,69 +41,66 @@ const Container = styled.div`
 const ContactForm = (props) => {
   const [submitted, setSubmitted] = useState(false)
 
-  const submit = (formData) => {
-    setSubmitted(formData)
+  const submit = (values, { resetForm }) => {
+    setSubmitted(values)
+    resetForm()
   }
 
   return (
     <Container {...props}>
-      <Heading2>Contact us</Heading2>
-
       {submitted && <Done>Well done, {submitted.name}!</Done>}
 
-      {!submitted && (
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={submit}
-        >
-          {() => (
-            <Form>
-              <Row>
-                <Field name="name" label="Name" placeholder="Morgan" />
-              </Row>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={submit}
+      >
+        {() => (
+          <Form>
+            <Row>
+              <Field name="name" label="Name" placeholder="Morgan" />
+            </Row>
 
-              <Row>
-                <Field
-                  name="email"
-                  type="email"
-                  label="Email"
-                  placeholder="morgan@free.man"
-                />
-              </Row>
+            <Row>
+              <Field
+                name="email"
+                type="email"
+                label="Email"
+                placeholder="morgan@free.man"
+              />
+            </Row>
 
-              <Row>
-                <Field
-                  name="champion"
-                  component="select"
-                  label="Champion of the world"
-                >
-                  <option value="">Choose one…</option>
-                  <option value="1">Farrokh Bulsara</option>
-                  <option value="2">Ibra</option>
-                  <option value="3">Ali</option>
-                  <option value="4">MJ</option>
-                  <option value="5">jQuery</option>
-                </Field>
-              </Row>
+            <Row>
+              <Field
+                name="champion"
+                component="select"
+                label="Champion of the world"
+              >
+                <option value="">Choose one…</option>
+                <option value="1">Farrokh Bulsara</option>
+                <option value="2">Ibra</option>
+                <option value="3">Ali</option>
+                <option value="4">MJ</option>
+                <option value="5">jQuery</option>
+              </Field>
+            </Row>
 
-              <Row>
-                <Field
-                  name="terms"
-                  type="checkbox"
-                  label="I accept the privacy policy and terms and conditions"
-                />
-              </Row>
+            <Row>
+              <Field
+                name="terms"
+                type="checkbox"
+                label="I accept the privacy policy and terms and conditions"
+              />
+            </Row>
 
-              <Row>
-                <Button type="submit" large>
-                  Do it
-                </Button>
-              </Row>
-            </Form>
-          )}
-        </Formik>
-      )}
+            <Row>
+              <Button type="submit" large={true}>
+                Submit
+              </Button>
+            </Row>
+          </Form>
+        )}
+      </Formik>
     </Container>
   )
 }

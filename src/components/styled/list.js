@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components"
-import { rem } from "polished"
 
 const liStyles = css`
   margin-left: 1.5em;
-  font-size: ${rem(18)};
+  font-size: 1.125em; /* 18 */
   line-height: 1.6;
   word-break: break-word;
 
@@ -31,7 +30,7 @@ const oListStyles = css`
 `
 
 const dListStyles = css`
-  font-size: ${rem(18)};
+  font-size: 1.125em; /* 18 */
   line-height: 1.6;
   word-break: break-word;
 

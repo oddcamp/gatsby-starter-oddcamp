@@ -6,6 +6,20 @@ import { StoreConsumer } from "../../store"
 import Link from "../link"
 import { ReactComponent as LogoSvg } from "../../assets/images/logo.svg"
 
+const nav = [
+  { url: `/`, title: `Home` },
+  { url: `/styled`, title: `Styled` },
+  { url: `/grid`, title: `Grid` },
+  { url: `/button`, title: `Button` },
+  { url: `/svg`, title: `SVG` },
+  { url: `/image`, title: `Image` },
+  { url: `/form`, title: `Form` },
+  { url: `/modal`, title: `Modal` },
+  { url: `/carousel`, title: `Carousel` },
+  { url: `/social`, title: `Social` },
+  { url: `/context`, title: `Context` },
+]
+
 const Container = styled.header`
   margin-bottom: ${rem(80)};
   padding: ${rem(30)} 0;
@@ -29,6 +43,9 @@ const Container = styled.header`
 
 const Inner = styled.div`
   ${({ theme }) => theme.grid.container()}
+
+  display: flex;
+  align-items: center;
 `
 
 const Logo = styled.div`
@@ -36,12 +53,13 @@ const Logo = styled.div`
     display: flex;
     align-items: center;
 
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 0.8;
     }
 
     &:active {
-      opacity: 0.6;
+      opacity: 0.5;
     }
   }
 
@@ -50,6 +68,28 @@ const Logo = styled.div`
     height: ${rem(60)};
     margin-right: ${rem(10)};
     display: block;
+  }
+`
+
+const Nav = styled.nav`
+  margin-left: auto;
+  padding-left: ${rem(20)};
+  display: flex;
+
+  a {
+    &:not(:first-child) {
+      margin-left: ${rem(15)};
+    }
+
+    &:hover,
+    &:focus,
+    &.\\--active {
+      text-decoration: underline;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
   }
 `
 
@@ -72,6 +112,16 @@ const Header = () => {
                 <span>GatsbyJS Starter</span>
               </Link>
             </Logo>
+
+            {nav && nav.length > 0 && (
+              <Nav>
+                {nav.map((item, i) => (
+                  <Link key={i} to={item.url} activeClassName="--active">
+                    {item.title}
+                  </Link>
+                ))}
+              </Nav>
+            )}
           </Inner>
         </Container>
       )}

@@ -3,12 +3,13 @@ import styled, { css } from "styled-components"
 const anchorStyles = css`
   text-decoration: underline;
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.8;
   }
 
   &:active {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 `
 

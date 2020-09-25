@@ -1,11 +1,15 @@
 import { css } from "styled-components"
 import { rem } from "polished"
 
-const containerMaxWidth = 1240
+const containerWidths = {
+  xnarrow: 768,
+  narrow: 1024,
+  normal: 1240,
+}
 const columnsCount = 12
 const gutter = 20
 
-const container = (maxWidth = containerMaxWidth) => css`
+const container = (maxWidth = containerWidths.normal) => css`
   width: 100%;
   padding-left: ${rem(gutter)};
   padding-right: ${rem(gutter)};
@@ -14,7 +18,9 @@ const container = (maxWidth = containerMaxWidth) => css`
 
   ${maxWidth &&
   css`
-    max-width: ${rem(maxWidth)};
+    max-width: ${rem(
+      typeof maxWidth === `string` ? containerWidths[maxWidth] : maxWidth
+    )};
   `}
 
   @media ${(props) => props.theme.mediumDown} {

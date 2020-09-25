@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components"
 
 const hrStyles = css`
+  height: 2px;
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 0 0.2em;
 `
 
 const Hr = styled.hr`
