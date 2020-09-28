@@ -11,8 +11,7 @@ import {
 } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
 
-import { ReactComponent as SvgChevronLeft } from "../../assets/images/icons/chevron-left.svg"
-import { ReactComponent as SvgChevronRight } from "../../assets/images/icons/chevron-right.svg"
+import { ReactComponent as SvgArrowRight } from "../../assets/images/icons/arrow-right.svg"
 
 const slideGap = 15
 
@@ -56,17 +55,16 @@ const Container = styled.div`
 
 const PrevNext = styled.div`
   button {
-    width: 2.5em;
-    height: 2.5em;
-    padding: 0.8em;
+    width: 5em;
+    height: 5em;
+    padding: 1.5em;
     position: absolute;
     z-index: 2;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: auto;
-    background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 50%;
-    transition: background-color 0.2s ${({ theme }) => theme.easings.default};
+    color: ${({ theme }) => theme.colors.white};
+    background-color: rgba(0, 0, 0, 0.3);
 
     @media ${({ theme }) => theme.mq.largeDown} {
       font-size: 0.75em;
@@ -74,13 +72,12 @@ const PrevNext = styled.div`
 
     &:hover,
     &:focus {
-      color: ${({ theme }) => theme.colors.white};
-      background-color: ${({ theme }) => theme.colors.metallic};
+      background-color: rgba(0, 0, 0, 0.6);
     }
 
     &:active {
       margin-top: 1px;
-      background-color: ${({ theme }) => theme.colors.black};
+      background-color: rgba(0, 0, 0, 1);
       transition: none;
     }
 
@@ -89,36 +86,17 @@ const PrevNext = styled.div`
     }
 
     &.carousel__back-button {
-      padding-right: 0.9em;
-      left: 0;
-      transform: translate(-50%, -50%);
-      box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+      left: ${rem(20)};
+      transform: translateY(-50%);
 
-      @media ${({ theme }) => theme.mq.xxlargeDown} {
-        transform: translate(-25%, -50%);
+      svg {
+        transform: scale(-1);
       }
     }
 
     &.carousel__next-button {
-      padding-left: 0.9em;
-      right: 0;
-      transform: translate(50%, -50%);
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-
-      @media ${({ theme }) => theme.mq.xxlargeDown} {
-        transform: translate(25%, -50%);
-      }
-    }
-
-    /* expands tap area */
-    &::before {
-      content: "";
-      width: ${rem(50)};
-      height: ${rem(50)};
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      right: ${rem(20)};
+      transform: translateY(-50%);
     }
 
     svg {
@@ -145,12 +123,12 @@ const Carousel = ({ slides, visibleSlides, ...props }) => {
         </CarouselSlider>
 
         <PrevNext>
-          <CarouselBack title="Previous" aria-label="Previous">
-            <SvgChevronLeft />
+          <CarouselBack title="Previous">
+            <SvgArrowRight aria-label="Previous" />
           </CarouselBack>
 
-          <CarouselNext title="Next" aria-label="Next">
-            <SvgChevronRight />
+          <CarouselNext title="Next">
+            <SvgArrowRight aria-label="Next" />
           </CarouselNext>
         </PrevNext>
       </CarouselProvider>

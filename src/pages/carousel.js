@@ -3,10 +3,12 @@ import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
+import Img from "gatsby-image/withIEPolyfill"
 
 import Layout from "../components/layout"
 import Meta from "../components/meta"
-import Styled from "../components/styled"
+import Carousel from "../components/carousel"
+import { Heading1 } from "../components/styled/heading"
 
 const Container = styled.article`
   ${({ theme }) => theme.grid.container()}
@@ -16,17 +18,37 @@ const Container = styled.article`
   }
 `
 
-const CarouselPage = ({ data: { metaSite } }) => {
+const Slide = styled.div`
+  > .gatsby-image-wrapper {
+    height: 80vh;
+  }
+`
+
+const CarouselPage = ({
+  data: { metaSite, imgDummy1, imgDummy2, imgDummy3 },
+}) => {
+  const slides = [
+    <Slide key={0}>
+      <Img fluid={imgDummy1.childImageSharp.fluid} alt="Dummy image" />
+    </Slide>,
+
+    <Slide key={1}>
+      <Img fluid={imgDummy2.childImageSharp.fluid} alt="Dummy image" />
+    </Slide>,
+
+    <Slide key={2}>
+      <Img fluid={imgDummy3.childImageSharp.fluid} alt="Dummy image" />
+    </Slide>,
+  ]
+
   return (
     <Layout>
       <Meta metaSite={metaSite} data={{ title: `Carousel` }} />
 
       <Container>
-        <Styled>
-          <h1>Carousel</h1>
+        <Heading1>Carousel</Heading1>
 
-          <p>TODO</p>
-        </Styled>
+        <Carousel slides={slides} />
       </Container>
     </Layout>
   )
@@ -41,5 +63,38 @@ export default CarouselPage
 export const pageQuery = graphql`
   query {
     ...MetaSiteFragment
+
+    imgDummy1: file(
+      sourceInstanceName: { eq: "images" }
+      relativePath: { eq: "dummy1.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    imgDummy2: file(
+      sourceInstanceName: { eq: "images" }
+      relativePath: { eq: "dummy2.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
+    imgDummy3: file(
+      sourceInstanceName: { eq: "images" }
+      relativePath: { eq: "dummy3.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `

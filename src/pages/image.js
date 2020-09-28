@@ -55,7 +55,7 @@ export const pageQuery = graphql`
 
     imgDummy: file(
       sourceInstanceName: { eq: "images" }
-      relativePath: { eq: "dummy.jpg" }
+      relativePath: { eq: "dummy1.jpg" }
     ) {
       childImageSharp {
         fluid(maxWidth: 800) {
