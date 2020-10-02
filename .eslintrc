@@ -49,6 +49,8 @@
     "react/jsx-key": "warn",
     "react/no-unescaped-entities": "off",
     "react/prop-types": "warn",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
     "no-invalid-this": "off",

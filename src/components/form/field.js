@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import uuid from "uuid-random"
 import styled, { css } from "styled-components"
