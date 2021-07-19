@@ -42,7 +42,7 @@
     "gatsby-plugin-styled-components": "^3.3.12",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-source-filesystem": "^2.3.32",
-    "gatsby-source-wordpress": "^3.3.36",
+    "gatsby-source-wordpress": "^4.0.8",
     "gatsby-transformer-sharp": "^2.5.16",
     "he": "^1.2.0",
     "lodash": "^4.17.20",
