@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import { createContext, useState } from "react"
 import PropTypes from "prop-types"
 
-const StoreContext = React.createContext()
+const StoreContext = createContext()
 const StoreConsumer = StoreContext.Consumer
 
 const StoreProvider = ({ children }) => {

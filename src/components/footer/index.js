@@ -1,4 +1,3 @@
-import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 import { Location } from "@reach/router"

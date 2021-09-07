@@ -1,4 +1,4 @@
-import React from "react"
+import { Fragment } from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Helmet } from "react-helmet"
@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider>
-        <React.Fragment>
+        <Fragment>
           <Helmet>
             <link
               rel="preconnect"
@@ -66,7 +66,7 @@ const Layout = ({ children }) => {
           <Footer />
 
           <CookiesConsent />
-        </React.Fragment>
+        </Fragment>
       </StoreProvider>
     </ThemeProvider>
   )
