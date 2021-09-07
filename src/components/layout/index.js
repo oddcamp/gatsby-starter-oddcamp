@@ -1,4 +1,4 @@
-import { Fragment } from "react"
+import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Helmet } from "react-helmet"

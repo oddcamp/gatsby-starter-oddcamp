@@ -1,3 +1,4 @@
+import React from "react"
 import { Location } from "@reach/router"
 import PropTypes from "prop-types"
 import { Link as GatsbyLink } from "gatsby"
