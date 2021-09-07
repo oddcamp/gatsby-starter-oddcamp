@@ -42,7 +42,7 @@
     "gatsby-plugin-sharp": "^3.13.0",
     "gatsby-plugin-sitemap": "^4.9.0",
     "gatsby-plugin-styled-components": "^4.13.0",
-    "gatsby-plugin-svgr": "^2.1.0",
+    "gatsby-plugin-svgr": "3.0.0-beta.0",
     "gatsby-source-filesystem": "^3.13.0",
     "gatsby-transformer-sharp": "^3.13.0",
     "he": "^1.2.0",
