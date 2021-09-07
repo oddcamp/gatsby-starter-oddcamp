@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -28,10 +26,10 @@ const Container = styled.article`
   }
 `
 
-const SvgPage = ({ data: { metaSite } }) => {
+const SvgPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `SVG` }} />
+      <Meta data={{ title: `SVG` }} />
 
       <Container>
         <Heading1>SVG</Heading1>
@@ -54,14 +52,4 @@ const SvgPage = ({ data: { metaSite } }) => {
   )
 }
 
-SvgPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default SvgPage
-
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
-  }
-`

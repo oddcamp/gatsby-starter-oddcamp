@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -49,10 +47,10 @@ const Card = styled.div`
   border: 1px solid;
 `
 
-const GridPage = ({ data: { metaSite } }) => {
+const GridPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Social` }} />
+      <Meta data={{ title: `Social` }} />
 
       <Article>
         <Heading>Grid</Heading>
@@ -117,14 +115,4 @@ const GridPage = ({ data: { metaSite } }) => {
   )
 }
 
-GridPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default GridPage
-
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
-  }
-`

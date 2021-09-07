@@ -1,3 +1,4 @@
+import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import truncateHtml from "truncate-html"
@@ -5,13 +6,36 @@ import he from "he"
 
 import { normalizeWpSiteMeta, normalizeWpPageMeta } from "./utils"
 
-const Meta = ({
-  metaSite = {},
-  metaWpSite = {},
-  metaWpPage = {},
-  data = {},
-}) => {
-  metaSite = { ...metaSite.fields }
+const Meta = ({ metaWpSite = {}, metaWpPage = {}, data = {} }) => {
+  const {
+    site: { siteMetadata: metaSite },
+  } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          lang
+          name
+          title
+          titlePattern
+          description
+          robotsNoFollow
+          robotsNoIndex
+          socialImage
+          fbAppId
+          twitterHandle
+          favIcon
+          appleTouchIcon
+          appleStatusBarStyle
+          appleWebAppCapable
+          appleMaskIcon
+          appleMaskIconColor
+          msTileIcon
+          msTileColor
+        }
+      }
+    }
+  `)
+
   metaWpSite = normalizeWpSiteMeta(metaWpSite)
   metaWpPage = normalizeWpPageMeta(metaWpPage)
 

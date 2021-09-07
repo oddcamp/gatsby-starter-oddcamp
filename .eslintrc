@@ -1,28 +1,29 @@
 {
   "root": true,
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": [
     "google",
     "eslint:recommended",
     "plugin:flowtype/recommended",
     "plugin:react/recommended",
-    "prettier",
-    "prettier/flowtype",
-    "prettier/react",
+    "prettier"
   ],
-  "plugins": ["flowtype", "prettier", "react", "filenames"],
+  "plugins": ["flowtype", "prettier", "react", "filenames", "@babel"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
+      "jsx": true
     },
+    "babelOptions": {
+      "configFile": "./.babelrc"
+    }
   },
   "env": {
     "browser": true,
     "es6": true,
     "node": true,
-    "jest": true,
+    "jest": true
   },
   "globals": {
     "before": true,
@@ -30,15 +31,16 @@
     "spyOn": true,
     "__PATH_PREFIX__": true,
     "__BASE_PATH__": true,
-    "__ASSET_PREFIX__": true,
+    "__ASSET_PREFIX__": true
   },
   "rules": {
-    "no-unused-expressions": [
+    "@babel/no-unused-expressions": [
       "error",
       {
-        "allowTaggedTemplates": true,
-      },
+        "allowTaggedTemplates": true
+      }
     ],
+    "no-unused-expressions": "off",
     "consistent-return": ["error"],
     "filenames/match-regex": ["error", "^[a-z-\\d\\.]+$", true],
     "no-console": "warn",
@@ -53,12 +55,13 @@
     "react/react-in-jsx-scope": "off",
     "require-jsdoc": "off",
     "valid-jsdoc": "off",
+    "@babel/no-invalid-this": "off",
     "no-invalid-this": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "warn"
   },
   "settings": {
     "react": {
-      "version": "16.4.2",
-    },
-  },
+      "version": "16.9.0"
+    }
+  }
 }

@@ -1,5 +1,3 @@
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
@@ -10,10 +8,10 @@ const Container = styled.article`
   ${({ theme }) => theme.grid.container()}
 `
 
-const NotFoundPage = ({ data: { metaSite } }) => {
+const NotFoundPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Page not found` }} />
+      <Meta data={{ title: `Page not found` }} />
 
       <Container>
         <Styled>
@@ -26,14 +24,4 @@ const NotFoundPage = ({ data: { metaSite } }) => {
   )
 }
 
-NotFoundPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default NotFoundPage
-
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
-  }
-`

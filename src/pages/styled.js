@@ -1,6 +1,4 @@
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import { graphql } from "gatsby"
 import { rem } from "polished"
 
 import Layout from "../components/layout"
@@ -41,10 +39,10 @@ const Styles = styled.section`
   }
 `
 
-const StyledPage = ({ data: { metaSite } }) => {
+const StyledPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Styled` }} />
+      <Meta data={{ title: `Styled` }} />
 
       <Container>
         <div>
@@ -147,14 +145,4 @@ const StyledPage = ({ data: { metaSite } }) => {
   )
 }
 
-StyledPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default StyledPage
-
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
-  }
-`

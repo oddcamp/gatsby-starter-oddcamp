@@ -1,7 +1,5 @@
 import { useState } from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Meta from "../components/meta"
@@ -13,12 +11,12 @@ const Container = styled.div`
   ${({ theme }) => theme.grid.container()}
 `
 
-const ModalPage = ({ data: { metaSite } }) => {
+const ModalPage = () => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Modal` }} />
+      <Meta data={{ title: `Modal` }} />
 
       <Container>
         <Styled as="article">
@@ -49,14 +47,4 @@ const ModalPage = ({ data: { metaSite } }) => {
   )
 }
 
-ModalPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default ModalPage
-
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
-  }
-`

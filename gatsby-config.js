@@ -1,16 +1,19 @@
-const siteUrl = `https://gatsby-starter-kollegorna.netlify.app` // most not have a trailing slash
-const baseUrl = process.env.NODE_ENV === `development` ? `` : siteUrl
+require(`dotenv`).config({ path: `.env` })
+
+const NETLIFY_ENV = process.env.CONTEXT || process.env.NODE_ENV
+const URL = process.env.URL
+
 const lang = `en`
-const name = `Gatsby Starter Kollegorna`
+const name = `Gatsby Starter Odd Camp`
 const shortName = name // change this if `name` is longer than 12 characters
-const title = `With love by Kollegorna`
+const title = `With love by Odd Camp`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
 const description = `WordPress-ready GatsbyJS starter`
 const socialImage = `/meta-images/social.jpg` // 1600x840
 const robotsNoFollow = false
 const robotsNoIndex = false
 const fbAppId = ``
-const twitterHandle = `@kollegorna`
+const twitterHandle = `@odd_camp`
 
 // meta icons and colors
 const colorBrand = `#663399`
@@ -39,8 +42,6 @@ const msTileColor = colorBackground // background color of the tile
 
 module.exports = {
   siteMetadata: {
-    siteUrl,
-    baseUrl,
     lang,
     name,
     title,
@@ -59,8 +60,15 @@ module.exports = {
     appleMaskIconColor,
     msTileIcon,
     msTileColor,
+    siteUrl: URL, // gatsby-plugin-robots-txt
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: [`URL`],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -78,33 +86,27 @@ module.exports = {
         legacy: false, // carried out via Meta component instead
       },
     },
-    // {
-    //   resolve: `gatsby-source-wordpress`,
-    //   options: {
-    //     baseUrl: `WORDPRESS_URL`,
-    //     protocol: `https`,
-    //     hostingWPCOM: false,
-    //     useACF: true,
-    //     acfOptionPageIds: [`options`],
-    //     includedRoutes: [
-    //       `**/categories`,
-    //       `**/posts`,
-    //       `**/pages`,
-    //       `**/media`,
-    //       `**/tags`,
-    //       `**/taxonomies`,
-    //     ],
-    //     normalizer: ({ entities }) => {
-    //       entities = wpSlugNormalizer(entities)
-    //       return entities
-    //     },
-    //   },
-    // },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-robots-txt`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        options: {
+          resolveEnv: () => NETLIFY_ENV,
+          env: {
+            production: {
+              policy: [{ userAgent: `*` }],
+            },
+            "branch-deploy": {
+              policy: [{ userAgent: `*`, disallow: [`/`] }],
+              sitemap: null,
+              host: null,
+            },
+            "deploy-preview": {
+              policy: [{ userAgent: `*`, disallow: [`/`] }],
+              sitemap: null,
+              host: null,
+            },
+          },
+        },
       },
     },
     {
@@ -124,35 +126,26 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        includePaths: [`node_modules`],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-robots-txt`,
-      options: {
-        host: siteUrl,
-        sitemap: `${siteUrl}/sitemap.xml`,
-        env: {
-          development: {
-            policy: [{ userAgent: `*`, disallow: [`/`] }],
-          },
-          production: {
-            policy: [{ userAgent: `*`, allow: `/` }],
-          },
+        sassOptions: {
+          includePaths: [`node_modules`],
         },
       },
     },
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        output: `/sitemap.xml`,
-        exclude: [],
+        name: `content-images`,
+        path: `${__dirname}/content/images`,
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-eslint`,
+    `gatsby-plugin-sitemap`,
+    // `gatsby-plugin-offline`,
+    // `gatsby-plugin-remove-serviceworker`,
   ],
 }

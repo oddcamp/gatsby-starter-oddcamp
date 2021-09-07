@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
-import Img from "gatsby-image/withIEPolyfill"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Meta from "../components/meta"
@@ -23,26 +23,33 @@ const Slide = styled.div`
   }
 `
 
-const CarouselPage = ({
-  data: { metaSite, imgDummy1, imgDummy2, imgDummy3 },
-}) => {
+const CarouselPage = ({ data: { imgDummy1, imgDummy2, imgDummy3 } }) => {
   const slides = [
     <Slide key={0}>
-      <Img fluid={imgDummy1.childImageSharp.fluid} alt="Dummy image" />
+      <GatsbyImage
+        image={imgDummy1.childImageSharp.gatsbyImageData}
+        alt="Dummy image"
+      />
     </Slide>,
 
     <Slide key={1}>
-      <Img fluid={imgDummy2.childImageSharp.fluid} alt="Dummy image" />
+      <GatsbyImage
+        image={imgDummy2.childImageSharp.gatsbyImageData}
+        alt="Dummy image"
+      />
     </Slide>,
 
     <Slide key={2}>
-      <Img fluid={imgDummy3.childImageSharp.fluid} alt="Dummy image" />
+      <GatsbyImage
+        image={imgDummy3.childImageSharp.gatsbyImageData}
+        alt="Dummy image"
+      />
     </Slide>,
   ]
 
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Carousel` }} />
+      <Meta data={{ title: `Carousel` }} />
 
       <Container>
         <Heading1>Carousel</Heading1>
@@ -61,38 +68,30 @@ export default CarouselPage
 
 export const pageQuery = graphql`
   query {
-    ...MetaSiteFragment
-
     imgDummy1: file(
-      sourceInstanceName: { eq: "images" }
+      sourceInstanceName: { eq: "content-images" }
       relativePath: { eq: "dummy1.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
 
     imgDummy2: file(
-      sourceInstanceName: { eq: "images" }
+      sourceInstanceName: { eq: "content-images" }
       relativePath: { eq: "dummy2.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
 
     imgDummy3: file(
-      sourceInstanceName: { eq: "images" }
+      sourceInstanceName: { eq: "content-images" }
       relativePath: { eq: "dummy3.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

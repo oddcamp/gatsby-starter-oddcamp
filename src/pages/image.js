@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { rem } from "polished"
-import Img from "gatsby-image/withIEPolyfill"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Meta from "../components/meta"
@@ -24,10 +24,10 @@ const Container = styled.article`
   }
 `
 
-const ImagePage = ({ data: { metaSite, imgDummy } }) => {
+const ImagePage = ({ data: { imgDummy } }) => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Image` }} />
+      <Meta data={{ title: `Image` }} />
 
       <Container>
         <Heading1>Image</Heading1>
@@ -36,7 +36,10 @@ const ImagePage = ({ data: { metaSite, imgDummy } }) => {
           Gatsby <em>fluid</em> image:
         </p>
 
-        <Img fluid={imgDummy.childImageSharp.fluid} alt="Dummy image" />
+        <GatsbyImage
+          image={imgDummy.childImageSharp.gatsbyImageData}
+          alt="Dummy image"
+        />
       </Container>
     </Layout>
   )
@@ -50,16 +53,12 @@ export default ImagePage
 
 export const pageQuery = graphql`
   query {
-    ...MetaSiteFragment
-
     imgDummy: file(
-      sourceInstanceName: { eq: "images" }
+      sourceInstanceName: { eq: "content-images" }
       relativePath: { eq: "dummy1.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

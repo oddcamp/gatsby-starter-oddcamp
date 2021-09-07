@@ -2,7 +2,6 @@ import { useState } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { rem } from "polished"
-import TrackingUtil from "@kollegorna/tracking-util"
 
 const Container = styled.div`
   width: 100%;
@@ -71,27 +70,7 @@ const CookiesConsent = ({
     return null
   }
 
-  let tu = window.trackingUtil
-  if (!tu) {
-    tu = new TrackingUtil({
-      enabled: process.env.NODE_ENV === `production`,
-      services: {
-        gtm: {
-          id: `GTM-XXXX`,
-        },
-      },
-    })
-  }
-
-  if (tu.userReacted()) {
-    return null
-  }
-
   const acceptTracking = (value) => {
-    tu.setTrackingAccepted(value, {
-      defaultGTMdataLayer: [{ event: `pageview` }],
-    })
-
     setReacted(true)
   }
 

@@ -1,6 +1,4 @@
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Meta from "../components/meta"
@@ -15,10 +13,10 @@ const Container = styled.article`
   }
 `
 
-const FormPage = ({ data: { metaSite } }) => {
+const FormPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Form` }} />
+      <Meta data={{ title: `Form` }} />
 
       <Container>
         <Heading1>Form</Heading1>
@@ -29,14 +27,4 @@ const FormPage = ({ data: { metaSite } }) => {
   )
 }
 
-FormPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default FormPage
-
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
-  }
-`
