@@ -15,6 +15,42 @@ import { ReactComponent as SvgArrowRight } from "../../assets/images/icons/arrow
 
 const slideGap = 15
 
+const Carousel = ({ slides, visibleSlides }) => {
+  if (!slides || !slides.length) return null
+
+  return (
+    <Container>
+      <CarouselProvider
+        visibleSlides={visibleSlides || 1}
+        totalSlides={slides.length}
+      >
+        <CarouselSlider aria-label="Carousel">
+          {slides.map((slide, i) => (
+            <CarouselSlide key={i}>{slide}</CarouselSlide>
+          ))}
+        </CarouselSlider>
+
+        <PrevNext>
+          <CarouselBack title="Previous">
+            <SvgArrowRight aria-label="Previous" />
+          </CarouselBack>
+
+          <CarouselNext title="Next">
+            <SvgArrowRight aria-label="Next" />
+          </CarouselNext>
+        </PrevNext>
+      </CarouselProvider>
+    </Container>
+  )
+}
+
+Carousel.propTypes = {
+  slides: PropTypes.array,
+  visibleSlides: PropTypes.number,
+}
+
+export default Carousel
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -106,39 +142,3 @@ const PrevNext = styled.div`
     }
   }
 `
-
-const Carousel = ({ slides, visibleSlides, ...props }) => {
-  if (!slides || !slides.length) return null
-
-  return (
-    <Container {...props}>
-      <CarouselProvider
-        visibleSlides={visibleSlides || 1}
-        totalSlides={slides.length}
-      >
-        <CarouselSlider aria-label="Carousel">
-          {slides.map((slide, i) => (
-            <CarouselSlide key={i}>{slide}</CarouselSlide>
-          ))}
-        </CarouselSlider>
-
-        <PrevNext>
-          <CarouselBack title="Previous">
-            <SvgArrowRight aria-label="Previous" />
-          </CarouselBack>
-
-          <CarouselNext title="Next">
-            <SvgArrowRight aria-label="Next" />
-          </CarouselNext>
-        </PrevNext>
-      </CarouselProvider>
-    </Container>
-  )
-}
-
-Carousel.propTypes = {
-  slides: PropTypes.array,
-  visibleSlides: PropTypes.number,
-}
-
-export default Carousel

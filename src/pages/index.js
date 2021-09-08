@@ -5,10 +5,6 @@ import Layout from "../components/layout"
 import Meta from "../components/meta"
 import Styled from "../components/styled"
 
-const Container = styled(Styled)`
-  ${({ theme }) => theme.grid.container()}
-`
-
 const IndexPage = () => {
   return (
     <Layout>
@@ -29,3 +25,7 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+const Container = styled(Styled)`
+  ${({ theme }) => theme.grid.container()}
+`

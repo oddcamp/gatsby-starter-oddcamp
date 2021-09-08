@@ -1,7 +1,44 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
+import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
+import { useCookies } from "react-cookie"
+
+const cookieName = `cookies-consent`
+
+const CookiesConsent = () => {
+  const [cookies, setCookie] = useCookies([cookieName])
+
+  if (typeof window === `undefined` || cookies[cookieName]) {
+    return null
+  }
+
+  const setTracking = (value) => {
+    setCookie(cookieName, value, { path: `/`, maxAge: 3600 * 24 * 30 * 12 })
+  }
+
+  return (
+    <Container>
+      <Box>
+        <Text>
+          Cookies will improve your browsing experiece. Would you like to accept
+          the cookies?
+        </Text>
+
+        <Cta>
+          <button type="button" onClick={() => setTracking(`accept`)}>
+            Accept
+          </button>
+
+          <button type="button" onClick={() => setTracking(`deny`)}>
+            Deny
+          </button>
+        </Cta>
+      </Box>
+    </Container>
+  )
+}
+
+export default CookiesConsent
 
 const Container = styled.div`
   width: 100%;
@@ -56,59 +93,3 @@ const Cta = styled.div`
     }
   }
 `
-
-const CookiesConsent = ({
-  disclaimer,
-  ctaAccept,
-  ctaDeny,
-  children,
-  ...props
-}) => {
-  const [reacted, setReacted] = useState(false)
-
-  if (typeof window === `undefined` || reacted) {
-    return null
-  }
-
-  const acceptTracking = (value) => {
-    setReacted(true)
-  }
-
-  return (
-    <Container {...props}>
-      <Box>
-        <Text
-          dangerouslySetInnerHTML={{
-            __html:
-              disclaimer ||
-              children ||
-              `Cookies will improve your browsing experiece. Would you like to accept the cookies?`,
-          }}
-        />
-
-        <Cta>
-          <button
-            type="button"
-            onClick={() => acceptTracking(true)}
-            dangerouslySetInnerHTML={{ __html: ctaAccept || `Accept` }}
-          />
-
-          <button
-            type="button"
-            onClick={() => acceptTracking(false)}
-            dangerouslySetInnerHTML={{ __html: ctaDeny || `Deny` }}
-          />
-        </Cta>
-      </Box>
-    </Container>
-  )
-}
-
-CookiesConsent.propTypes = {
-  children: PropTypes.node,
-  disclaimer: PropTypes.string,
-  ctaAccept: PropTypes.string,
-  ctaDeny: PropTypes.string,
-}
-
-export default CookiesConsent

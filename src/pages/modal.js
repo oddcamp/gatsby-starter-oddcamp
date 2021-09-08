@@ -8,10 +8,6 @@ import Modal from "../components/modal"
 import Styled from "../components/styled"
 import { Anchor } from "../components/styled/anchor"
 
-const Container = styled.div`
-  ${({ theme }) => theme.grid.container()}
-`
-
 const ModalPage = () => {
   const [isModalOpen, setModalOpen] = useState(false)
 
@@ -49,3 +45,7 @@ const ModalPage = () => {
 }
 
 export default ModalPage
+
+const Container = styled.div`
+  ${({ theme }) => theme.grid.container()}
+`

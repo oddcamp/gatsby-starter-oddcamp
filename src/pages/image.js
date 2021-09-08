@@ -9,22 +9,6 @@ import Layout from "../components/layout"
 import Meta from "../components/meta"
 import { Heading1 } from "../components/styled/heading"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-
-  .gatsby-image-wrapper {
-    max-width: ${rem(800)};
-  }
-`
-
 const ImagePage = ({ data: { imgDummy } }) => {
   return (
     <Layout>
@@ -62,5 +46,21 @@ export const pageQuery = graphql`
         gatsbyImageData(layout: FULL_WIDTH)
       }
     }
+  }
+`
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
+
+  .gatsby-image-wrapper {
+    max-width: ${rem(800)};
   }
 `

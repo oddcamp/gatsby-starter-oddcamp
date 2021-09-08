@@ -5,10 +5,6 @@ import Layout from "../components/layout"
 import Meta from "../components/meta"
 import Styled from "../components/styled"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-`
-
 const NotFoundPage = () => {
   return (
     <Layout>
@@ -26,3 +22,7 @@ const NotFoundPage = () => {
 }
 
 export default NotFoundPage
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+`

@@ -7,47 +7,6 @@ import Meta from "../components/meta"
 import Styled from "../components/styled"
 import { Heading1 } from "../components/styled/heading"
 
-const Article = styled.article`
-  > * + * {
-    margin-top: ${rem(60)};
-  }
-`
-
-const Heading = styled(Heading1)`
-  ${({ theme }) => theme.grid.container()}
-`
-
-const Container = styled(Styled)`
-  ${({ theme }) => theme.grid.container()}
-`
-
-const ContainerNarrow = styled.section`
-  ${({ theme }) => theme.grid.container(`narrow`)}
-`
-
-const Grid = styled.div`
-  ${({ theme }) => theme.grid.grid()}
-  ${({ theme }) => theme.grid.gridGutterY(20)}
-  ${({ theme, gaps }) =>
-    theme.grid.gridGutterX(gaps ? 40 : null, { nested: true })}
-
-  margin-top: ${rem(20)};
-  margin-bottom: ${rem(20)};
-
-  > * {
-    ${({ theme }) => theme.grid.cell(4)}
-
-    @media ${({ theme }) => theme.mq.mediumDown} {
-      ${({ theme }) => theme.grid.cell(12)}
-    }
-  }
-`
-
-const Card = styled.div`
-  padding: ${rem(30)};
-  border: 1px solid;
-`
-
 const GridPage = () => {
   return (
     <Layout>
@@ -117,3 +76,44 @@ const GridPage = () => {
 }
 
 export default GridPage
+
+const Article = styled.article`
+  > * + * {
+    margin-top: ${rem(60)};
+  }
+`
+
+const Heading = styled(Heading1)`
+  ${({ theme }) => theme.grid.container()}
+`
+
+const Container = styled(Styled)`
+  ${({ theme }) => theme.grid.container()}
+`
+
+const ContainerNarrow = styled.section`
+  ${({ theme }) => theme.grid.container(`narrow`)}
+`
+
+const Grid = styled.div`
+  ${({ theme }) => theme.grid.grid()}
+  ${({ theme }) => theme.grid.gridGutterY(20)}
+  ${({ theme, gaps }) =>
+    theme.grid.gridGutterX(gaps ? 40 : null, { nested: true })}
+
+  margin-top: ${rem(20)};
+  margin-bottom: ${rem(20)};
+
+  > * {
+    ${({ theme }) => theme.grid.cell(4)}
+
+    @media ${({ theme }) => theme.mq.mediumDown} {
+      ${({ theme }) => theme.grid.cell(12)}
+    }
+  }
+`
+
+const Card = styled.div`
+  padding: ${rem(30)};
+  border: 1px solid;
+`

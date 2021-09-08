@@ -7,6 +7,56 @@ import { rem } from "polished"
 
 import { ReactComponent as DeleteSvg } from "../../assets/images/icons/delete.svg"
 
+const Modal = ({
+  children,
+  onRequestClose,
+  title,
+  closeOnOutsideClick = true,
+}) => {
+  const outsideRef = useRef()
+
+  const outsideClick = (e) => {
+    if (e.target === outsideRef.current) {
+      e.preventDefault()
+      onRequestClose(e)
+    }
+  }
+
+  return (
+    <ReactModalStyled
+      isOpen={true}
+      defaultStyles={{}}
+      onRequestClose={onRequestClose}
+      ariaHideApp={false}
+      contentLabel={title}
+    >
+      <RemoveScrollStyled
+        ref={outsideRef}
+        onClick={closeOnOutsideClick ? outsideClick : undefined}
+      >
+        <Content>
+          <div>
+            <CloseButton onClick={onRequestClose} title="Close">
+              <DeleteSvg aria-label="Close" />
+            </CloseButton>
+
+            {children}
+          </div>
+        </Content>
+      </RemoveScrollStyled>
+    </ReactModalStyled>
+  )
+}
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  closeOnOutsideClick: PropTypes.bool,
+}
+
+export default Modal
+
 const ReactModalStyled = styled(ReactModal)`
   width: 100%;
   height: 100%;
@@ -77,53 +127,3 @@ const Content = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
   }
 `
-
-const Modal = ({
-  children,
-  onRequestClose,
-  title,
-  closeOnOutsideClick = true,
-}) => {
-  const outsideRef = useRef()
-
-  const outsideClick = (e) => {
-    if (e.target === outsideRef.current) {
-      e.preventDefault()
-      onRequestClose(e)
-    }
-  }
-
-  return (
-    <ReactModalStyled
-      isOpen={true}
-      defaultStyles={{}}
-      onRequestClose={onRequestClose}
-      ariaHideApp={false}
-      contentLabel={title}
-    >
-      <RemoveScrollStyled
-        ref={outsideRef}
-        onClick={closeOnOutsideClick ? outsideClick : undefined}
-      >
-        <Content>
-          <div>
-            <CloseButton onClick={onRequestClose} title="Close">
-              <DeleteSvg aria-label="Close" />
-            </CloseButton>
-
-            {children}
-          </div>
-        </Content>
-      </RemoveScrollStyled>
-    </ReactModalStyled>
-  )
-}
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  onRequestClose: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  closeOnOutsideClick: PropTypes.bool,
-}
-
-export default Modal

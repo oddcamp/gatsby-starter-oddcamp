@@ -21,24 +21,7 @@ const initialValues = {
   terms: false,
 }
 
-const Row = styled.div`
-  margin-top: 1em;
-`
-
-const Done = styled.p`
-  padding: 1.5em;
-  background-color: rebeccapurple;
-  color: ${({ theme }) => theme.colors.white};
-`
-
-const Container = styled.div`
-  width: 100%;
-  max-width: ${rem(640)};
-  padding: 2em;
-  border: 2px solid;
-`
-
-const ContactForm = (props) => {
+const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false)
 
   const submit = (values, { resetForm }) => {
@@ -47,7 +30,7 @@ const ContactForm = (props) => {
   }
 
   return (
-    <Container {...props}>
+    <Container>
       {submitted && <Done>Well done, {submitted.name}!</Done>}
 
       <Formik
@@ -94,7 +77,7 @@ const ContactForm = (props) => {
             </Row>
 
             <Row>
-              <Button type="submit" large={true}>
+              <Button type="submit" large="true">
                 Submit
               </Button>
             </Row>
@@ -106,3 +89,20 @@ const ContactForm = (props) => {
 }
 
 export default ContactForm
+
+const Row = styled.div`
+  margin-top: 1em;
+`
+
+const Done = styled.p`
+  padding: 1.5em;
+  background-color: rebeccapurple;
+  color: ${({ theme }) => theme.colors.white};
+`
+
+const Container = styled.div`
+  width: 100%;
+  max-width: ${rem(640)};
+  padding: 2em;
+  border: 2px solid;
+`

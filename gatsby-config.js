@@ -4,11 +4,11 @@ const NETLIFY_ENV = process.env.CONTEXT || process.env.NODE_ENV
 const URL = process.env.URL
 
 const lang = `en`
-const name = `Gatsby Starter Odd Camp`
+const name = `GatsbyJS Starter by Odd Camp`
 const shortName = name // change this if `name` is longer than 12 characters
 const title = `With love by Odd Camp`
 const titlePattern = `[PAGE_TITLE] — [SITE_NAME]`
-const description = `WordPress-ready GatsbyJS starter`
+const description = `Odd Camp GatsbyJS starter`
 const socialImage = `/meta-images/social.jpg` // 1600x840
 const robotsNoFollow = false
 const robotsNoIndex = false

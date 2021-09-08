@@ -5,9 +5,7 @@ import PropTypes from "prop-types"
 import truncateHtml from "truncate-html"
 import he from "he"
 
-import { normalizeWpSiteMeta, normalizeWpPageMeta } from "./utils"
-
-const Meta = ({ metaWpSite = {}, metaWpPage = {}, data = {} }) => {
+const Meta = ({ data = {} }) => {
   const {
     site: { siteMetadata: metaSite },
   } = useStaticQuery(graphql`
@@ -37,13 +35,8 @@ const Meta = ({ metaWpSite = {}, metaWpPage = {}, data = {} }) => {
     }
   `)
 
-  metaWpSite = normalizeWpSiteMeta(metaWpSite)
-  metaWpPage = normalizeWpPageMeta(metaWpPage)
-
   const meta = {
     ...metaSite,
-    ...metaWpSite,
-    ...metaWpPage,
     ...data,
   }
 
@@ -207,8 +200,6 @@ const Meta = ({ metaWpSite = {}, metaWpPage = {}, data = {} }) => {
 
 Meta.propTypes = {
   metaSite: PropTypes.object,
-  metaWpSite: PropTypes.object,
-  metaWpPage: PropTypes.object,
   data: PropTypes.object,
 }
 

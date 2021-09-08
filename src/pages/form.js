@@ -6,14 +6,6 @@ import Meta from "../components/meta"
 import ContactForm from "../components/contact-form"
 import { Heading1 } from "../components/styled/heading"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-`
-
 const FormPage = () => {
   return (
     <Layout>
@@ -29,3 +21,11 @@ const FormPage = () => {
 }
 
 export default FormPage
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
+`

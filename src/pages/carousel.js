@@ -10,20 +10,6 @@ import Meta from "../components/meta"
 import Carousel from "../components/carousel"
 import { Heading1 } from "../components/styled/heading"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-`
-
-const Slide = styled.div`
-  > .gatsby-image-wrapper {
-    height: 80vh;
-  }
-`
-
 const CarouselPage = ({ data: { imgDummy1, imgDummy2, imgDummy3 } }) => {
   const slides = [
     <Slide key={0}>
@@ -95,5 +81,19 @@ export const pageQuery = graphql`
         gatsbyImageData(layout: FULL_WIDTH)
       }
     }
+  }
+`
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+`
+
+const Slide = styled.div`
+  > .gatsby-image-wrapper {
+    height: 80vh;
   }
 `

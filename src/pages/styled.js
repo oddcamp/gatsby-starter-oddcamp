@@ -8,38 +8,6 @@ import Styled from "../components/styled"
 import { Heading2, heading2Styles } from "../components/styled/heading"
 import { Paragraph, paragraphStyles } from "../components/styled/paragraph"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > div {
-    max-width: ${rem(768)};
-
-    > * + * {
-      margin-top: ${rem(40)};
-    }
-  }
-`
-
-const Tags = styled.section`
-  > * + * {
-    margin-top: ${rem(20)};
-  }
-`
-
-const Styles = styled.section`
-  > * + * {
-    margin-top: ${rem(20)};
-  }
-
-  h2 {
-    ${heading2Styles}
-  }
-
-  p {
-    ${paragraphStyles}
-  }
-`
-
 const StyledPage = () => {
   return (
     <Layout>
@@ -92,15 +60,19 @@ const StyledPage = () => {
 
             <table>
               <thead>
-                <th>Col 1</th>
+                <tr>
+                  <th>Col 1</th>
 
-                <th>Col 2</th>
+                  <th>Col 2</th>
+                </tr>
               </thead>
 
               <tbody>
-                <td>Cell 1</td>
+                <tr>
+                  <td>Cell 1</td>
 
-                <td>Cell 2</td>
+                  <td>Cell 2</td>
+                </tr>
               </tbody>
             </table>
 
@@ -147,3 +119,35 @@ const StyledPage = () => {
 }
 
 export default StyledPage
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > div {
+    max-width: ${rem(768)};
+
+    > * + * {
+      margin-top: ${rem(40)};
+    }
+  }
+`
+
+const Tags = styled.section`
+  > * + * {
+    margin-top: ${rem(20)};
+  }
+`
+
+const Styles = styled.section`
+  > * + * {
+    margin-top: ${rem(20)};
+  }
+
+  h2 {
+    ${heading2Styles}
+  }
+
+  p {
+    ${paragraphStyles}
+  }
+`

@@ -8,18 +8,6 @@ import Button from "../components/button"
 import { Heading1 } from "../components/styled/heading"
 import { Paragraph } from "../components/styled/paragraph"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-`
-
 const ButtonPage = () => {
   return (
     <Layout>
@@ -50,7 +38,7 @@ const ButtonPage = () => {
         </Paragraph>
 
         <p>
-          <Button to="/button" large={true}>
+          <Button to="/button" large="true">
             I'm slightly larger
           </Button>
         </p>
@@ -60,3 +48,15 @@ const ButtonPage = () => {
 }
 
 export default ButtonPage
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
+`

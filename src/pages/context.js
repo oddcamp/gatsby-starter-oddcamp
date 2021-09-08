@@ -8,18 +8,6 @@ import { Heading1 } from "../components/styled/heading"
 import { Anchor } from "../components/styled/anchor"
 import { StoreConsumer } from "../store"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-`
-
 const ContextPage = () => {
   return (
     <Layout>
@@ -47,3 +35,15 @@ const ContextPage = () => {
 }
 
 export default ContextPage
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
+`

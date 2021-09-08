@@ -9,24 +9,6 @@ import logoSvgUrl, {
   ReactComponent as LogoSvg,
 } from "../assets/images/logo.svg"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-
-  img,
-  svg {
-    width: ${rem(80)};
-    height: ${rem(80)};
-  }
-`
-
 const SvgPage = () => {
   return (
     <Layout>
@@ -54,3 +36,21 @@ const SvgPage = () => {
 }
 
 export default SvgPage
+
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
+
+  img,
+  svg {
+    width: ${rem(80)};
+    height: ${rem(80)};
+  }
+`

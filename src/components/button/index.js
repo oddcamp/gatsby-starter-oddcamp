@@ -5,6 +5,21 @@ import { rem } from "polished"
 
 import Link from "../link"
 
+const Button = ({ children, to, ...rest }) => {
+  return (
+    <Container as={to ? Link : undefined} to={to} {...rest}>
+      {children}
+    </Container>
+  )
+}
+
+Button.propTypes = {
+  children: PropTypes.node,
+  to: PropTypes.string,
+}
+
+export default Button
+
 const Container = styled.button`
   ${({ theme }) => theme.fonts.set(`primary`, `bold`)};
 
@@ -21,24 +36,9 @@ const Container = styled.button`
     opacity: 0.6;
   }
 
-  ${(props) =>
-    props.large &&
+  ${({ large }) =>
+    large &&
     css`
       font-size: ${rem(18)};
     `}
 `
-
-const Button = ({ children, to, ...rest }) => {
-  return (
-    <Container as={to ? Link : undefined} to={to} {...rest}>
-      {children}
-    </Container>
-  )
-}
-
-Button.propTypes = {
-  children: PropTypes.node,
-  to: PropTypes.string,
-}
-
-export default Button

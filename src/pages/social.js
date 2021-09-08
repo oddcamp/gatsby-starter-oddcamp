@@ -9,10 +9,6 @@ import Meta from "../components/meta"
 import Link from "../components/link"
 import Styled from "../components/styled"
 
-const Container = styled(Styled)`
-  ${({ theme }) => theme.grid.container()}
-`
-
 const SocialPage = ({ data }) => {
   return (
     <Layout>
@@ -84,4 +80,8 @@ export const pageQuery = graphql`
       }
     }
   }
+`
+
+const Container = styled(Styled)`
+  ${({ theme }) => theme.grid.container()}
 `
