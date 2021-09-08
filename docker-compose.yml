@@ -7,7 +7,7 @@ services:
       context: .
       args:
         GITHUB_ACCESS_TOKEN: "${GITHUB_ACCESS_TOKEN}"
-    image: gatsby-starter-kollegorna
+    image: gatsby-starter-oddcamp
     volumes:
       - .:/app:delegated
       - cache:/app/.cache
