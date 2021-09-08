@@ -8,19 +8,13 @@ Our default starter for GatsbyJS projects at [Odd Camp](https://www.oddcamp.com)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/88f45bf8-a663-4483-bf7d-a1f47ab251c8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-kollegorna/deploys)
 
-## Private packages
+## Environment variables
 
-**Note: This is only needed if it's using packages from Github Packages**
+```
+URL=http://localhost:8000
+```
 
-If a project is using a private package (such as a `components` package), you can do a change where you put your token in the `.env` file instead of having it globally on the shell. For that to work you need to put `GITHUB_ACCESS_TOKEN=<YOUR TOKEN>` in the `.env` and uncomment the `- .env` file in `docker-compose.yml` and rebuild by running `docker-compose build --force --no-cache`
-
-**To get your Token and set the project up:**
-
-1. Get your [Github Access Token here](https://github.com/settings/tokens).
-2. Put `GITHUB_ACCESS_TOKEN=<TOKEN>` in the `.env` file.
-3. Add `"preinstall": "node ./scripts/append-gha.js",` to the `scripts` hash in `package.json`.
-   This makes sure that the keys are set before running yarn.
-4. Add our `k-deployer` token in the Netlify (or whatever system you use) in the `GITHUB_ACCESS_TOKEN` environment variable.
+`URL` is set automatically in Netlify.
 
 ## Development Container
 
@@ -69,3 +63,17 @@ Or `$ yarn develop-n` for sharing the server on your network (`192.168.X.X:8000`
 2. Serve the build `$ yarn serve`: [localhost:9000](http://localhost:9000)
 
 Or `$ yarn serve-n` for sharing the server on your network (`192.168.X.X:9000`)
+
+## Private packages
+
+**Note: This is only needed if it's using packages from Github Packages**
+
+If a project is using a private package (such as a `components` package), you can do a change where you put your token in the `.env` file instead of having it globally on the shell. For that to work you need to put `GITHUB_ACCESS_TOKEN=<YOUR TOKEN>` in the `.env` and uncomment the `- .env` file in `docker-compose.yml` and rebuild by running `docker-compose build --force --no-cache`
+
+**To get your Token and set the project up:**
+
+1. Get your [Github Access Token here](https://github.com/settings/tokens).
+2. Put `GITHUB_ACCESS_TOKEN=<TOKEN>` in the `.env` file.
+3. Add `"preinstall": "node ./scripts/append-gha.js",` to the `scripts` hash in `package.json`.
+   This makes sure that the keys are set before running yarn.
+4. Add our `k-deployer` token in the Netlify (or whatever system you use) in the `GITHUB_ACCESS_TOKEN` environment variable.
