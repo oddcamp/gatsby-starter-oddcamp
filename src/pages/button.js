@@ -1,5 +1,4 @@
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -9,22 +8,10 @@ import Button from "../components/button"
 import { Heading1 } from "../components/styled/heading"
 import { Paragraph } from "../components/styled/paragraph"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-`
-
-const ButtonPage = ({ data: { metaSite } }) => {
+const ButtonPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Button` }} />
+      <Meta data={{ title: `Button` }} />
 
       <Container>
         <Heading1>Button</Heading1>
@@ -51,7 +38,7 @@ const ButtonPage = ({ data: { metaSite } }) => {
         </Paragraph>
 
         <p>
-          <Button to="/button" large={true}>
+          <Button to="/button" large="true">
             I'm slightly larger
           </Button>
         </p>
@@ -60,14 +47,16 @@ const ButtonPage = ({ data: { metaSite } }) => {
   )
 }
 
-ButtonPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default ButtonPage
 
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
   }
 `

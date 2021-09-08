@@ -1,6 +1,5 @@
-import PropTypes from "prop-types"
+import React from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
 import { rem } from "polished"
 
 import Layout from "../components/layout"
@@ -9,42 +8,10 @@ import Styled from "../components/styled"
 import { Heading2, heading2Styles } from "../components/styled/heading"
 import { Paragraph, paragraphStyles } from "../components/styled/paragraph"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > div {
-    max-width: ${rem(768)};
-
-    > * + * {
-      margin-top: ${rem(40)};
-    }
-  }
-`
-
-const Tags = styled.section`
-  > * + * {
-    margin-top: ${rem(20)};
-  }
-`
-
-const Styles = styled.section`
-  > * + * {
-    margin-top: ${rem(20)};
-  }
-
-  h2 {
-    ${heading2Styles}
-  }
-
-  p {
-    ${paragraphStyles}
-  }
-`
-
-const StyledPage = ({ data: { metaSite } }) => {
+const StyledPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Styled` }} />
+      <Meta data={{ title: `Styled` }} />
 
       <Container>
         <div>
@@ -93,15 +60,19 @@ const StyledPage = ({ data: { metaSite } }) => {
 
             <table>
               <thead>
-                <th>Col 1</th>
+                <tr>
+                  <th>Col 1</th>
 
-                <th>Col 2</th>
+                  <th>Col 2</th>
+                </tr>
               </thead>
 
               <tbody>
-                <td>Cell 1</td>
+                <tr>
+                  <td>Cell 1</td>
 
-                <td>Cell 2</td>
+                  <td>Cell 2</td>
+                </tr>
               </tbody>
             </table>
 
@@ -147,14 +118,36 @@ const StyledPage = ({ data: { metaSite } }) => {
   )
 }
 
-StyledPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default StyledPage
 
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > div {
+    max-width: ${rem(768)};
+
+    > * + * {
+      margin-top: ${rem(40)};
+    }
+  }
+`
+
+const Tags = styled.section`
+  > * + * {
+    margin-top: ${rem(20)};
+  }
+`
+
+const Styles = styled.section`
+  > * + * {
+    margin-top: ${rem(20)};
+  }
+
+  h2 {
+    ${heading2Styles}
+  }
+
+  p {
+    ${paragraphStyles}
   }
 `

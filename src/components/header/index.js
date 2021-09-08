@@ -1,3 +1,4 @@
+import React from "react"
 import styled, { css } from "styled-components"
 import { rem } from "polished"
 
@@ -19,6 +20,44 @@ const nav = [
   { url: `/context`, title: `Context` },
 ]
 
+const Header = () => {
+  return (
+    <StoreConsumer>
+      {({ headerInverted }) => (
+        <Container inverted={headerInverted}>
+          <Inner>
+            <Logo>
+              <Link
+                to="/"
+                data-track-click
+                data-track-click-ga-category="Header"
+                data-track-click-ga-action="Logo Click"
+                data-track-click-ga-label="Home"
+              >
+                <LogoSvg aria-hidden="true" />
+
+                <span>GatsbyJS Starter</span>
+              </Link>
+            </Logo>
+
+            {nav && nav.length > 0 && (
+              <Nav>
+                {nav.map((item, i) => (
+                  <Link key={i} to={item.url} activeClassName="--active">
+                    {item.title}
+                  </Link>
+                ))}
+              </Nav>
+            )}
+          </Inner>
+        </Container>
+      )}
+    </StoreConsumer>
+  )
+}
+
+export default Header
+
 const Container = styled.header`
   margin-bottom: ${rem(80)};
   padding: ${rem(30)} 0;
@@ -32,8 +71,8 @@ const Container = styled.header`
     padding-right: ${rem(20)};
   }
 
-  ${(props) =>
-    props.inverted &&
+  ${({ inverted }) =>
+    inverted &&
     css`
       color: ${({ theme }) => theme.colors.black};
       background-color: ${({ theme }) => theme.colors.white};
@@ -91,41 +130,3 @@ const Nav = styled.nav`
     }
   }
 `
-
-const Header = () => {
-  return (
-    <StoreConsumer>
-      {({ headerInverted }) => (
-        <Container inverted={headerInverted}>
-          <Inner>
-            <Logo>
-              <Link
-                to="/"
-                data-track-click
-                data-track-click-ga-category="Header"
-                data-track-click-ga-action="Logo Click"
-                data-track-click-ga-label="Home"
-              >
-                <LogoSvg aria-hidden="true" />
-
-                <span>GatsbyJS Starter</span>
-              </Link>
-            </Logo>
-
-            {nav && nav.length > 0 && (
-              <Nav>
-                {nav.map((item, i) => (
-                  <Link key={i} to={item.url} activeClassName="--active">
-                    {item.title}
-                  </Link>
-                ))}
-              </Nav>
-            )}
-          </Inner>
-        </Container>
-      )}
-    </StoreConsumer>
-  )
-}
-
-export default Header

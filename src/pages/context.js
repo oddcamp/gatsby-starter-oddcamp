@@ -1,5 +1,4 @@
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -9,22 +8,10 @@ import { Heading1 } from "../components/styled/heading"
 import { Anchor } from "../components/styled/anchor"
 import { StoreConsumer } from "../store"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-`
-
-const ContextPage = ({ data: { metaSite } }) => {
+const ContextPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Context` }} />
+      <Meta data={{ title: `Context` }} />
 
       <Container>
         <Heading1>Context</Heading1>
@@ -47,14 +34,16 @@ const ContextPage = ({ data: { metaSite } }) => {
   )
 }
 
-ContextPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default ContextPage
 
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
   }
 `

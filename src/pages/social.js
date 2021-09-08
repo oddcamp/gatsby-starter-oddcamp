@@ -1,3 +1,4 @@
+import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import styled from "styled-components"
@@ -8,14 +9,10 @@ import Meta from "../components/meta"
 import Link from "../components/link"
 import Styled from "../components/styled"
 
-const Container = styled(Styled)`
-  ${({ theme }) => theme.grid.container()}
-`
-
-const SocialPage = ({ data: { metaSite } }) => {
+const SocialPage = ({ data }) => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `Social` }} />
+      <Meta data={{ title: `Social` }} />
 
       <Container as="article">
         <h1>Social sharing</h1>
@@ -27,7 +24,7 @@ const SocialPage = ({ data: { metaSite } }) => {
 
         <Location>
           {({ location }) => {
-            const pageUrl = metaSite.fields.baseUrl + location.pathname
+            const pageUrl = data.site.siteMetadata.siteUrl + location.pathname
 
             return (
               <ul>
@@ -77,6 +74,14 @@ export default SocialPage
 
 export const pageQuery = graphql`
   query {
-    ...MetaSiteFragment
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
   }
+`
+
+const Container = styled(Styled)`
+  ${({ theme }) => theme.grid.container()}
 `

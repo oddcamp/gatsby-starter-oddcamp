@@ -1,9 +1,65 @@
-import { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 import uuid from "uuid-random"
 import styled, { css } from "styled-components"
 import { rem, rgba } from "polished"
 import { Field as FormikField, ErrorMessage, connect, getIn } from "formik"
+
+const Field = (props) => {
+  const fieldRef = useRef()
+
+  const trackSelectState = () => {
+    fieldRef.current.classList.toggle(`--placeholder`, !fieldRef.current.value)
+  }
+
+  useEffect(() => {
+    if (props.component === `select`) {
+      trackSelectState()
+      fieldRef.current.addEventListener(`change`, trackSelectState)
+      fieldRef.current.addEventListener(`blur`, trackSelectState)
+    }
+  })
+
+  const id = uuid()
+  const errorId = `${id}-error`
+  const { label, className, formik, ...rest } = props
+  const hasErrors =
+    getIn(formik.errors, props.name) && getIn(formik.touched, props.name)
+
+  return (
+    <Container className={className} type={props.type || props.component}>
+      <label htmlFor={id}>{label}</label>
+
+      <FormikField
+        innerRef={fieldRef}
+        id={id}
+        aria-invalid={hasErrors ? `true` : undefined}
+        aria-describedby={hasErrors ? errorId : undefined}
+        {...rest}
+      />
+
+      <ErrorMessage
+        name={props.name}
+        render={(msg) => (
+          <div className="-error" id={errorId}>
+            <div>{msg}</div>
+          </div>
+        )}
+      />
+    </Container>
+  )
+}
+
+Field.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  component: PropTypes.string,
+  className: PropTypes.string,
+  formik: PropTypes.object,
+}
+
+export default connect(Field)
 
 const Container = styled.div`
   display: flex;
@@ -86,8 +142,8 @@ const Container = styled.div`
     }
   }
 
-  ${(props) =>
-    ![`checkbox`, `radio`].includes(props.type) &&
+  ${({ type }) =>
+    ![`checkbox`, `radio`].includes(type) &&
     css`
       label {
         ${({ theme }) => theme.fonts.set(`primary`, `bold`)};
@@ -98,8 +154,8 @@ const Container = styled.div`
       }
     `}
 
-  ${(props) =>
-    [`checkbox`, `radio`].includes(props.type) &&
+  ${({ type }) =>
+    [`checkbox`, `radio`].includes(type) &&
     css`
       display: flex;
       align-items: center;
@@ -129,66 +185,11 @@ const Container = styled.div`
       }
     `}
 
-  ${(props) =>
-    props.type === `radio` &&
+  ${({ type }) =>
+    type === `radio` &&
     css`
       input {
         border-radius: 50%;
       }
     `}
 `
-
-const Field = (props) => {
-  const fieldRef = useRef()
-  const trackSelectState = () => {
-    fieldRef.current.classList.toggle(`--placeholder`, !fieldRef.current.value)
-  }
-
-  useEffect(() => {
-    if (props.component === `select`) {
-      trackSelectState()
-      fieldRef.current.addEventListener(`change`, trackSelectState)
-      fieldRef.current.addEventListener(`blur`, trackSelectState)
-    }
-  })
-
-  const id = uuid()
-  const errorId = `${id}-error`
-  const { label, className, formik, ...rest } = props
-  const hasErrors =
-    getIn(formik.errors, props.name) && getIn(formik.touched, props.name)
-
-  return (
-    <Container className={className} type={props.type || props.component}>
-      <label htmlFor={id}>{label}</label>
-
-      <FormikField
-        innerRef={fieldRef}
-        id={id}
-        aria-invalid={hasErrors ? `true` : undefined}
-        aria-describedby={hasErrors ? errorId : undefined}
-        {...rest}
-      />
-
-      <ErrorMessage
-        name={props.name}
-        render={(msg) => (
-          <div className="-error" id={errorId}>
-            <div>{msg}</div>
-          </div>
-        )}
-      />
-    </Container>
-  )
-}
-
-Field.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  component: PropTypes.string,
-  className: PropTypes.string,
-  formik: PropTypes.object,
-}
-
-export default connect(Field)

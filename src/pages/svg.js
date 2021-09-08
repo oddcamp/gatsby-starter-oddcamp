@@ -1,5 +1,4 @@
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -10,28 +9,10 @@ import logoSvgUrl, {
   ReactComponent as LogoSvg,
 } from "../assets/images/logo.svg"
 
-const Container = styled.article`
-  ${({ theme }) => theme.grid.container()}
-
-  > *:not(:last-child) {
-    margin-bottom: ${rem(20)};
-  }
-
-  ${Heading1} {
-    margin-bottom: 0.5em;
-  }
-
-  img,
-  svg {
-    width: ${rem(80)};
-    height: ${rem(80)};
-  }
-`
-
-const SvgPage = ({ data: { metaSite } }) => {
+const SvgPage = () => {
   return (
     <Layout>
-      <Meta metaSite={metaSite} data={{ title: `SVG` }} />
+      <Meta data={{ title: `SVG` }} />
 
       <Container>
         <Heading1>SVG</Heading1>
@@ -54,14 +35,22 @@ const SvgPage = ({ data: { metaSite } }) => {
   )
 }
 
-SvgPage.propTypes = {
-  data: PropTypes.object,
-}
-
 export default SvgPage
 
-export const pageQuery = graphql`
-  query {
-    ...MetaSiteFragment
+const Container = styled.article`
+  ${({ theme }) => theme.grid.container()}
+
+  > *:not(:last-child) {
+    margin-bottom: ${rem(20)};
+  }
+
+  ${Heading1} {
+    margin-bottom: 0.5em;
+  }
+
+  img,
+  svg {
+    width: ${rem(80)};
+    height: ${rem(80)};
   }
 `

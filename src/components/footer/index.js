@@ -1,6 +1,33 @@
+import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 import { Location } from "@reach/router"
+
+const Footer = () => {
+  return (
+    <Container>
+      <Inner>
+        <Copy>
+          &copy;
+          {` `}
+          {new Date().getFullYear()}
+          {` `}
+          &middot;
+          {` `}
+          GatsbyJS Starter
+        </Copy>
+
+        <Route>
+          Current route:
+          {` `}
+          <Location>{({ location }) => location.pathname}</Location>
+        </Route>
+      </Inner>
+    </Container>
+  )
+}
+
+export default Footer
 
 const Container = styled.footer`
   margin-top: ${rem(80)};
@@ -41,29 +68,3 @@ const Route = styled.div`
     text-align: left;
   }
 `
-
-const Footer = () => {
-  return (
-    <Container>
-      <Inner>
-        <Copy>
-          &copy;
-          {` `}
-          {new Date().getFullYear()}
-          {` `}
-          &middot;
-          {` `}
-          GatsbyJS Starter
-        </Copy>
-
-        <Route>
-          Current route:
-          {` `}
-          <Location>{({ location }) => location.pathname}</Location>
-        </Route>
-      </Inner>
-    </Container>
-  )
-}
-
-export default Footer
