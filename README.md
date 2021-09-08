@@ -1,12 +1,12 @@
-# gatsby-starter-kollegorna
+# gatsby-starter-oddcamp
 
 Our default starter for GatsbyJS projects at [Odd Camp](https://www.oddcamp.com).
 
 ## Online demo
 
-[https://gatsby-starter-kollegorna.netlify.app](https://gatsby-starter-kollegorna.netlify.app)
+[https://gatsby-starter-oddcamp.netlify.app](https://gatsby-starter-oddcamp.netlify.app)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/88f45bf8-a663-4483-bf7d-a1f47ab251c8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-kollegorna/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/88f45bf8-a663-4483-bf7d-a1f47ab251c8/deploy-status)](https://app.netlify.com/sites/gatsby-starter-oddcamp/deploys)
 
 ## Environment variables
 
