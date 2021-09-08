@@ -10,6 +10,8 @@ Our default starter for GatsbyJS projects at [Odd Camp](https://www.oddcamp.com)
 
 ## Environment variables
 
+Create `.env` file when developing locally:
+
 ```
 URL=http://localhost:8000
 ```
