@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
-import uuid from "uuid-random"
+import { nanoid } from "nanoid"
 import styled, { css } from "styled-components"
 import { rem, rgba } from "polished"
 import { Field as FormikField, ErrorMessage, connect, getIn } from "formik"
@@ -20,7 +20,7 @@ const Field = (props) => {
     }
   })
 
-  const id = uuid()
+  const id = nanoid()
   const errorId = `${id}-error`
   const { label, className, formik, ...rest } = props
   const hasErrors =
