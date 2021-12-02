@@ -10,6 +10,8 @@ import Link from "../components/link"
 import Styled from "../components/styled"
 
 const SocialPage = ({ data }) => {
+  if (!data) return null
+
   return (
     <Layout>
       <Meta data={{ title: `Social` }} />
@@ -72,15 +74,15 @@ SocialPage.propTypes = {
 
 export default SocialPage
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query {
+//     site {
+//       siteMetadata {
+//         siteUrl
+//       }
+//     }
+//   }
+// `
 
 const Container = styled(Styled)`
   ${({ theme }) => theme.grid.container()}
