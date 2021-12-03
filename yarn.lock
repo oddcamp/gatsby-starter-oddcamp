@@ -1719,12 +1719,12 @@
 
 "@oddcamp/js-utils@^1.1.4":
   version "1.1.4"
-  resolved "https://npm.pkg.github.com/download/@oddcamp/js-utils/1.1.4/6a60e6a2f8b94dd64a23811824ec188570fe149dccebf08ff022dfe9e89ba2a2#e7d1657be09b09364a4525204249782c1fc54804"
+  resolved "https://registry.yarnpkg.com/@oddcamp/js-utils/-/js-utils-1.1.4.tgz#e7d1657be09b09364a4525204249782c1fc54804"
   integrity sha512-YlWQMYHXLrkwwl3ywCEED3nqGSXsZuN7kAqu6mN3B7RmZxBcoqudKBnaSyOeSHeEACspxqbKJUcRjXympFUqUQ==
 
 "@oddcamp/sass-utils@^1.2.2":
   version "1.2.2"
-  resolved "https://npm.pkg.github.com/download/@oddcamp/sass-utils/1.2.2/b2afe33a00cf8aa0d47cb459b3cdc1685eea9b252af3f89792c38a286e2b3114#086e5833aa4f856a8749add228e798c193dcd1f7"
+  resolved "https://registry.yarnpkg.com/@oddcamp/sass-utils/-/sass-utils-1.2.2.tgz#086e5833aa4f856a8749add228e798c193dcd1f7"
   integrity sha512-wX8FqsnW6C1bdwIkmNb9oMFJfLsFg8aemReMFvamr3s2jQTlHZkkp5d3zyZHOUJTFmgchQvni49/bp4PYl2Etw==
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
@@ -4925,7 +4925,7 @@ eslint-plugin-graphql@^4.0.0:
     lodash.flatten "^4.4.0"
     lodash.without "^4.4.0"
 
-eslint-plugin-import@^2.24.2, eslint-plugin-import@^2.25.2:
+eslint-plugin-import@^2.25.2, eslint-plugin-import@^2.25.3:
   version "2.25.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.3.tgz#a554b5f66e08fb4f6dc99221866e57cfff824766"
   integrity sha512-RzAVbby+72IB3iOEL8clzPLzL3wpDrlwjsTBAQXgyp5SeTqqY+0bFubwuo+y/HLhNZcXV4XqTBO4LGsfyHIDXg==
@@ -4944,7 +4944,7 @@ eslint-plugin-import@^2.24.2, eslint-plugin-import@^2.25.2:
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
 
-eslint-plugin-jsx-a11y@^6.4.1:
+eslint-plugin-jsx-a11y@^6.4.1, eslint-plugin-jsx-a11y@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.5.1.tgz#cdbf2df901040ca140b6ec14715c988889c2a6d8"
   integrity sha512-sVCFKX9fllURnXT2JwLN5Qgo24Ug5NF6dxhkmxsMEUZhXRcGg+X3e1JbJ84YePQKBl5E0ZjAH5Q4rkdcGY99+g==
@@ -4974,7 +4974,7 @@ eslint-plugin-react-hooks@^4.2.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.3.0.tgz#318dbf312e06fab1c835a4abef00121751ac1172"
   integrity sha512-XslZy0LnMn+84NEG9jSGR6eGqaZB3133L8xewQo3fQagbQuGt7a63gf+P1NGKZavEYEC3UXaWEAA/AqDkuN6xA==
 
-eslint-plugin-react@^7.25.1, eslint-plugin-react@^7.26.1:
+eslint-plugin-react@^7.26.1, eslint-plugin-react@^7.27.1:
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.27.1.tgz#469202442506616f77a854d91babaae1ec174b45"
   integrity sha512-meyunDjMMYeWr/4EBLTV1op3iSG3mjT/pz5gti38UzfM4OPpNc2m0t2xvKCOMU5D6FSdd34BIMFOvQbW+i8GAA==
@@ -5043,7 +5043,7 @@ eslint-webpack-plugin@^2.5.4:
     normalize-path "^3.0.0"
     schema-utils "^3.1.1"
 
-eslint-webpack-plugin@^3.0.1:
+eslint-webpack-plugin@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/eslint-webpack-plugin/-/eslint-webpack-plugin-3.1.1.tgz#83dad2395e5f572d6f4d919eedaa9cf902890fcb"
   integrity sha512-xSucskTN9tOkfW7so4EaiFIkulWLXwCB/15H917lR6pTv0Zot6/fetFucmENRb7J5whVSFKIvwnrnsa78SG2yg==
@@ -9810,7 +9810,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.3.2, prettier@^2.4.1:
+prettier@^2.4.1, prettier@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.0.tgz#a6370e2d4594e093270419d9cc47f7670488f893"
   integrity sha512-FM/zAKgWTxj40rH03VxzIPdXmj39SwSjwG0heUcNFwI+EMZJnY93yAiKXM3dObIKAM5TA88werc8T/EwhB45eg==
@@ -11544,7 +11544,7 @@ stylelint-prettier@^1.2.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-stylelint-webpack-plugin@^3.0.1:
+stylelint-webpack-plugin@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-3.1.0.tgz#97cf140c0973515a13e2db970e3f94a8f13e9c56"
   integrity sha512-qKBj9s2BVnxwQXdqRKd637gtASYel6FA/a9PfyfsplUqiBmBjJeeTrcJPp9v/HEN4FRw2CJDNbO2xuYUF7DsuA==
