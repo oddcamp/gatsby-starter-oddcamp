@@ -1,6 +1,6 @@
 import React from "react"
+// import { graphql } from "gatsby"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
 import styled from "styled-components"
 import { Location } from "@reach/router"
 
@@ -10,7 +10,18 @@ import Link from "../components/link"
 import Styled from "../components/styled"
 
 const SocialPage = ({ data }) => {
-  if (!data) return null
+  if (!data)
+    return (
+      <Layout>
+        <Meta data={{ title: `Social` }} />
+
+        <Container as="article">
+          <h1>Social sharing</h1>
+
+          <p>No query</p>
+        </Container>
+      </Layout>
+    )
 
   return (
     <Layout>
@@ -73,16 +84,6 @@ SocialPage.propTypes = {
 }
 
 export default SocialPage
-
-// export const pageQuery = graphql`
-//   query {
-//     site {
-//       siteMetadata {
-//         siteUrl
-//       }
-//     }
-//   }
-// `
 
 const Container = styled(Styled)`
   ${({ theme }) => theme.grid.container()}
