@@ -10,6 +10,7 @@ import Footer from "../footer"
 import CookiesConsent from "../cookies-consent"
 import { StoreProvider } from "../../store"
 import theme from "../../theme"
+// import "../../assets/stylesheets/index.scss"
 
 const googleFonts = `https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap`
 
